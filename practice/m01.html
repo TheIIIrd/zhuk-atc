@@ -70,11 +70,13 @@
       </ul>
     </div>
 
-    <div class="filter-bar no-print" data-filter-group="tasks" role="group" aria-label="Фильтр по уровню">
+    <div class="filter-bar no-print" data-filter-group="tasks" role="group" aria-label="Фильтр задач">
       <button class="chip-btn" type="button" data-level="all" aria-pressed="true">Все</button>
       <button class="chip-btn" type="button" data-level="1" aria-pressed="false">★ Разминка</button>
       <button class="chip-btn" type="button" data-level="2" aria-pressed="false">★★ Основные</button>
       <button class="chip-btn" type="button" data-level="3" aria-pressed="false">★★★ Сложные</button>
+      <span class="filter-sep" aria-hidden="true" hidden></span>
+      <button class="chip-btn" type="button" data-filter-notes aria-pressed="false" hidden>С заметками <span class="chip-count" data-notes-count></span></button>
       <span class="muted" data-filter-status role="status" aria-live="polite"></span>
     </div>
 
@@ -82,48 +84,53 @@
       <h2 id="p11">Блок 1.1. Арифметика по модулю</h2>
 
       <section class="task" data-level="1" id="t1" aria-labelledby="t1-h">
-        <div class="task__head"><h3 class="task__num" id="t1-h" data-nosearch>Задача 1</h3><span class="level" data-level="1">★ разминка</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t1"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t1-h" data-nosearch>Задача 1</h3><span class="level" data-level="1">★ разминка</span></div>
         <p>Вычислите: 23 mod 7; −8 mod 3; 100 mod 7; −1 mod 2; 0 mod 5.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t1">Мой ответ к задаче 1</label>
-            <textarea class="input note-input" id="note-m01-t1" data-note="m01-t1" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t1">Заметки к задаче 1</label>
+            <textarea class="input note-input" id="note-m01-t1" data-note="m01-t1" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t1-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Запишите a = q·n + r с 0 ≤ r &lt; n. Для отрицательных прибавляйте n, пока не попадёте в отрезок от 0 до n − 1.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>2; 1; 2; 1; 0.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>23 = 3·7 + 2. −8 = (−3)·3 + 1. 100 = 14·7 + 2. −1 = (−1)·2 + 1. 0 = 0·5 + 0.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t1"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="1" id="t2" aria-labelledby="t2-h">
-        <div class="task__head"><h3 class="task__num" id="t2-h" data-nosearch>Задача 2</h3><span class="level" data-level="1">★ разминка</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t2"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t2-h" data-nosearch>Задача 2</h3><span class="level" data-level="1">★ разминка</span></div>
         <p>В \(\mathbb{Z}_7\) вычислите: 5 + 4; 3 − 5; 4·6; 6⁻¹; 3 / 5. Каждое деление проверьте умножением.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t2">Мой ответ к задаче 2</label>
-            <textarea class="input note-input" id="note-m01-t2" data-note="m01-t2" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t2">Заметки к задаче 2</label>
+            <textarea class="input note-input" id="note-m01-t2" data-note="m01-t2" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t2-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Для 6⁻¹ и 5⁻¹ переберите множители 1…6 и найдите тот, что даёт остаток 1. Затем 3 / 5 = 3·5⁻¹.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>2; 5; 3; 6; 2.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>9 ≡ 2. 3 − 5 = −2 ≡ 5. 24 = 3·7 + 3. 6·6 = 36 = 5·7 + 1, значит 6⁻¹ = 6. 5·3 = 15 ≡ 1, значит 5⁻¹ = 3, и 3 / 5 = 3·3 = 9 ≡ 2. Проверка: 2·5 = 10 ≡ 3.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t2"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t3" aria-labelledby="t3-h">
-        <div class="task__head"><h3 class="task__num" id="t3-h" data-nosearch>Задача 3</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t3"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t3-h" data-nosearch>Задача 3</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>Составьте таблицу умножения \(\mathbb{Z}_6\). Какие элементы имеют обратные? Найдите все пары ненулевых a, b с a·b = 0. Как это согласуется с теоремой про НОД?</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t3">Мой ответ к задаче 3</label>
-            <textarea class="input note-input" id="note-m01-t3" data-note="m01-t3" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t3">Заметки к задаче 3</label>
+            <textarea class="input note-input" id="note-m01-t3" data-note="m01-t3" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t3-status" aria-live="polite"></p>
           </div>
         </details>
@@ -144,17 +151,19 @@
           </div>
           <p>Единица есть только в строках 1 и 5. НОД(1, 6) = НОД(5, 6) = 1, а НОД(2, 6) = 2, НОД(3, 6) = 3, НОД(4, 6) = 2 — ровно как говорит теорема: обратим ⇔ НОД = 1.</p>
         </div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t3"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t4" aria-labelledby="t4-h">
-        <div class="task__head"><h3 class="task__num" id="t4-h" data-nosearch>Задача 4</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t4"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t4-h" data-nosearch>Задача 4</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>Алгоритмом Евклида: а) найдите 7⁻¹ по модулю 31; б) найдите НОД(91, 35) и запишите его в виде u·91 + v·35.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t4">Мой ответ к задаче 4</label>
-            <textarea class="input note-input" id="note-m01-t4" data-note="m01-t4" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t4">Заметки к задаче 4</label>
+            <textarea class="input note-input" id="note-m01-t4" data-note="m01-t4" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t4-status" aria-live="polite"></p>
           </div>
         </details>
@@ -164,17 +173,19 @@
           <p>а) 31 = 4·7 + 3: x = 0 − 4·1 = −4. 7 = 2·3 + 1: x = 1 − 2·(−4) = 9. Остаток 1, значит 7⁻¹ = 9. Проверка: 63 = 2·31 + 1.</p>
           <p>б) 91 = 2·35 + 21; 35 = 1·21 + 14; 21 = 1·14 + 7; 14 = 2·7. НОД = 7. Обратный ход: 7 = 21 − 14 = 21 − (35 − 21) = 2·21 − 35 = 2·(91 − 2·35) − 35 = 2·91 − 5·35. Проверка: 182 − 175 = 7.</p>
         </div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t4"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t5" aria-labelledby="t5-h">
-        <div class="task__head"><h3 class="task__num" id="t5-h" data-nosearch>Задача 5</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t5"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t5-h" data-nosearch>Задача 5</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>Решите: а) 4x + 3 = 2 в \(\mathbb{Z}_5\); б) 2x + 2 = 1 в \(\mathbb{Z}_3\); в) 2x = 3 в \(\mathbb{Z}_6\); г) 2x = 4 в \(\mathbb{Z}_6\). В пунктах в) и г) объясните, почему решений не ровно одно.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t5">Мой ответ к задаче 5</label>
-            <textarea class="input note-input" id="note-m01-t5" data-note="m01-t5" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t5">Заметки к задаче 5</label>
+            <textarea class="input note-input" id="note-m01-t5" data-note="m01-t5" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t5-status" aria-live="polite"></p>
           </div>
         </details>
@@ -186,17 +197,19 @@
           <p>в) 2x принимает в \(\mathbb{Z}_6\) только значения 0, 2, 4: 2x = 3 + 6m невозможно, слева чётное, справа нечётное.</p>
           <p>г) 2·2 = 4 и 2·5 = 10 ≡ 4. Два решения, потому что 2·3 ≡ 0: прибавив 3 к решению, получаем ещё одно. В поле так не бывает.</p>
         </div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t5"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t6" aria-labelledby="t6-h">
-        <div class="task__head"><h3 class="task__num" id="t6-h" data-nosearch>Задача 6</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t6"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t6-h" data-nosearch>Задача 6</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>Над \(\mathbb{F}_3\) даны векторы a = <span class="bits">12011</span>, b = <span class="bits">21102</span>, c = <span class="bits">12121</span> (это код C₁ из домашнего задания к лекции 2 «Линейные коды»). Найдите a + b, a − b, 2a, 2a + b. Что вы замечаете про c? Что это значит для «размера» кода C₁?</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t6">Мой ответ к задаче 6</label>
-            <textarea class="input note-input" id="note-m01-t6" data-note="m01-t6" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t6">Заметки к задаче 6</label>
+            <textarea class="input note-input" id="note-m01-t6" data-note="m01-t6" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t6-status" aria-live="polite"></p>
           </div>
         </details>
@@ -206,133 +219,149 @@
           <p>a + b = (3, 3, 1, 1, 3) ≡ 00110. a − b = (−1, 1, −1, 1, −1) ≡ 21212. 2a = (2, 4, 0, 2, 2) ≡ 21022. 2a + b = (4, 2, 1, 2, 4) ≡ 12121.</p>
           <p>Векторы a и b не пропорциональны: b ≠ a и b ≠ 2a. Значит, a и b вместе дают ровно 3·3 = 9 разных комбинаций, а c среди них.</p>
         </div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t6"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t7" aria-labelledby="t7-h">
-        <div class="task__head"><h3 class="task__num" id="t7-h" data-nosearch>Задача 7</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t7"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t7-h" data-nosearch>Задача 7</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>а) Над \(\mathbb{F}_3\) принято слово y = <span class="bits">2102</span>, а вектор ошибки e = <span class="bits">0120</span>. Что было передано? б) Над \(\mathbb{F}_2\) передали x = <span class="bits">1011001</span>, приняли y = <span class="bits">1001011</span>. Найдите e и число ошибок.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t7">Мой ответ к задаче 7</label>
-            <textarea class="input note-input" id="note-m01-t7" data-note="m01-t7" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t7">Заметки к задаче 7</label>
+            <textarea class="input note-input" id="note-m01-t7" data-note="m01-t7" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t7-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>а) y = x + e, значит x = y − e. б) В двоичном случае e = y ⊕ x.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>а) x = 2012. б) e = 0010010, две ошибки (разряды 3 и 6).</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>а) (2 − 0, 1 − 1, 0 − 2, 2 − 0) = (2, 0, −2, 2) ≡ 2012. Проверка: 2012 + 0120 = (2, 1, 3, 2) ≡ 2102. б) 1011001 ⊕ 1001011 = 0010010, вес 2.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t7"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t8" aria-labelledby="t8-h">
-        <div class="task__head"><h3 class="task__num" id="t8-h" data-nosearch>Задача 8</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t8"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t8-h" data-nosearch>Задача 8</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>Выпишите 2ᵏ mod 11 для k = 1, …, 10. Является ли 2 примитивным элементом \(\mathbb{F}_{11}\)? Найдите 2¹⁰⁰ mod 11, не вычисляя больших чисел.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t8">Мой ответ к задаче 8</label>
-            <textarea class="input note-input" id="note-m01-t8" data-note="m01-t8" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t8">Заметки к задаче 8</label>
+            <textarea class="input note-input" id="note-m01-t8" data-note="m01-t8" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t8-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Каждую следующую степень получайте умножением предыдущей на 2 и взятием остатка. Для 2¹⁰⁰ посмотрите, чему равно 2¹⁰.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>2, 4, 8, 5, 10, 9, 7, 3, 6, 1. Да, примитивный. 2¹⁰⁰ ≡ 1.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Степени пробегают все 10 ненулевых элементов, поэтому 2 — примитивный. 2¹⁰ ≡ 1, значит 2¹⁰⁰ = (2¹⁰)¹⁰ ≡ 1¹⁰ = 1. Это пример малой теоремы Ферма: \(a^{p-1} = 1\).</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t8"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="3" id="t9" aria-labelledby="t9-h">
-        <div class="task__head"><h3 class="task__num" id="t9-h" data-nosearch>Задача 9</h3><span class="level" data-level="3">★★★ сложная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t9"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t9-h" data-nosearch>Задача 9</h3><span class="level" data-level="3">★★★ сложная</span></div>
         <p>Докажите: если p простое и a·b ≡ 0 (mod p), то a ≡ 0 или b ≡ 0. Иначе говоря, в \(\mathbb{F}_p\) нет делителей нуля.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t9">Мой ответ к задаче 9</label>
-            <textarea class="input note-input" id="note-m01-t9" data-note="m01-t9" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t9">Заметки к задаче 9</label>
+            <textarea class="input note-input" id="note-m01-t9" data-note="m01-t9" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t9-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Если a ≢ 0, у него есть обратный. Умножьте обе части на a⁻¹.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Пусть a ≢ 0. Тогда НОД(a, p) = 1 (p простое и не делит a), и по теореме существует a⁻¹. Умножаем a·b ≡ 0 на a⁻¹: b ≡ a⁻¹·a·b ≡ a⁻¹·0 = 0.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t9"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="3" id="t10" aria-labelledby="t10-h">
-        <div class="task__head"><h3 class="task__num" id="t10-h" data-nosearch>Задача 10</h3><span class="level" data-level="3">★★★ сложная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t10"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t10-h" data-nosearch>Задача 10</h3><span class="level" data-level="3">★★★ сложная</span></div>
         <p>Докажите, что при составном n кольцо \(\mathbb{Z}_n\) не является полем: предъявите элемент без обратного.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t10">Мой ответ к задаче 10</label>
-            <textarea class="input note-input" id="note-m01-t10" data-note="m01-t10" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t10">Заметки к задаче 10</label>
+            <textarea class="input note-input" id="note-m01-t10" data-note="m01-t10" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t10-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>n = a·b, где 1 &lt; a, b &lt; n. Чему равно a·b в \(\mathbb{Z}_n\)?</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Пусть n = a·b, 1 &lt; a, b &lt; n. Тогда a·b ≡ 0, но a ≢ 0 и b ≢ 0. Если бы у a был обратный, то b ≡ a⁻¹·a·b ≡ 0 — противоречие. Ещё короче: НОД(a, n) = a &gt; 1, и по теореме обратного нет.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t10"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="3" id="t11" aria-labelledby="t11-h">
-        <div class="task__head"><h3 class="task__num" id="t11-h" data-nosearch>Задача 11</h3><span class="level" data-level="3">★★★ сложная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t11"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t11-h" data-nosearch>Задача 11</h3><span class="level" data-level="3">★★★ сложная</span></div>
         <p>Решите x² = 1 в \(\mathbb{F}_{11}\) и в \(\mathbb{Z}_8\). Почему число решений разное?</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t11">Мой ответ к задаче 11</label>
-            <textarea class="input note-input" id="note-m01-t11" data-note="m01-t11" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t11">Заметки к задаче 11</label>
+            <textarea class="input note-input" id="note-m01-t11" data-note="m01-t11" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t11-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>x² − 1 = (x − 1)(x + 1). Вспомните задачу 9.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>В \(\mathbb{F}_{11}\): x = 1 и x = 10. В \(\mathbb{Z}_8\): x = 1, 3, 5, 7.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>В поле (x − 1)(x + 1) = 0 ⇒ x − 1 = 0 или x + 1 = 0 (делителей нуля нет), то есть x = 1 или x = −1 = 10. В \(\mathbb{Z}_8\): 1² = 1, 3² = 9 ≡ 1, 5² = 25 ≡ 1, 7² = 49 ≡ 1. Например, при x = 3: (x − 1)(x + 1) = 2·4 = 8 ≡ 0, хотя оба множителя не ноль. Многочлен степени 2 над полем имеет не больше двух корней, а над \(\mathbb{Z}_8\) это неверно.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t11"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <h2 id="p12">Блок 1.2. Расстояние Хемминга и параметры кода</h2>
 
       <section class="task" data-level="1" id="t12" aria-labelledby="t12-h">
-        <div class="task__head"><h3 class="task__num" id="t12-h" data-nosearch>Задача 12</h3><span class="level" data-level="1">★ разминка</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t12"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t12-h" data-nosearch>Задача 12</h3><span class="level" data-level="1">★ разминка</span></div>
         <p>Найдите d(<span class="bits">1011010</span>, <span class="bits">0011101</span>) и вес каждого вектора.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t12">Мой ответ к задаче 12</label>
-            <textarea class="input note-input" id="note-m01-t12" data-note="m01-t12" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t12">Заметки к задаче 12</label>
+            <textarea class="input note-input" id="note-m01-t12" data-note="m01-t12" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t12-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>d = 4 (различаются разряды 1, 5, 6, 7). Оба вектора имеют вес 4.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t12"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="1" id="t13" aria-labelledby="t13-h">
-        <div class="task__head"><h3 class="task__num" id="t13-h" data-nosearch>Задача 13</h3><span class="level" data-level="1">★ разминка</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t13"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t13-h" data-nosearch>Задача 13</h3><span class="level" data-level="1">★ разминка</span></div>
         <p>Над \(\mathbb{F}_3\) даны x = <span class="bits">1202</span> и y = <span class="bits">0221</span>. Найдите расстояние Хемминга d(x, y), вектор y − x и его вес, а также расстояние Ли ρ(x, y).</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t13">Мой ответ к задаче 13</label>
-            <textarea class="input note-input" id="note-m01-t13" data-note="m01-t13" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t13">Заметки к задаче 13</label>
+            <textarea class="input note-input" id="note-m01-t13" data-note="m01-t13" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t13-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Расстояние Ли — сумма |xᵢ − yᵢ|, где разности считаются как у обычных целых чисел 0, 1, 2.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>d = 3; y − x = 2022, вес 3; ρ = 1 + 0 + 2 + 1 = 4. Как и положено, d ≤ ρ.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t13"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="1" id="t14" aria-labelledby="t14-h">
-        <div class="task__head"><h3 class="task__num" id="t14-h" data-nosearch>Задача 14</h3><span class="level" data-level="1">★ разминка</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t14"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t14-h" data-nosearch>Задача 14</h3><span class="level" data-level="1">★ разминка</span></div>
         <p>Заполните таблицу t, s, s′ для d = 1, 2, …, 7.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t14">Мой ответ к задаче 14</label>
-            <textarea class="input note-input" id="note-m01-t14" data-note="m01-t14" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t14">Заметки к задаче 14</label>
+            <textarea class="input note-input" id="note-m01-t14" data-note="m01-t14" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t14-status" aria-live="polite"></p>
           </div>
         </details>
@@ -348,103 +377,115 @@
             </table>
           </div>
         </div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t14"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t15" aria-labelledby="t15-h">
-        <div class="task__head"><h3 class="task__num" id="t15-h" data-nosearch>Задача 15</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t15"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t15-h" data-nosearch>Задача 15</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>Код C = {<span class="bits">000000</span>, <span class="bits">111000</span>, <span class="bits">000111</span>, <span class="bits">111111</span>}. Найдите d, t, s, s′ и скорость R. Декодируйте ближайшим словом y = <span class="bits">110000</span> и y = <span class="bits">101101</span>. Можно ли во втором случае быть уверенным в ответе?</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t15">Мой ответ к задаче 15</label>
-            <textarea class="input note-input" id="note-m01-t15" data-note="m01-t15" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t15">Заметки к задаче 15</label>
+            <textarea class="input note-input" id="note-m01-t15" data-note="m01-t15" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t15-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Пар слов всего 6. Для скорости: сколько информационных бит k нужно, чтобы занумеровать 4 слова?</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>d = 3, t = 1, s = 2, s′ = 1, R = 2/6 = 1/3. 110000 → 111000. 101101 → 111111 (расстояние 2). Уверенности нет: двух ошибок больше, чем t = 1.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Расстояния: 3, 3, 6, 6, 3, 3 — минимум 3. Для 101101 расстояния до слов кода: 4, 3, 3, 2. Ближайшее слово единственное, и МП-декодер выберет 111111. Но могло быть и так: отправили 111000, а произошло 3 ошибки. Код гарантирует правильное исправление только до t = 1 ошибки.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t15"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t16" aria-labelledby="t16-h">
-        <div class="task__head"><h3 class="task__num" id="t16-h" data-nosearch>Задача 16</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t16"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t16-h" data-nosearch>Задача 16</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>Найдите: а) |B₁| и |B₂| в \(\mathbb{F}_2^7\); б) |S₂(a)| и |B₁(a)| в \(\mathbb{F}_3^5\).</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t16">Мой ответ к задаче 16</label>
-            <textarea class="input note-input" id="note-m01-t16" data-note="m01-t16" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t16">Заметки к задаче 16</label>
+            <textarea class="input note-input" id="note-m01-t16" data-note="m01-t16" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t16-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>\(|S_r| = \binom{n}{r}(q-1)^r\), а шар — сумма сфер радиусов 0, 1, …, r.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>а) 8 и 1 + 7 + 21 = 29. б) \(\binom{5}{2}\)·2² = 40; 1 + 5·2 = 11.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t16"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t17" aria-labelledby="t17-h">
-        <div class="task__head"><h3 class="task__num" id="t17-h" data-nosearch>Задача 17</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t17"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t17-h" data-nosearch>Задача 17</h3><span class="level" data-level="2">★★ основная</span></div>
         <p><span class="origin origin--course">Курс: домашнее задание к лекции 1 «Введение», № 1</span></p>
         <p>Докажите, что расстояние между двоичными векторами чётного веса чётно.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t17">Мой ответ к задаче 17</label>
-            <textarea class="input note-input" id="note-m01-t17" data-note="m01-t17" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t17">Заметки к задаче 17</label>
+            <textarea class="input note-input" id="note-m01-t17" data-note="m01-t17" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t17-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Выразите ‖x ⊕ y‖ через ‖x‖, ‖y‖ и число разрядов, где у обоих векторов стоят единицы.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Пусть m — число разрядов, где xᵢ = yᵢ = 1. Тогда x ⊕ y имеет единицы там, где ровно один из векторов равен 1: d(x, y) = ‖x ⊕ y‖ = (‖x‖ − m) + (‖y‖ − m) = ‖x‖ + ‖y‖ − 2m. Если ‖x‖ и ‖y‖ чётны, то и d чётно.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t17"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t18" aria-labelledby="t18-h">
-        <div class="task__head"><h3 class="task__num" id="t18-h" data-nosearch>Задача 18</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t18"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t18-h" data-nosearch>Задача 18</h3><span class="level" data-level="2">★★ основная</span></div>
         <p><span class="origin origin--course">Курс: домашнее задание к лекции 1 «Введение», № 2</span></p>
         <p>Докажите, что для α, β ∈ \(\mathbb{F}_2^n\) расстояние Хемминга равно ‖α ⊕ β‖.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t18">Мой ответ к задаче 18</label>
-            <textarea class="input note-input" id="note-m01-t18" data-note="m01-t18" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t18">Заметки к задаче 18</label>
+            <textarea class="input note-input" id="note-m01-t18" data-note="m01-t18" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t18-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>В каждом разряде (α ⊕ β)ᵢ = 1 тогда и только тогда, когда αᵢ ≠ βᵢ. Значит, число единиц в α ⊕ β равно числу разрядов, где α и β различаются, то есть d(α, β).</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t18"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="2" id="t19" aria-labelledby="t19-h">
-        <div class="task__head"><h3 class="task__num" id="t19-h" data-nosearch>Задача 19</h3><span class="level" data-level="2">★★ основная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t19"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t19-h" data-nosearch>Задача 19</h3><span class="level" data-level="2">★★ основная</span></div>
         <p>Код с повторением длины 5 (0 → 00000, 1 → 11111) декодируется голосованием в ДСК(p) с p = 0,01. Найдите d, t, скорость и вероятность ошибки декодирования одного бита.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t19">Мой ответ к задаче 19</label>
-            <textarea class="input note-input" id="note-m01-t19" data-note="m01-t19" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t19">Заметки к задаче 19</label>
+            <textarea class="input note-input" id="note-m01-t19" data-note="m01-t19" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t19-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Голосование ошибается, если испорчено 3, 4 или 5 битов из 5.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>d = 5, t = 2, R = 1/5, P ≈ 9,85·10⁻⁶.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><div class="formula">\[ \begin{aligned} P &= \binom{5}{3}p^3(1-p)^2 \\ &+ \binom{5}{4}p^4(1-p) + p^5 \end{aligned} \]</div><p>При p = 0,01: P = 10·10⁻⁶·0,9801 + 5·10⁻⁸·0,99 + 10⁻¹⁰ ≈ 9,801·10⁻⁶ + 0,0495·10⁻⁶ + 0,0001·10⁻⁶ ≈ 9,85·10⁻⁶. По сравнению с кодом длины 3 ошибок примерно в 30 раз меньше, но и скорость ниже: 1/5 вместо 1/3.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t19"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <h2 id="pexam">Задачи из программы экзамена</h2>
       <p><span class="origin origin--course">Курс: программа экзамена 2025 года, раздел «Примеры экзаменационных вопросов и задач»</span> Условия приведены дословно, в скобках — номер задачи в программе.</p>
 
       <section class="task" data-level="3" id="t20" aria-labelledby="t20-h">
-        <div class="task__head"><h3 class="task__num" id="t20-h" data-nosearch>Задача 20 (программа, № 2)</h3><span class="level" data-level="3">★★★ сложная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t20"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t20-h" data-nosearch>Задача 20 (программа, № 2)</h3><span class="level" data-level="3">★★★ сложная</span></div>
         <p>«Найти максимально возможную мощность двоичного кода длины n, обнаруживающего одну ошибку. Доказать, что существует всего два различных двоичных кода длины n и максимальной мощности 2ⁿ⁻¹, обнаруживающих одну ошибку.»</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t20">Мой ответ к задаче 20</label>
-            <textarea class="input note-input" id="note-m01-t20" data-note="m01-t20" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t20">Заметки к задаче 20</label>
+            <textarea class="input note-input" id="note-m01-t20" data-note="m01-t20" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t20-status" aria-live="polite"></p>
           </div>
         </details>
@@ -455,34 +496,38 @@
           <p><strong>Оценка.</strong> Код обнаруживает одну ошибку ⇔ d(C) ≥ 2 ⇔ никакие два слова не соседние. Разобьём куб на 2ⁿ⁻¹ пар {v, v с изменённым последним разрядом}. Слова в паре соседние, поэтому из каждой пары в код попадает не больше одного: |C| ≤ 2ⁿ⁻¹. Код всех векторов чётного веса имеет 2ⁿ⁻¹ слов, и d = 2 (задача 17), так что оценка достигается.</p>
           <p><strong>Единственность.</strong> Пусть |C| = 2ⁿ⁻¹. Тогда для любого разряда i из каждой пары векторов, отличающихся только в i-м разряде, в C ровно один вектор. Возьмём x ∈ C и y, отличающийся от x в разрядах i и j. Вектор z = x с изменённым i-м разрядом — сосед x, поэтому z ∉ C. Векторы z и y отличаются только в j-м разряде, и из этой пары в C ровно один; z не в C, значит y ∈ C. Итак, вместе с x в C лежат все векторы на расстоянии 2 от него, а по цепочке — все векторы той же чётности веса, что и x. Их ровно 2ⁿ⁻¹, поэтому C совпадает с одним из двух кодов: «все чётного веса» или «все нечётного веса».</p>
         </div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t20"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="3" id="t21" aria-labelledby="t21-h">
-        <div class="task__head"><h3 class="task__num" id="t21-h" data-nosearch>Задача 21 (программа, № 4)</h3><span class="level" data-level="3">★★★ сложная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t21"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t21-h" data-nosearch>Задача 21 (программа, № 4)</h3><span class="level" data-level="3">★★★ сложная</span></div>
         <p>«Найти среднюю размерность грани в булевом кубе \(\mathbb{Z}_2^n\) размерности n.»</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t21">Мой ответ к задаче 21</label>
-            <textarea class="input note-input" id="note-m01-t21" data-note="m01-t21" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t21">Заметки к задаче 21</label>
+            <textarea class="input note-input" id="note-m01-t21" data-note="m01-t21" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t21-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Грань записывается словом длины n из символов 0, 1, ∗ (как ∗0∗10). Сколько всего граней? В скольких из них i-й символ — звёздочка?</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>n/3 (вершины считаются гранями размерности 0).</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Граней столько же, сколько слов длины n над {0, 1, ∗}: 3ⁿ. Размерность грани — число звёздочек. В i-м разряде звёздочка стоит ровно у 3ⁿ⁻¹ граней (остальные разряды произвольны). Сумма размерностей = n·3ⁿ⁻¹, среднее = n·3ⁿ⁻¹ / 3ⁿ = n/3.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t21"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="3" id="t22" aria-labelledby="t22-h">
-        <div class="task__head"><h3 class="task__num" id="t22-h" data-nosearch>Задача 22 (программа, № 5)</h3><span class="level" data-level="3">★★★ сложная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t22"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t22-h" data-nosearch>Задача 22 (программа, № 5)</h3><span class="level" data-level="3">★★★ сложная</span></div>
         <p>«Пусть S — некоторая сфера радиуса r в булевом кубе размерности n. Вычислить \(\sum_{x, y \in S} d(x, y)\).»</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t22">Мой ответ к задаче 22</label>
-            <textarea class="input note-input" id="note-m01-t22" data-note="m01-t22" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t22">Заметки к задаче 22</label>
+            <textarea class="input note-input" id="note-m01-t22" data-note="m01-t22" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t22-status" aria-live="polite"></p>
           </div>
         </details>
@@ -490,23 +535,26 @@
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>Если сумма по упорядоченным парам (x, y): \(2n\binom{n-1}{r-1}\binom{n-1}{r}\). По неупорядоченным парам — вдвое меньше: \(n\binom{n-1}{r-1}\binom{n-1}{r}\).</p>
           <p><span class="origin origin--gap">В условии не уточнено, упорядоченные ли пары</span> Запись Σ по x, y ∈ S обычно означает упорядоченные пары. На экзамене стоит назвать оба ответа.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Пусть центр нулевой. В i-м разряде единица стоит у \(\binom{n-1}{r-1}\) векторов сферы, ноль — у \(\binom{n-1}{r}\). Упорядоченная пара даёт 1 в i-м разряде расстояния, если у одного вектора там 1, а у другого 0: таких пар \(2\binom{n-1}{r-1}\binom{n-1}{r}\). Суммируем по n разрядам. Проверка при n = 2, r = 1: S = {10, 01}, сумма по упорядоченным парам 2 + 2 = 4, формула даёт 2·2·1·1 = 4.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t22"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <section class="task" data-level="3" id="t23" aria-labelledby="t23-h">
-        <div class="task__head"><h3 class="task__num" id="t23-h" data-nosearch>Задача 23 (программа, № 6)</h3><span class="level" data-level="3">★★★ сложная</span>
-          <label class="done-check"><input type="checkbox" data-task="m01-t23"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t23-h" data-nosearch>Задача 23 (программа, № 6)</h3><span class="level" data-level="3">★★★ сложная</span></div>
         <p>«Пусть S — некоторая сфера радиуса r с центром a ∈ \(\mathbb{Z}_2^n\). Найти сумму \(\bigoplus_{x\in S} x\).»</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-m01-t23">Мой ответ к задаче 23</label>
-            <textarea class="input note-input" id="note-m01-t23" data-note="m01-t23" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-m01-t23">Заметки к задаче 23</label>
+            <textarea class="input note-input" id="note-m01-t23" data-note="m01-t23" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-m01-t23-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Каждый x ∈ S записывается как a ⊕ e, где ‖e‖ = r. Тогда сумма = (|S| mod 2)·a ⊕ (сумма всех векторов веса r). Чему равен i-й разряд последней суммы?</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><div class="formula">\[ \begin{aligned} &\left(\tbinom{n}{r} \bmod 2\right)\cdot a \\ \oplus\; &\left(\tbinom{n-1}{r-1} \bmod 2\right)\cdot(11\dots1) \end{aligned} \]</div></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Слагаемых a в сумме |S| = \(\binom{n}{r}\), а a ⊕ a = 0, поэтому от них остаётся a при нечётном \(\binom{n}{r}\) и 0 при чётном. В сумме всех векторов веса r i-й разряд равен числу таких векторов с единицей в i-м разряде, по модулю 2, то есть \(\binom{n-1}{r-1}\) mod 2, — одинаково для всех разрядов. Проверка: n = 2, r = 1, a = 00: S = {10, 01}, сумма 11; формула: \(\binom{2}{1}\) = 2 чётно, \(\binom{1}{0}\) = 1 нечётно — получаем 11.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="m01-t23"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
 
       <aside class="box box--note">
@@ -520,7 +568,7 @@
     <div class="site-footer__inner">
       <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
       <p><a href="../sources.html">Источники и условные обозначения</a><br><a href="../plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
-      <p>Версия 0.2.1 от 25.10.2026</p>
+      <p>Версия 0.2.3 от 25.10.2026</p>
     </div>
   </footer>
   <script src="../assets/js/data.js"></script>
