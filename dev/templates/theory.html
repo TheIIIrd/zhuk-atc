@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head --><!-- /@head -->
+</head>
+<body data-page="theory" data-title="Теория, модуль {{NUM}}: {{TITLE}} — Код без ошибок" data-desc="Модуль {{NUM}}. {{TITLE}}: объяснение с нуля.">
+  <!-- @header --><!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <p class="crumbs"><a href="index.html">Теория</a> / Модуль {{NUM}}</p>
+      <h1>Модуль {{NUM}}. {{TITLE}}</h1>
+      <p class="lead">Коротко: о чём модуль и зачем он нужен.</p>
+      <ul class="section-tabs" aria-label="Материалы модуля {{NUM}}">
+        <li><a href="{{ID}}.html" aria-current="page">Теория</a></li>
+        <li><a href="../examples/{{ID}}.html">Примеры</a></li>
+        <li><a href="../practice/{{ID}}.html">Практика</a></li>
+        <li><a href="../review/{{ID}}.html">Повторение</a></li>
+      </ul>
+    </div>
+
+    <div class="with-toc">
+      <nav class="toc" aria-label="Содержание модуля">
+        <details class="toc-details" open>
+        <summary class="toc__title">Содержание</summary>
+        <ol class="toc-plain">
+          <li><a href="#b1">{{NUM}}.1 Первый блок</a>
+            <ol class="toc__sub">
+              <li><a href="#b1-intro">Зачем это нужно</a></li>
+            </ol>
+          </li>
+        </ol>
+        </details>
+      </nav>
+
+      <article class="prose">
+        <h2 id="b1">{{NUM}}.1 Первый блок</h2>
+        <p><span class="origin origin--course">Курс: лекция N «Название»; программа, вопрос N</span></p>
+
+        <h3 id="b1-intro">Зачем это нужно</h3>
+        <p>Сначала интуиция и простой пример.</p>
+        <aside class="box box--def">
+          <p class="box__label">Определение</p>
+          <p>Строгая формулировка. Формулы: \(a \equiv b \pmod n\) в строке или в блоке:</p>
+          <div class="formula">\[ a = qn + r. \]</div>
+        </aside>
+        <aside class="box box--ex">
+          <p class="box__label">Пример</p>
+          <p>Разбор по шагам.</p>
+        </aside>
+        <aside class="box box--warn">
+          <p class="box__label">Типичная ошибка</p>
+          <p>Что часто путают.</p>
+        </aside>
+        <p class="no-print"><label class="done-check done-check--inline"><input type="checkbox" data-block="{{ID}}-b1"> Я прочитал блок {{NUM}}.1</label></p>
+
+        <hr>
+        <p><strong>Дальше:</strong> <a href="../examples/{{ID}}.html">примеры решений</a>, затем <a href="../practice/{{ID}}.html">задачи</a>.</p>
+      </article>
+    </div>
+  </main>
+  <!-- @footer --><!-- /@footer -->
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Тренажёры — Код без ошибок</title>
+  <meta name="description" content="Калькулятор по модулю с таблицей алгоритма Евклида, расстояние Хемминга, параметры кода d, t, s, s′.">
+  <meta name="theme-color" content="#5b3df5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Код без ошибок">
+  <meta property="og:title" content="Тренажёры — Код без ошибок">
+  <meta property="og:description" content="Калькулятор по модулю с таблицей алгоритма Евклида, расстояние Хемминга, параметры кода d, t, s, s′.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script src="assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Unbounded:wght@500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- /@head -->
+</head>
+<body data-root="" data-page="tools" data-title="Тренажёры — Код без ошибок" data-desc="Калькулятор по модулю с таблицей алгоритма Евклида, расстояние Хемминга, параметры кода d, t, s, s′." data-scripts="tools">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html" aria-label="Код без ошибок — на главную">
+        <span class="logo__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="logo__text">Код без ошибок</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Разделы сайта">
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="plan.html">План</a></li>
+          <li><a href="theory/index.html">Теория</a></li>
+          <li><a href="examples/index.html">Примеры</a></li>
+          <li><a href="practice/index.html">Практика</a></li>
+          <li><a href="oral/index.html">Устный экзамен</a></li>
+          <li><a href="glossary.html">Словарь</a></li>
+          <li><a href="review/index.html">Повторение</a></li>
+          <li><a href="tools.html" aria-current="page">Тренажёры</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
+        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Поиск по сайту">
+    <div class="search-dialog__head">
+      <label class="visually-hidden" for="search-input">Что найти</label>
+      <input class="search-input" id="search-input" type="search" placeholder="Например: обратный элемент" autocomplete="off">
+      <button class="icon-btn" id="search-close" type="button">Закрыть</button>
+    </div>
+    <ul class="search-results" id="search-results" aria-live="polite"></ul>
+  </dialog>
+  <!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <h1>Тренажёры</h1>
+      <p class="lead">Проверяйте свои вычисления. Тренажёр показывает промежуточные шаги, но решать задачи сначала стоит самостоятельно.</p>
+    </div>
+
+    <div class="prose">
+      <section class="tool" id="mod-tool" aria-labelledby="mod-h">
+        <h2 id="mod-h">Калькулятор по модулю</h2>
+        <p>Сложение, вычитание, умножение, деление, степень и обратный элемент. Для деления и обратного показывается таблица расширенного алгоритма Евклида — как в <a href="theory/m01.html#euclid">теории</a>.</p>
+        <form class="tool-form" id="mod-form" novalidate>
+          <label>a <input class="input" id="mod-a" inputmode="numeric" value="5" required></label>
+          <label>Действие
+            <select class="input" id="mod-op">
+              <option value="add">a + b</option>
+              <option value="sub">a − b</option>
+              <option value="mul">a · b</option>
+              <option value="div">a / b</option>
+              <option value="pow">a в степени b</option>
+              <option value="inv" selected>обратный к a</option>
+            </select>
+          </label>
+          <label id="mod-b-wrap">b <input class="input" id="mod-b" inputmode="numeric" value="3"></label>
+          <label>модуль n <input class="input" id="mod-n" inputmode="numeric" value="17" required></label>
+          <button class="btn" type="submit">Посчитать</button>
+        </form>
+        <div class="tool-out" id="mod-out" aria-live="polite"><p class="muted">Введите числа и нажмите «Посчитать».</p></div>
+      </section>
+
+      <section class="tool" id="dist-tool" aria-labelledby="dist-h">
+        <h2 id="dist-h">Расстояние Хемминга и вес</h2>
+        <p>Введите два вектора одной длины цифрами без пробелов, например 1021. Тренажёр покажет различающиеся разряды, веса и вектор ошибки e = y − x.</p>
+        <form class="tool-form" id="dist-form" novalidate>
+          <label>Поле
+            <select class="input" id="dist-q">
+              <option value="2">𝔽₂</option>
+              <option value="3" selected>𝔽₃</option>
+              <option value="5">𝔽₅</option>
+              <option value="7">𝔽₇</option>
+            </select>
+          </label>
+          <label>x (отправлено) <input class="input input--wide" id="dist-x" value="1021" autocomplete="off" spellcheck="false"></label>
+          <label>y (принято) <input class="input input--wide" id="dist-y" value="2011" autocomplete="off" spellcheck="false"></label>
+          <button class="btn" type="submit">Сравнить</button>
+        </form>
+        <div class="tool-out" id="dist-out" aria-live="polite"><p class="muted">Здесь появится результат. Пример заполнен из лекции 1 «Введение».</p></div>
+      </section>
+
+      <section class="tool" id="code-tool" aria-labelledby="code-h">
+        <h2 id="code-h">Параметры кода: d, t, s, s′</h2>
+        <p>Введите все кодовые слова через пробел, запятую или с новой строки. Тренажёр переберёт все пары и найдёт кодовое расстояние.</p>
+        <form class="tool-form" id="code-form" novalidate>
+          <label>Поле
+            <select class="input" id="code-q">
+              <option value="2" selected>𝔽₂</option>
+              <option value="3">𝔽₃</option>
+              <option value="5">𝔽₅</option>
+              <option value="7">𝔽₇</option>
+            </select>
+          </label>
+          <label class="tool-form__wide">Кодовые слова
+            <textarea class="input input--block" id="code-words" rows="3" spellcheck="false">00000 11100 00111 11011</textarea>
+          </label>
+          <button class="btn" type="submit">Найти d</button>
+        </form>
+        <div class="tool-out" id="code-out" aria-live="polite"><p class="muted">Здесь появится результат. Пример — код из <a href="examples/m01.html#ex-code">примера 5</a>.</p></div>
+      </section>
+
+      <section class="tool" id="hamming-tool" aria-labelledby="hm-h">
+        <h2 id="hm-h">Код Хемминга (7, 4)</h2>
+        <p>Интерактивная демонстрация — на <a href="index.html#hamming-demo">главной странице</a>. Подробно коды Хемминга разберём в модуле 4.</p>
+      </section>
+    </div>
+  </main>
+  <!-- @footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
+      <p><a href="sources.html">Источники и условные обозначения</a><br><a href="plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
+      <p>Версия 0.2.0 от 25.10.2026</p>
+    </div>
+  </footer>
+  <script src="assets/js/data.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/tools.js"></script>
+  <!-- /@footer -->
+</body>
+</html>

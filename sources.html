@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Источники и условные обозначения — Код без ошибок</title>
+  <meta name="description" content="На какие материалы опирается сайт, условные обозначения, известные пробелы и список литературы из программы экзамена.">
+  <meta name="theme-color" content="#5b3df5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Код без ошибок">
+  <meta property="og:title" content="Источники и условные обозначения — Код без ошибок">
+  <meta property="og:description" content="На какие материалы опирается сайт, условные обозначения, известные пробелы и список литературы из программы экзамена.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script src="assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Unbounded:wght@500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- /@head -->
+</head>
+<body data-root="" data-page="" data-title="Источники и условные обозначения — Код без ошибок" data-desc="На какие материалы опирается сайт, условные обозначения, известные пробелы и список литературы из программы экзамена.">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html" aria-label="Код без ошибок — на главную">
+        <span class="logo__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="logo__text">Код без ошибок</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Разделы сайта">
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="plan.html">План</a></li>
+          <li><a href="theory/index.html">Теория</a></li>
+          <li><a href="examples/index.html">Примеры</a></li>
+          <li><a href="practice/index.html">Практика</a></li>
+          <li><a href="oral/index.html">Устный экзамен</a></li>
+          <li><a href="glossary.html">Словарь</a></li>
+          <li><a href="review/index.html">Повторение</a></li>
+          <li><a href="tools.html">Тренажёры</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
+        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Поиск по сайту">
+    <div class="search-dialog__head">
+      <label class="visually-hidden" for="search-input">Что найти</label>
+      <input class="search-input" id="search-input" type="search" placeholder="Например: обратный элемент" autocomplete="off">
+      <button class="icon-btn" id="search-close" type="button">Закрыть</button>
+    </div>
+    <ul class="search-results" id="search-results" aria-live="polite"></ul>
+  </dialog>
+  <!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <h1>Источники и условные обозначения</h1>
+      <p class="lead">Сайт неофициальный: его делают студенты для подготовки. Материалы преподавателя (слайды, учебники, PDF) здесь не выкладываются — только собственные объяснения со ссылками.</p>
+    </div>
+    <div class="prose">
+      <h2 id="labels">Как читать пометки</h2>
+      <ul>
+        <li><span class="origin origin--course">Курс: …</span> — содержание взято из материалов курса: тем лекций, домашних заданий или программы экзамена. В пометке указано, откуда именно.</li>
+        <li><span class="origin origin--extra">Пояснение</span> — дополнительное объяснение, пример или задача авторов сайта. Помогает понять материал, но в лекциях этого может не быть.</li>
+        <li><span class="origin origin--gap">Пробел в материалах</span> — нужного содержания в доступных материалах нет, или они противоречат друг другу.</li>
+      </ul>
+      <p>Типы блоков: <strong>Определение</strong>, <strong>Теорема</strong> или <strong>Утверждение</strong>, <strong>Пример</strong>, <strong>Типичная ошибка</strong>, <strong>Важно</strong>. Каждый блок подписан словом и значком, цвет только дублирует подпись.</p>
+
+      <h2 id="materials">На что опирается сайт</h2>
+      <ol>
+        <li><strong>Программа экзамена</strong> по курсу «Алгебраическая теория кодирования» для групп ИУ8-74, 75, осень 2025 года: 27 вопросов, список литературы и 97 примеров задач. Вопросы и задачи на сайте приводятся дословно.</li>
+        <li><strong>Презентации лекций этого учебного года</strong> — ссылки вида «лекция 2». Набор пока неполный: преподаватель прислал не все лекции. Недостающее дополняется материалами старшего курса (те же темы, версии чуть старше) и учебниками.</li>
+        <li><strong>Учебники</strong> из списка литературы программы — для тем, которых нет на слайдах.</li>
+      </ol>
+      <aside class="box box--gap">
+        <p class="box__label">Какие лекции есть</p>
+        <p>В присланном наборе есть лекции 1–5 (к лекциям 2 и 5 — дополнения про линейную алгебру и булевы функции), 7–16 и лекция о кодах Гоппы. Лекции 6 в наборе нет; у старшего курса под номером 6 шла та же тема, что у нас в лекции 7 («Циклические коды. Введение»), так что содержание, по-видимому, не потеряно. Лекции 13 и 16 почти совпадают (коды Рида — Соломона и каскадные коды). Если преподаватель пришлёт новые презентации, ссылки будут уточнены.</p>
+      </aside>
+
+      <h2 id="gaps">Известные пробелы</h2>
+      <ul>
+        <li><strong>Вопрос 1</strong> (строение конечных полей) — материал весеннего семестра, в презентациях осеннего его нет. Источники: [6] Лидл, Нидеррайтер и [16] Чашкин, Жуков (так советует лектор в замечаниях к программе).</li>
+        <li><strong>Вопрос 2</strong> — энтропийной оценки объёма шара нет в презентации лекции 1. Источник: [15] Чашкин «Дискретная математика».</li>
+        <li><strong>Вопросы 25–27</strong> (Карацуба, ДПФ, быстрое деление) — в презентациях их почти нет. Источники: [19] von zur Gathen, Gerhard (на английском), [8] Ноден, Китте.</li>
+        <li><strong>Вопрос 24</strong> — утверждение «почти все коды Гоппы лежат на границе Варшамова — Гильберта» в лекции о кодах Гоппы не разобрано. Источники: [17] статья Берлекемпа, [22] диссертация Jochemsz.</li>
+      </ul>
+
+      <h2 id="literature">Литература из программы экзамена</h2>
+      <p><span class="origin origin--course">Курс: программа экзамена, список литературы</span> Номера в квадратных скобках у вопросов программы относятся к этому списку.</p>
+      <ol>
+        <li>Аршинов М. Н., Садовский Л. Е. Коды и математика (рассказы о кодировании). Библиотечка «Квант», вып. 30. — М.: Наука, 1983.</li>
+        <li>Блейхут Р. Теория и практика кодов, контролирующих ошибки. — М.: Мир, 1986.</li>
+        <li>Вернер М. Основы кодирования. Учебник для ВУЗов. — М.: Техносфера, 2004.</li>
+        <li>Дасгупта С., Пападимитриу Х., Вазирани У. Алгоритмы. — М.: МЦНМО, 2014.</li>
+        <li>Кормен Т., Лейзерсон Ч., Ривест Р., Штайн К. Алгоритмы: построение и анализ. — М.: Издательский дом «Вильямс», 2005.</li>
+        <li>Лидл Р., Нидеррайтер Г. Конечные поля: в 2-х т. — М.: Мир, 1988.</li>
+        <li>Мак-Вильямс Ф. Дж., Слоэн Н. Дж. А. Теория кодов, исправляющих ошибки. — М.: Связь, 1979.</li>
+        <li>Ноден П., Китте К. Алгебраическая алгоритмика. — М.: Мир, 1999.</li>
+        <li>Питерсон У., Уэлдон Э. Коды, исправляющие ошибки. — М.: Мир, 1976.</li>
+        <li>Ромащенко А. Е., Румянцев А. Ю., Шень А. Х. Заметки по теории кодирования. — М.: МЦНМО, 2017.</li>
+        <li>Сагалович Ю. Л. Введение в алгебраические коды (3-е изд.). — М.: ИППИ РАН, 2014.</li>
+        <li>Сидельников В. М. Теория кодирования. — М.: Физматлит, 2008.</li>
+        <li>Соловьева Ф. И., Лось А. В., Могильных И. Ю. Сборник задач по теории кодирования, криптологии и сжатию данных. — Новосибирск, 2013.</li>
+        <li>Хэмминг Р. В. Теория кодирования и теория информации. — М.: Радио и связь, 1983.</li>
+        <li>Чашкин А. В. Дискретная математика. — М.: Академия, 2012 (2-е изд.: 2024).</li>
+        <li>Чашкин А. В., Жуков Д. А. Элементы конечной алгебры. Группы, кольца, поля, линейные пространства. — М.: Изд-во МГТУ, 2016.</li>
+        <li>Berlekamp E. Goppa codes // IEEE Transactions on Information Theory, 19 (5), pp. 590–592, 1973.</li>
+        <li>Betten A., Braun M., Fripertinger H., Kerber A., Kohnert A., Wassermann A. Error-correcting linear codes. — Springer, 2006.</li>
+        <li>von zur Gathen J., Gerhard J. Modern computer algebra. — Cambridge University Press, 2013.</li>
+        <li>Huffman W. C., Pless V. Fundamentals of error-correcting codes. — Cambridge University Press, 2003.</li>
+        <li>Guruswami V., Rudra A., Sudan M. Essential Coding Theory, 2019 (см. также 1-е изд.: Sudan M. Courses on Coding Theory); https://madhu.seas.harvard.edu</li>
+        <li>Jochemsz E. Goppa codes and the McEliece cryptosystem // Amsterdam: Vrije Universiteit Amsterdam, 2002 (master thesis).</li>
+        <li>Patterson N. The algebraic decoding of Goppa codes // IEEE Transactions on Information Theory, 21 (2), pp. 203–207, 1975.</li>
+        <li>http://pqcrypto.org</li>
+      </ol>
+      <p>Лектор в замечаниях к программе пишет, что учебники [2] Блейхута и [11] Сагаловича покрывают материал осеннего семестра примерно на 90–95%, а материал весеннего семестра (конечные поля, кольца многочленов) лучше повторять по [6] и [16]: там те же обозначения.</p>
+
+      <h2 id="tech">Технические детали</h2>
+      <ul>
+        <li>Формулы отображаются библиотекой KaTeX (лицензия MIT), её файлы лежат в папке <code>assets/vendor/katex</code>.</li>
+        <li>Шрифты Unbounded, Golos Text и JetBrains Mono (лицензия SIL Open Font License) подгружаются с Google Fonts. Если загрузка не удалась, используются системные шрифты — сайт работает так же.</li>
+        <li>Прогресс хранится в localStorage вашего браузера и никуда не отправляется.</li>
+      </ul>
+    </div>
+  </main>
+  <!-- @footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
+      <p><a href="sources.html">Источники и условные обозначения</a><br><a href="plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
+      <p>Версия 0.2.0 от 25.10.2026</p>
+    </div>
+  </footer>
+  <script src="assets/js/data.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <!-- /@footer -->
+</body>
+</html>

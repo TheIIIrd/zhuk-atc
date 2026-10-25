@@ -1,0 +1,51 @@
+# Проверка сайта на каждом push и публикация ветки main на GitHub Pages.
+# Включение: Settings → Pages → Build and deployment → Source: GitHub Actions.
+name: Проверка и публикация сайта
+
+on:
+  push:
+    branches: [main, unstable]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Проверка сборки и ссылок
+    runs-on: ubuntu-latest
+    steps:
+      - name: Получить файлы репозитория
+        uses: actions/checkout@v4
+
+      - name: Проверить, что сборка актуальна и ссылки целы
+        run: python3 dev/build.py --check
+
+      - name: Подготовить публикуемые файлы
+        run: python3 dev/build.py dist _site
+
+      - name: Передать сайт в GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Публикация на GitHub Pages
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: check
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Опубликовать
+        id: deployment
+        uses: actions/deploy-pages@v4

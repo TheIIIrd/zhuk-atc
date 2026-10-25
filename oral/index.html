@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Подготовка к устному экзамену — Код без ошибок</title>
+  <meta name="description" content="Все 27 вопросов программы экзамена по АТК с пометками, что уже разобрано; короткие и развёрнутые ответы, уточняющие вопросы и связи между темами.">
+  <meta name="theme-color" content="#5b3df5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Код без ошибок">
+  <meta property="og:title" content="Подготовка к устному экзамену — Код без ошибок">
+  <meta property="og:description" content="Все 27 вопросов программы экзамена по АТК с пометками, что уже разобрано; короткие и развёрнутые ответы, уточняющие вопросы и связи между темами.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Unbounded:wght@500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- /@head -->
+</head>
+<body data-root="../" data-page="oral" data-title="Подготовка к устному экзамену — Код без ошибок" data-desc="Все 27 вопросов программы экзамена по АТК с пометками, что уже разобрано; короткие и развёрнутые ответы, уточняющие вопросы и связи между темами.">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html" aria-label="Код без ошибок — на главную">
+        <span class="logo__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="logo__text">Код без ошибок</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Разделы сайта">
+        <ul>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../plan.html">План</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a href="../examples/index.html">Примеры</a></li>
+          <li><a href="../practice/index.html">Практика</a></li>
+          <li><a href="../oral/index.html" aria-current="page">Устный экзамен</a></li>
+          <li><a href="../glossary.html">Словарь</a></li>
+          <li><a href="../review/index.html">Повторение</a></li>
+          <li><a href="../tools.html">Тренажёры</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
+        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Поиск по сайту">
+    <div class="search-dialog__head">
+      <label class="visually-hidden" for="search-input">Что найти</label>
+      <input class="search-input" id="search-input" type="search" placeholder="Например: обратный элемент" autocomplete="off">
+      <button class="icon-btn" id="search-close" type="button">Закрыть</button>
+    </div>
+    <ul class="search-results" id="search-results" aria-live="polite"></ul>
+  </dialog>
+  <!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <h1>Устный экзамен</h1>
+      <p class="lead">Преподаватель проверяет не только решение задачи из билета, но и понимание курса: задаёт дополнительные вопросы и просит решить что-то по ходу беседы. Здесь — все вопросы программы и заготовки ответов к ним.</p>
+    </div>
+
+    <div class="prose">
+      <aside class="box box--note">
+        <p class="box__label">Как тренироваться</p>
+        <ol>
+          <li>Прочитайте <strong>короткий ответ</strong> и перескажите его вслух за 30–60 секунд, не подглядывая.</li>
+          <li>Потом — <strong>развёрнутый ответ</strong> по плану: определения, формулировки, идеи доказательств, пример.</li>
+          <li>Пусть друг задаст <strong>уточняющие вопросы</strong> из списка в случайном порядке. Если запнулись — вернитесь к теории.</li>
+        </ol>
+      </aside>
+      <p><span class="origin origin--course">Курс: программа экзамена осени 2025 года, группы ИУ8-74, 75</span> Тексты вопросов приведены дословно, в квадратных скобках — номера источников из списка литературы программы (см. <a href="../sources.html#literature">«Источники»</a>). Программа прошлогодняя: когда появится программа этого года, сверим.</p>
+      <p>Пометки у вопросов: <span class="q-state" data-state="ready">разобран</span> — на сайте есть всё, <span class="q-state" data-state="partial">частично</span> — разобрана часть, <span class="q-state" data-state="later">впереди</span> — появится в указанном модуле.</p>
+    </div>
+
+    <h2 id="warmup">Разминка по модулю 1 (блок 1.1)</h2>
+    <div class="prose">
+      <p>Этих вопросов нет в программе, но они проверяют базу, без которой не ответить на вопрос 1 о конечных полях. <span class="origin origin--extra">Пояснение</span></p>
+      <details><summary>Что означает a ≡ b (mod n)? Дайте два равносильных описания.</summary><div class="details-body"><p>n делит a − b; равносильно: a и b дают одинаковый остаток при делении на n.</p></div></details>
+      <details><summary>Почему в двоичных кодах можно не различать сложение и вычитание?</summary><div class="details-body"><p>В \(\mathbb{Z}_2\) верно −1 = 1, поэтому −a = a и a − b = a + b. Сложение — это XOR.</p></div></details>
+      <details><summary>Когда у a есть обратный по модулю n и почему?</summary><div class="details-body"><p>Ровно тогда, когда НОД(a, n) = 1. Если НОД = d &gt; 1, то из a·k = 1 + m·n следует, что d делит 1, — противоречие. Если НОД = 1, алгоритм Евклида даёт u·a + v·n = 1, и u — обратный.</p></div></details>
+      <details><summary>Как без вычислений понять, есть ли у 10 обратный по модулю 25? А у 12?</summary><div class="details-body"><p>НОД(10, 25) = 5 — обратного нет. НОД(12, 25) = 1 — обратный есть.</p></div></details>
+      <details><summary>Почему Z₇ — поле, а Z₈ — нет?</summary><div class="details-body"><p>7 простое, поэтому все ненулевые элементы взаимно просты с 7 и обратимы. В \(\mathbb{Z}_8\) 2·4 = 0 — делители нуля, у 2 нет обратного.</p></div></details>
+      <details><summary>Зачем теории кодирования, чтобы алфавит был полем?</summary><div class="details-body"><p>Линейные коды — это линейная алгебра: метод Гаусса, ранг, размерность. Все они используют деление на ненулевой элемент. Кроме того, в поле многочлен степени m имеет не больше m корней — на этом держатся коды БЧХ и Рида — Соломона.</p></div></details>
+      <details><summary>Объясните идею алгоритма Евклида и почему он всегда заканчивается.</summary><div class="details-body"><p>НОД(a, b) = НОД(b, a mod b). Остатки строго убывают и неотрицательны, поэтому через конечное число шагов станут нулём; последний ненулевой остаток — НОД.</p></div></details>
+      <details><summary>F₄ и Z₄ — это одно и то же?</summary><div class="details-body"><p>Нет. \(\mathbb{Z}_4\) — не поле (2·2 = 0). Поле из 4 элементов строится иначе — как многочлены над \(\mathbb{F}_2\) по модулю неприводимого многочлена второй степени (модуль 7).</p></div></details>
+    </div>
+
+    <h2 id="questions">Вопросы программы</h2>
+
+    <details class="q-item" id="q1" data-search="Вопрос 1. Строение конечных полей"><summary><span class="q-num">1.</span><span>Строение конечных полей</span><span class="q-state" data-state="later">впереди: модули 6–7</span></summary><div class="details-body">
+      <p class="q-program">Строение конечных полей. Неприводимые многочлены. Примитивные элементы и примитивные многочлены, теорема о двучлене \(x^{p^n} - x\), сопряжённые элементы поля и минимальный многочлен, подполя в поле \(\mathbb{F}_{p^n}\). Изоморфизм полей одинакового порядка. [6, 16]</p>
+      <p>Первый шаг — модуль 1, блок 1.1: поле \(\mathbb{F}_p\), примитивный элемент, порядок элемента. Материал весеннего семестра, по замечанию лектора его лучше повторять по книгам [6] и [16].</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q1"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q2" data-search="Вопрос 2. Система связи по Шеннону, метрика Хемминга, МП-декодирование, теоремы Шеннона" open><summary><span class="q-num">2.</span><span>Система связи по Шеннону, метрика Хемминга, МП-декодирование, теоремы Шеннона</span><span class="q-state" data-state="partial">частично</span></summary><div class="details-body">
+      <p class="q-program">Система связи с помехами по Шеннону. Блочный помехоустойчивый код. Метрика Хемминга и метод максимального правдоподобия. Геометрическая интерпретация корректирующих свойств кода. Энтропийная оценка \(|B_t| \le 2^{nH(t/n)}\) объёма шара \(B_t\) в двоичном пространстве Хемминга и её следствие \(\log_2 |B_t| \sim nH(t/n)\), где \(H(x) = -x\log_2 x - (1-x)\log_2(1-x)\) — бинарная энтропия. Прямая и обратная теоремы Шеннона о помехоустойчивом кодировании в двоичном симметричном канале (без доказательства). [2] гл. 1; [3] с. 219–267; [15] гл. 16.</p>
+
+      <h3 id="q2-short">Короткий ответ (30–60 секунд)</h3>
+      <p>Сообщение длины k кодер превращает в кодовое слово длины n &gt; k, добавляя избыточность. Канал прибавляет вектор ошибки: y = x + e. В двоичном симметричном канале с p &lt; 1/2 вероятность P(y | x) = pᵈ(1 − p)ⁿ⁻ᵈ убывает с ростом расстояния Хемминга d(x, y), поэтому декодирование максимального правдоподобия — это выбор ближайшего кодового слова. Код с минимальным расстоянием d исправляет t = ⌊(d − 1)/2⌋ ошибок: шары радиуса t вокруг кодовых слов не пересекаются. Теорема Шеннона: при скорости R ниже пропускной способности C(p) = 1 − H(p) существуют коды со сколь угодно малой вероятностью ошибки; при R &gt; C(p) таких кодов нет.</p>
+
+      <h3 id="q2-long">Развёрнутый ответ — план</h3>
+      <ol>
+        <li><strong>Схема Шеннона:</strong> источник → кодер → канал (шум) → декодер → получатель; y = x + e. <a href="../theory/m01.html#channel">Теория</a></li>
+        <li><strong>Блочный код:</strong> кодирование Ψ: i ↦ x, длины k и n, скорость R = k/n, систематическое кодирование.</li>
+        <li><strong>ДСК(p):</strong> биты искажаются независимо с вероятностью p.</li>
+        <li><strong>Метрика Хемминга:</strong> определение, три аксиомы, вес, d(x, y) = ‖y − x‖. <a href="../theory/m01.html#hamming">Теория</a></li>
+        <li><strong>МП-декодирование:</strong> вывод P(y | x) = pᵈ(1 − p)ⁿ⁻ᵈ и почему при p &lt; 1/2 это ближайшее слово. <a href="../theory/m01.html#ml">Теория</a>, <a href="../examples/m01.html#ex-ml">пример</a></li>
+        <li><strong>Геометрия:</strong> шары радиуса t не пересекаются ⇔ d ≥ 2t + 1; формулы t, s, s′. <a href="../theory/m01.html#codedist">Теория</a></li>
+        <li><strong>Энтропийная оценка объёма шара</strong> — пока не разобрана, см. ниже.</li>
+        <li><strong>Теоремы Шеннона:</strong> H(p), C(p) = 1 − H(p), прямая и обратная — формулировки без доказательства. <a href="../theory/m01.html#shannon">Теория</a></li>
+      </ol>
+
+      <h3 id="q2-followups">Уточняющие вопросы</h3>
+      <details><summary>Почему при p &gt; 1/2 «ближайшее слово» уже не МП-декодер?</summary><div class="details-body"><p>Тогда p/(1 − p) &gt; 1, и вероятность pᵈ(1 − p)ⁿ⁻ᵈ растёт с ростом d. Выгоднее инвертировать все принятые биты — получится канал с вероятностью ошибки 1 − p &lt; 1/2.</p></div></details>
+      <details><summary>Почему код с расстоянием d обнаруживает d − 1 ошибку?</summary><div class="details-body"><p>Если ошибок от 1 до d − 1, то y отличается от отправленного x меньше чем на d разрядов и не совпадает с x, а значит, не может быть другим кодовым словом: все они от x на расстоянии не меньше d. Поэтому y ∉ C, и ошибку видно.</p></div></details>
+      <details><summary>Чем s отличается от s′?</summary><div class="details-body"><p>s = d − 1 — в режиме только обнаружения. В режиме исправления всё, что попало в шар радиуса t вокруг кодового слова, исправляется, поэтому обнаружимыми остаются только ошибки, которые уводят слово за пределы всех шаров: s′ = ⌈(d − 1)/2⌉.</p></div></details>
+      <details><summary>Докажите, что расстояние Хемминга удовлетворяет неравенству треугольника.</summary><div class="details-body"><p>По каждому разряду: если a и c там различаются, то b отличается хотя бы от одного из них. Суммируем по разрядам: d(a, c) ≤ d(a, b) + d(b, c).</p></div></details>
+      <details><summary>Что именно утверждает теорема Шеннона, а чего не утверждает?</summary><div class="details-body"><p>Утверждает существование кодов со скоростью R &lt; C(p) и сколь угодно малой вероятностью ошибки при n → ∞. Не даёт способа их построить и быстро декодировать — этим занимается алгебраическая теория кодирования.</p></div></details>
+      <details><summary>Чему равна пропускная способность при p = 1/2 и почему?</summary><div class="details-body"><p>H(1/2) = 1, значит C(1/2) = 0: выход канала не зависит от входа, передать информацию нельзя.</p></div></details>
+      <details><summary>Сколько векторов в шаре радиуса r в Fqⁿ?</summary><div class="details-body"><p>\(\sum_{i=0}^{r}\binom{n}{i}(q-1)^i\): выбираем i разрядов и в каждом один из q − 1 других символов.</p></div></details>
+
+      <h3 id="q2-links">Связи с другими темами</h3>
+      <ul>
+        <li>Объём шара → границы Хемминга и Варшамова — Гильберта (вопросы 5, 7).</li>
+        <li>Асимптотика R ≳ 1 − H(δ) (вопросы 7 и 24) использует ту же энтропию H, что и теорема Шеннона.</li>
+        <li>d = минимальный вес — для линейных кодов (вопрос 3).</li>
+      </ul>
+
+      <aside class="box box--gap">
+        <p class="box__label">Пока не разобрано</p>
+        <p>Энтропийная оценка \(|B_t| \le 2^{nH(t/n)}\) и её следствие. В презентации лекции 1 её нет; источник — [15] Чашкин «Дискретная математика» (раздел 2.4 в файле DM10.pdf). Появится в модуле 4.</p>
+      </aside>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q2"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q3" data-search="Вопрос 3. Групповые и линейные коды, матрицы G и H"><summary><span class="q-num">3.</span><span>Групповые и линейные коды, матрицы G и H</span><span class="q-state" data-state="later">впереди: модуль 3</span></summary><div class="details-body">
+      <p class="q-program">Групповые и линейные коды над конечным полем. Проверочная H и порождающая G матрицы линейного кода. Теорема о проверочной матрице линейного кода и его кодовом расстоянии d. Теорема о том, что кодовое расстояние линейного кода равно минимальному весу ненулевого кодового слова. [1] с. 50–60; [2] гл. 3; [15] гл. 16.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q3"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q4" data-search="Вопрос 4. Систематический вид, синдромное декодирование, стандартное расположение"><summary><span class="q-num">4.</span><span>Систематический вид, синдромное декодирование, стандартное расположение</span><span class="q-state" data-state="later">впереди: модуль 3</span></summary><div class="details-body">
+      <p class="q-program">Приведение линейного кода к систематическому виду. Декодирование линейных кодов по синдрому. Полная и укороченная таблицы стандартного расположения кода. Декодирование линейного кода методом согласования. [2] с. 61–71; [6] с. 586–601; [11]; [15] гл. 16, № 16.14 (с. 508).</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q4"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q5" data-search="Вопрос 5. Границы сферической упаковки, совершенные коды, код Хемминга"><summary><span class="q-num">5.</span><span>Границы сферической упаковки, совершенные коды, код Хемминга</span><span class="q-state" data-state="later">впереди: модуль 4</span></summary><div class="details-body">
+      <p class="q-program">Границы сферической упаковки кода. Совершенные коды. Код Хемминга над полем \(\mathbb{F}_q\), его свойства, декодирование. [7] с. 29–30, 33–36, 43–44, 50, 181; [9] с. 91–102; [15] гл. 16, 18.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q5"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q6" data-search="Вопрос 6. Неравенства Синглтона и Грайсмера, МДР-коды"><summary><span class="q-num">6.</span><span>Неравенства Синглтона и Грайсмера, МДР-коды</span><span class="q-state" data-state="later">впереди: модуль 4</span></summary><div class="details-body">
+      <p class="q-program">Неравенство Синглтона для линейных кодов. Примеры МДР-кодов. Неравенство Грайсмера. [6] с. 595–598; [7] с. 43–44, 50; [9] с. 91–102; [11] с. 125–126, 132–135, 222–225.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q6"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q7" data-search="Вопрос 7. Граница Варшамова — Гильберта и её асимптотика"><summary><span class="q-num">7.</span><span>Граница Варшамова — Гильберта и её асимптотика</span><span class="q-state" data-state="later">впереди: модуль 4</span></summary><div class="details-body">
+      <p class="q-program">Граница Варшамова — Гильберта. Сравнение с нижней границей сферической упаковки. Асимптотическая форма границы: существование таких семейств линейных (n, k, d)-кодов со скоростью R = k/n и относительным кодовым расстоянием δ = d/n, что R ≳ 1 − H(δ) при n → ∞ (для q = 2). [6] с. 595–598; [7] с. 528–529; [15] с. 331–333.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q7"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q8" data-search="Вопрос 8. Коды Рида — Маллера, кодовое расстояние"><summary><span class="q-num">8.</span><span>Коды Рида — Маллера, кодовое расстояние</span><span class="q-state" data-state="later">впереди: модуль 5</span></summary><div class="details-body">
+      <p class="q-program">Коды Рида — Маллера. Теорема о кодовом расстоянии РМ-кода. [2] с. 76–81; [11] с. 135–161; [15] гл. 16, №№ 16.18, 9.49 (с. 472).</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q8"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q9" data-search="Вопрос 9. Мажоритарное декодирование кодов Рида — Маллера"><summary><span class="q-num">9.</span><span>Мажоритарное декодирование кодов Рида — Маллера</span><span class="q-state" data-state="later">впереди: модуль 5</span></summary><div class="details-body">
+      <p class="q-program">Коды Рида — Маллера. Мажоритарный алгоритм декодирования: проверочная сумма одночлена по грани и её свойства, нахождение АНФ (полинома Жегалкина) методом сумм. [2] с. 76–81; [11] с. 135–161; [15] гл. 16, № 16.20 (с. 510).</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q9"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q10" data-search="Вопрос 10. Двоичное преобразование Мёбиуса"><summary><span class="q-num">10.</span><span>Двоичное преобразование Мёбиуса</span><span class="q-state" data-state="later">впереди: модуль 5</span></summary><div class="details-body">
+      <p class="q-program">Двоичное преобразование Мёбиуса. Основные свойства и сложность. Применение к РМ-кодам. [15] №№ 11.28, 9.9 (с. 467).</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q10"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q11" data-search="Вопрос 11. Кольца главных идеалов"><summary><span class="q-num">11.</span><span>Кольца главных идеалов</span><span class="q-state" data-state="later">впереди: модуль 6</span></summary><div class="details-body">
+      <p class="q-program">Кольцо главных идеалов. Кольца \(\mathbb{Z}\), \(\mathbb{Z}_n\), F[x] и F[x]/(f(x)) как кольца главных идеалов. [6, 16]</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q11"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q12" data-search="Вопрос 12. Циклические и полиномиальные коды, g(x) и h(x)"><summary><span class="q-num">12.</span><span>Циклические и полиномиальные коды, g(x) и h(x)</span><span class="q-state" data-state="later">впереди: модули 7–8</span></summary><div class="details-body">
+      <p class="q-program">Циклический код. Полиномиальный код. Критерий цикличности полиномиального кода. Порождающий g(x) и проверочный h(x) многочлены циклического кода. Циклический вид проверочной и порождающей матриц циклического кода. Теорема о том, что g(x) | xⁿ − 1. [2] с. 112–131; [6] с. 601–609; [7] с. 188–197; [9] с. 232–243; [11] с. 168–186.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q12"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q13" data-search="Вопрос 13. Систематическое кодирование циклических кодов, двойственный код"><summary><span class="q-num">13.</span><span>Систематическое кодирование циклических кодов, двойственный код</span><span class="q-state" data-state="later">впереди: модуль 8</span></summary><div class="details-body">
+      <p class="q-program">Систематическое кодирование для циклических кодов. Двойственный код. Теорема о полиномиальности кода, двойственного к циклическому полиномиальному. [6] с. 601–609; [9] с. 232–243; [11] с. 168–186.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q13"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q14" data-search="Вопрос 14. Примитивные и непримитивные циклические коды, корни"><summary><span class="q-num">14.</span><span>Примитивные и непримитивные циклические коды, корни</span><span class="q-state" data-state="later">впереди: модуль 8</span></summary><div class="details-body">
+      <p class="q-program">Примитивные и непримитивные циклические коды. Корни уравнения xⁿ − 1 = 0 как циклическая группа в расширении \(\mathbb{F}_{q^m}\) поля коэффициентов \(\mathbb{F}_q\). Задание примитивных и непримитивных циклических кодов их корнями в поле–расширении. Проверочная матрица в поле корней кода. [2] с. 112–131; [6] с. 601–609; [7] с. 188–197; [9] с. 232–243; [11] с. 168–186.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q14"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q15" data-search="Вопрос 15. Порядок многочлена над конечным полем"><summary><span class="q-num">15.</span><span>Порядок многочлена над конечным полем</span><span class="q-state" data-state="later">впереди: модуль 8</span></summary><div class="details-body">
+      <p class="q-program">Порядок многочлена над конечным полем: определение и связь с циклическими кодами. Теорема о порядке произведения взаимно простых многочленов как следствие китайской теоремы об остатках. Теорема о том, что порядок неприводимого многочлена равен порядку любого его корня. Теорема о порядке степени неприводимого многочлена. Теорема о вычислении порядка многочлена \(f(x) = f_1^{m_1}(x)\cdots f_k^{m_k}(x)\), разложенного в произведение степеней неприводимых: \(\operatorname{ord} f = p^s\cdot \text{НОК}(\operatorname{ord} f_1, \dots, \operatorname{ord} f_k)\), где \(s = \lceil \log_p \max(m_1, \dots, m_k)\rceil\). [6] с. 109–115; [16] с. 295–304.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q15"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q16" data-search="Вопрос 16. Пакеты ошибок, циклические коды Хемминга, коды Абрамсона и CRC"><summary><span class="q-num">16.</span><span>Пакеты ошибок, циклические коды Хемминга, коды Абрамсона и CRC</span><span class="q-state" data-state="later">впереди: модуль 8</span></summary><div class="details-body">
+      <p class="q-program">Обнаружение пакетов ошибок циклическими кодами. Двоичные циклические коды Хемминга, коды Абрамсона и коды CRC. Теорема о вероятности необнаружения пакета ошибок циклическим кодом. [2] с. 131–134; [3] с. 189–214; [6] с. 605; [9] с. 246–249, 256–259.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q16"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q17" data-search="Вопрос 17. Коды БЧХ, граница БЧХ, исправление двух ошибок"><summary><span class="q-num">17.</span><span>Коды БЧХ, граница БЧХ, исправление двух ошибок</span><span class="q-state" data-state="later">впереди: модуль 9</span></summary><div class="details-body">
+      <p class="q-program">Коды БЧХ. Граница Боуза — Чоудхури — Хоквингема d ⩾ dк для кодового расстояния d и конструктивного расстояния dк. Локатор ошибки кода БЧХ. Декодирование двоичных БЧХ-кодов, исправляющих две ошибки. [2] с. 134–136, 187–192; [6] с. 607–611; [15] гл. 17.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q17"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q18" data-search="Вопрос 18. Алгоритм Питерсона — Горенштейна — Цирлера"><summary><span class="q-num">18.</span><span>Алгоритм Питерсона — Горенштейна — Цирлера</span><span class="q-state" data-state="later">впереди: модуль 9</span></summary><div class="details-body">
+      <p class="q-program">Алгоритм Питерсона — Горенштейна — Цирлера декодирования кодов БЧХ над полем \(\mathbb{F}_q\). Доказательство корректности и оценка сложности O(t³ + nt). Процедура Ченя. [2] с. 193–201; [6] с. 611–616; [9] с. 315–331; [11] с. 215–221; [15] гл. 17.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q18"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q19" data-search="Вопрос 19. Ключевое уравнение Берлекемпа, метод Форни"><summary><span class="q-num">19.</span><span>Ключевое уравнение Берлекемпа, метод Форни</span><span class="q-state" data-state="later">впереди: модуль 11</span></summary><div class="details-body">
+      <p class="q-program">Многочлены локаторов и значений ошибок. Синдромный многочлен. Доказательство ключевого уравнения Берлекемпа \(x^{2t}\cdot\Psi(x) + S(x)\cdot\Lambda(x) = \Omega(x)\) для декодирования кода БЧХ. Вычисление значений ошибок методом Форни. [2] с. 203–213, 223–228, 285–294; [11] с. 239–246; [20] с. 186–190.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q19"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q20" data-search="Вопрос 20. Алгоритм Евклида и алгоритм Берлекемпа — Месси для БЧХ"><summary><span class="q-num">20.</span><span>Алгоритм Евклида и алгоритм Берлекемпа — Месси для БЧХ</span><span class="q-state" data-state="later">впереди: модуль 11</span></summary><div class="details-body">
+      <p class="q-program">Расширенный алгоритм Евклида, его основные свойства и квадратичная оценка сложности в кольце F[x]. Декодирование кодов БЧХ алгоритмом Евклида с порогом «min i : deg dᵢ(x) ⩽ t − 1» и алгоритмом Берлекемпа — Месси со сложностью O(t² + nt). [2] с. 203–213, 223–228, 285–294; [11] с. 239–246; [20] с. 186–190.</p>
+      <p>Числовой вариант алгоритма Евклида уже есть в модуле 1: <a href="../theory/m01.html#euclid">теория</a>.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q20"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q21" data-search="Вопрос 21. Циклические коды Рида — Соломона"><summary><span class="q-num">21.</span><span>Циклические коды Рида — Соломона</span><span class="q-state" data-state="later">впереди: модуль 11</span></summary><div class="details-body">
+      <p class="q-program">Циклические коды Рида — Соломона. Теорема о совпадении кодового расстояния с конструктивным. Исправление RS–кодом пакетов ошибок над простым подполем. Декодирование циклического RS–кода: алгоритмы Питерсона — Горенштейна — Цирлера, Евклида, Берлекемпа — Месси. [2] с. 201–203, 228–232; [15] гл. 18; [18] с. 389–400.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q21"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q22" data-search="Вопрос 22. Каскадные коды, ошибки и стирания"><summary><span class="q-num">22.</span><span>Каскадные коды, ошибки и стирания</span><span class="q-state" data-state="later">впереди: модуль 12</span></summary><div class="details-body">
+      <p class="q-program">Каскадные коды. Оценка кодового расстояния d<sub>каскадн</sub> ⩾ d<sub>внеш</sub>·d<sub>внутр</sub>. Исправление любым каскадным кодом до t<sub>внеш</sub>·t<sub>внутр</sub> + t<sub>внеш</sub> + t<sub>внутр</sub> ∼ d<sub>внеш</sub>·d<sub>внутр</sub>/4 произвольных ошибок простой суперпозицией внешнего и внутреннего декодеров без введения стираний. Теорема об исправлении r ошибок и u стираний произвольным линейным кодом при условии 2r + u &lt; d, где d — его минимальное кодовое расстояние. Улучшение каскадных декодеров введением стираний. [2] с. 201–203, 228–232; [10] §§ 10–11; [15] гл. 18; [18] с. 389–400.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q22"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q23" data-search="Вопрос 23. Коды Гоппы общего вида"><summary><span class="q-num">23.</span><span>Коды Гоппы общего вида</span><span class="q-state" data-state="later">впереди: модуль 12</span></summary><div class="details-body">
+      <p class="q-program">Коды Гоппы. Общий вид проверочной матрицы кода Гоппы, её связь с коэффициентами генераторного полинома g(x). Теорема d ⩾ 1 + deg g(x) о кодовом расстоянии кода Гоппы общего вида над полем \(\mathbb{F}_q\). Ключевое уравнение для декодирования кода Гоппы и квадратичный алгоритм исправления до t ⩽ ½ deg g(x) ошибок на основе порогового алгоритма Евклида. [7] с. 322, 327–347; [17, 22]; [20] § 13.2.2.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q23"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q24" data-search="Вопрос 24. Двоичные неприводимые коды Гоппы, система МакЭлиса"><summary><span class="q-num">24.</span><span>Двоичные неприводимые коды Гоппы, система МакЭлиса</span><span class="q-state" data-state="later">впереди: модуль 12</span></summary><div class="details-body">
+      <p class="q-program">Двоичные неприводимые коды Гоппы. Теорема d ⩾ 1 + 2t, где t = deg g(x), об оценке кодового расстояния в двоичном случае для свободного от квадратов g(x) и теорема о том, что в двоичном случае генераторный полином g²(x) даёт тот же код, что и неприводимый g(x). Исправление t ошибок алгоритмом Евклида. Теорема о том, что почти все двоичные неприводимые коды Гоппы, как и почти все линейные коды, лежат на границе Варшамова — Гильберта R ∼ 1 − H(δ). Система МакЭлиса с открытым ключом. [7, 17, 22, 23, 24]; [20] § 13.5.1.</p>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q24"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q25" data-search="Вопрос 25. Рекуррентные оценки сложности, алгоритм Карацубы"><summary><span class="q-num">25.</span><span>Рекуррентные оценки сложности, алгоритм Карацубы</span><span class="q-state" data-state="later">впереди: модуль 10</span></summary><div class="details-body">
+      <p class="q-program">Решение уравнения T(n) = aT(n/b) + cn для сложности T(n) некоторого рекуррентного алгоритма при постоянных a, b, c и n → ∞. Умножение многочленов алгоритмом Карацубы и кодирование циклического кода со сложностью O(n<sup>1.585</sup>). [4] гл. 2; [5] гл. 4; [19] § 8.1.</p>
+      <aside class="box box--gap"><p class="box__label">Пробел в материалах</p><p>В презентациях курса этой темы почти нет: Карацуба упомянут только в домашнем задании к лекции 11. Основной доступный источник — [19] von zur Gathen, Gerhard (на английском), § 8.1.</p></aside>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q25"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q26" data-search="Вопрос 26. ДПФ и алгоритм Кули — Тьюки"><summary><span class="q-num">26.</span><span>ДПФ и алгоритм Кули — Тьюки</span><span class="q-state" data-state="later">впереди: модуль 12</span></summary><div class="details-body">
+      <p class="q-program">Дискретное преобразование Фурье (ДПФ) и обратное ДПФ. Их применение к арифметике многочленов — умножение, интерполяция. Алгоритм Кули — Тьюки для бинарного ДПФ со сложностью O(n log n), сеть «бабочка». [4] гл. 2; [5] гл. 30; [8] гл. 5; [19] § 8.2.</p>
+      <aside class="box box--gap"><p class="box__label">Пробел в материалах</p><p>В презентациях курса ДПФ только упоминается (лекции 11 и 12). Источники: [19] § 8.2 (на английском) и [8] Ноден, Китте «Алгебраическая алгоритмика», гл. 5.</p></aside>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q26"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+
+    <details class="q-item" id="q27" data-search="Вопрос 27. Быстрое деление многочленов с остатком"><summary><span class="q-num">27.</span><span>Быстрое деление многочленов с остатком</span><span class="q-state" data-state="later">впереди: модуль 12</span></summary><div class="details-body">
+      <p class="q-program">Деление многочлена на многочлен с остатком со сложностью, по порядку не превышающей сложности умножения и интерполяции полиномов. [19] § 9.1.</p>
+      <aside class="box box--gap"><p class="box__label">Пробел в материалах</p><p>В присланных презентациях этой темы нет. Источник — [19] § 9.1 (деление через итерацию Ньютона, на английском).</p></aside>
+      <p class="rehearse no-print"><label class="done-check done-check--inline"><input type="checkbox" data-oral="q27"> Отрепетировал ответ вслух</label></p>
+    </div></details>
+  </main>
+  <!-- @footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
+      <p><a href="../sources.html">Источники и условные обозначения</a><br><a href="../plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
+      <p>Версия 0.2.0 от 25.10.2026</p>
+    </div>
+  </footer>
+  <script src="../assets/js/data.js"></script>
+  <script defer src="../assets/vendor/katex/katex.min.js"></script>
+  <script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/main.js"></script>
+  <!-- /@footer -->
+</body>
+</html>
