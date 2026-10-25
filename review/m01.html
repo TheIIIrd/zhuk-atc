@@ -34,9 +34,7 @@
         <ul>
           <li><a href="../index.html">Главная</a></li>
           <li><a href="../plan.html">План</a></li>
-          <li><a href="../theory/index.html">Теория</a></li>
-          <li><a href="../examples/index.html">Примеры</a></li>
-          <li><a href="../practice/index.html">Практика</a></li>
+          <li><a href="../modules.html">Модули</a></li>
           <li><a href="../oral/index.html">Устный экзамен</a></li>
           <li><a href="../glossary.html">Словарь</a></li>
           <li><a href="../review/index.html" aria-current="page">Повторение</a></li>
@@ -45,7 +43,7 @@
       </nav>
       <div class="header-actions">
         <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
-        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn" id="theme-btn" type="button" data-next="dark" aria-label="Включить тёмную тему"><svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="btn-label">Тёмная тема</span></button>
         <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
       </div>
     </div>
@@ -61,7 +59,7 @@
   <!-- /@header -->
   <main id="main" class="page">
     <div class="page-head">
-      <p class="crumbs"><a href="index.html">Повторение</a> / Модуль 1</p>
+      <p class="crumbs"><a href="../modules.html">Модули</a> / Модуль 1 / Повторение</p>
       <h1>Повторение: модуль 1</h1>
       <p class="lead">Всё главное на одной странице: конспект, формулы, карточки для самопроверки и мини-тест. Страница хорошо печатается.</p>
       <ul class="section-tabs" aria-label="Материалы модуля 1">
@@ -81,25 +79,26 @@
         <li>−a = n − a. В ℤ₂ вычитание = сложение = XOR.</li>
         <li>Деление — умножение на обратный. a⁻¹ существует ⇔ НОД(a, n) = 1; находится перебором или расширенным алгоритмом Евклида.</li>
         <li>ℤₙ — поле ⇔ n простое. Тогда пишут 𝔽ₚ. В поле нет делителей нуля, линейное уравнение имеет ровно одно решение. 𝔽₄ ≠ ℤ₄.</li>
-        <li>Примитивный элемент: его степени дают все ненулевые элементы поля. Порядок элемента делит p − 1, a^(p−1) = 1.</li>
+        <li>Примитивный элемент: его степени дают все ненулевые элементы поля. Порядок элемента делит p − 1, \(a^{p-1} = 1\).</li>
       </ul>
       <h3 id="sum-12">Блок 1.2. Расстояние и параметры кода</h3>
       <ul>
         <li>Схема: i → кодер → x → канал → y = x + e → декодер. Скорость R = k/n.</li>
         <li>ДСК(p): P(y | x) = pᵈ(1 − p)ⁿ⁻ᵈ. При p &lt; 1/2 МП-декодирование = ближайшее кодовое слово.</li>
-        <li>Расстояние Хемминга — число различающихся разрядов, это метрика; d(x, y) = ‖y − x‖.</li>
-        <li>|S_r| = C(n, r)(q − 1)^r; |B_r| — сумма по i от 0 до r.</li>
+        <li>Расстояние Хемминга — число различающихся разрядов, это метрика; \(d(x, y) = \|y - x\|\).</li>
+        <li>\(|S_r| = \binom{n}{r}(q-1)^r\); \(|B_r|\) — сумма таких чисел по радиусам от 0 до r.</li>
         <li>d(C) — минимальное расстояние между различными словами. t = ⌊(d − 1)/2⌋, s = d − 1, s′ = ⌈(d − 1)/2⌉.</li>
         <li>Исправляет t ошибок ⇔ шары радиуса t вокруг слов не пересекаются ⇔ d ≥ 2t + 1.</li>
         <li>Шеннон: C(p) = 1 − H(p). При R &lt; C(p) есть коды со сколь угодно малой ошибкой, при R &gt; C(p) — нет.</li>
       </ul>
 
       <h2 id="formulas">Ключевые формулы</h2>
-      <div class="formula">\[ a = qn + r,\; 0 \le r < n \qquad\qquad b/a = b\cdot a^{-1} \]</div>
+      <div class="formula">\[ a = qn + r,\quad 0 \le r < n \]</div>
+      <div class="formula">\[ b/a = b\cdot a^{-1} \]</div>
       <div class="formula">\[ P(y\mid x) = p^{d(x,y)}(1-p)^{\,n-d(x,y)} \]</div>
       <div class="formula">\[ |B_r| = \sum_{i=0}^{r}\binom{n}{i}(q-1)^i \]</div>
-      <div class="formula">\[ t = \left\lfloor\tfrac{d-1}{2}\right\rfloor,\quad s = d-1,\quad s' = \left\lceil\tfrac{d-1}{2}\right\rceil \]</div>
-      <div class="formula">\[ H(p) = -p\log_2 p-(1-p)\log_2(1-p),\qquad C(p) = 1 - H(p) \]</div>
+      <div class="formula">\[ \begin{aligned} t &= \left\lfloor\tfrac{d-1}{2}\right\rfloor, \\ s &= d-1, \\ s' &= \left\lceil\tfrac{d-1}{2}\right\rceil \end{aligned} \]</div>
+      <div class="formula">\[ \begin{aligned} H(p) &= -p\log_2 p-(1-p)\log_2(1-p), \\ C(p) &= 1 - H(p) \end{aligned} \]</div>
 
       <h2 id="cards">Карточки</h2>
       <p>Сначала ответьте вслух, потом откройте ответ.</p>
@@ -204,7 +203,7 @@
     <div class="site-footer__inner">
       <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
       <p><a href="../sources.html">Источники и условные обозначения</a><br><a href="../plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
-      <p>Версия 0.2.0 от 25.10.2026</p>
+      <p>Версия 0.2.1 от 25.10.2026</p>
     </div>
   </footer>
   <script src="../assets/js/data.js"></script>

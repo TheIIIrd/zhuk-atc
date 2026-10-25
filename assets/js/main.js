@@ -168,38 +168,67 @@
   /* =====================================================================
      2. Тема
      ===================================================================== */
+  // Две темы: светлая (по умолчанию) и тёмная. Выбор сохраняется; настройка браузера не учитывается.
   var themeBtn = $("#theme-btn");
-  var themeNames = { auto: "авто", light: "светлая", dark: "тёмная" };
   function readTheme() {
     var t = rawGet(THEME_KEY);
     if (t === null) {
       t = rawGet(LEGACY_THEME_KEY);
-      if (t !== null) { rawSet(THEME_KEY, t); rawDel(LEGACY_THEME_KEY); }
+      if (t !== null) { rawDel(LEGACY_THEME_KEY); if (t === "light" || t === "dark") rawSet(THEME_KEY, t); }
     }
-    return (t === "light" || t === "dark") ? t : "auto";
+    return t === "dark" ? "dark" : "light";
   }
   function applyTheme(mode) {
-    if (mode === "light" || mode === "dark") document.documentElement.setAttribute("data-theme", mode);
-    else document.documentElement.removeAttribute("data-theme");
-    if (themeBtn) {
-      var label = $(".btn-label", themeBtn);
-      if (label) label.textContent = "Тема: " + themeNames[mode];
-      themeBtn.setAttribute("aria-label", "Сменить тему. Сейчас: " + themeNames[mode]);
-    }
+    document.documentElement.setAttribute("data-theme", mode);
+    if (!themeBtn) return;
+    var next = mode === "dark" ? "light" : "dark";
+    var label = $(".btn-label", themeBtn);
+    if (label) label.textContent = next === "dark" ? "Тёмная тема" : "Светлая тема";
+    themeBtn.setAttribute("aria-label", next === "dark" ? "Включить тёмную тему" : "Включить светлую тему");
+    themeBtn.setAttribute("data-next", next);
   }
   var currentTheme = readTheme();
   applyTheme(currentTheme);
   if (themeBtn) themeBtn.addEventListener("click", function () {
-    currentTheme = currentTheme === "auto" ? "light" : currentTheme === "light" ? "dark" : "auto";
-    if (currentTheme === "auto") rawDel(THEME_KEY); else rawSet(THEME_KEY, currentTheme);
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    rawSet(THEME_KEY, currentTheme);
     applyTheme(currentTheme);
+    fitHeader();
   });
 
   /* =====================================================================
-     3. Мобильное меню
+     3. Шапка и меню
+     Если пункты меню не помещаются в строку (узкое окно, крупный шрифт, масштаб),
+     шапка переходит в компактный вид: меню прячется под кнопку «Меню».
      ===================================================================== */
+  var header = $(".site-header");
+  var headerInner = $(".site-header__inner");
   var menuBtn = $("#menu-btn");
   var nav = $("#main-nav");
+  function closeMenu() {
+    if (!nav || !menuBtn) return;
+    nav.classList.remove("is-open");
+    menuBtn.setAttribute("aria-expanded", "false");
+  }
+  function fitHeader() {
+    if (!header || !headerInner || !nav) return;
+    var wasCompact = header.classList.contains("is-compact");
+    header.classList.remove("is-compact");
+    var ul = $("ul", nav);
+    var overflow = headerInner.scrollWidth > headerInner.clientWidth + 1 ||
+      (ul && ul.scrollWidth > nav.clientWidth + 1) ||
+      nav.getBoundingClientRect().height > 60;
+    if (overflow) header.classList.add("is-compact");
+    else if (wasCompact) closeMenu();
+  }
+  var fitTimer = null;
+  window.addEventListener("resize", function () {
+    clearTimeout(fitTimer);
+    fitTimer = setTimeout(fitHeader, 60);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeader);
+  window.addEventListener("load", fitHeader);
+  fitHeader();
   if (menuBtn && nav) {
     menuBtn.addEventListener("click", function () {
       var open = nav.classList.toggle("is-open");
@@ -207,8 +236,7 @@
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && nav.classList.contains("is-open")) {
-        nav.classList.remove("is-open");
-        menuBtn.setAttribute("aria-expanded", "false");
+        closeMenu();
         menuBtn.focus();
       }
     });
@@ -565,7 +593,7 @@
         " <span class=\"status-pill\" data-status=\"" + st + "\">" + statusNames[st] + "</span></p>" +
         "<p class=\"tl-meta\">" + esc(m.dates) + ", " + esc(qList(m)) + "</p>" +
         "<p class=\"tl-meta\">Блоки: " + esc(m.blocks.join("; ")) + (m.ready ? "" : " (план)") + "</p>" +
-        (progress ? "<p class=\"tl-progress\">" + esc(progress) + "</p>" : "") +
+        (progress ? "<p class=\"tl-progress\">Прогресс: " + esc(progress) + ".</p>" : "") +
         moduleLinks(m);
       if (withControls) {
         html += "<fieldset class=\"status-group\"><legend>Мой статус модуля " + int(m.num, 0, 99) + "</legend>";
@@ -621,8 +649,19 @@
     var bar = $(".meter > span", el);
     if (bar) bar.style.width = pct + "%";
   }
+  function renderModuleCards() {
+    var p = load();
+    $$("[data-module-progress]").forEach(function (el) {
+      var id = el.getAttribute("data-module-progress");
+      var m = DATA.modules.filter(function (x) { return x.id === id; })[0];
+      if (!m) return;
+      var st = moduleStatus(p, id);
+      var text = moduleProgress(p, m);
+      el.textContent = "Статус: " + statusNames[st] + (text ? ". Прогресс: " + text + "." : ".");
+    });
+  }
   var tl = $("#module-timeline");
-  function renderPlan() { if (tl) renderTimeline(tl, tl.hasAttribute("data-controls")); renderSummary(); }
+  function renderPlan() { if (tl) renderTimeline(tl, tl.hasAttribute("data-controls")); renderSummary(); renderModuleCards(); }
   renderPlan();
   onChange(renderPlan);
 
