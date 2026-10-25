@@ -484,7 +484,6 @@ details.solution > summary { color: var(--violet-ink); }
 .card {
   border: 1.5px solid var(--ink); border-radius: var(--radius-m); background: var(--surface);
   padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; height: 100%; min-width: 0;
-  perspective: 1200px;
 }
 .card__flip { flex: 1; display: grid; }
 .card__face { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
@@ -497,14 +496,14 @@ details.solution > summary { color: var(--violet-ink); }
 .card__btn { align-self: flex-start; }
 /* Без JavaScript обе стороны видны по очереди; с ним — переворот */
 .cards:not(.is-ready) .card__face--back { grid-area: auto; padding-top: 10px; border-top: 1px dashed var(--line); }
-.cards.is-ready .card__flip { transform-style: preserve-3d; transition: transform .45s ease; cursor: pointer; }
-.cards.is-ready .card__face { backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: visibility 0s linear .22s; }
-/* Невидимую сторону прячем и явно, на середине поворота: в Firefox backface-visibility срабатывает не всегда,
-   а скрытая сторона не должна попадать в порядок Tab */
+/* Переворот без 3D: карточка сжимается по ширине до нуля, стороны меняются, карточка разворачивается.
+   3D-вариант с backface-visibility в Firefox показывал лицевую сторону зеркально — от него отказались.
+   Видна всегда ровно одна сторона; обе лежат в одной ячейке, поэтому высота карточки не меняется. */
+.cards.is-ready .card__flip { cursor: pointer; }
 .cards.is-ready .card:not(.is-flipped) .card__face--back,
 .cards.is-ready .card.is-flipped .card__face--front { visibility: hidden; }
-.cards.is-ready .card__face--back { transform: rotateY(180deg); }
-.cards.is-ready .card.is-flipped .card__flip { transform: rotateY(180deg); }
+.cards.is-ready .card { transition: transform .14s ease-out, border-color .14s ease; }
+.cards.is-ready .card.is-turning { transform: scaleX(0); transition-timing-function: ease-in; }
 .cards.is-ready .card.is-flipped { border-color: var(--signal); box-shadow: inset 0 0 0 1px var(--signal); }
 
 .quiz-q { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface); padding: 14px 16px; margin: 0 0 14px; }
@@ -564,8 +563,9 @@ details.solution > summary { color: var(--violet-ink); }
   .site-header, .site-footer, .toc, .skip-link, .btn-row, .filter-bar, .section-tabs, .no-print { display: none !important; }
   .page { padding: 0; }
   .box, .task, details, .tool, .card { break-inside: avoid; }
-  .cards.is-ready .card__flip, .cards.is-ready .card__face--back { transform: none !important; }
-  .cards.is-ready .card__face { backface-visibility: visible; grid-area: auto; visibility: visible !important; }
+  .cards.is-ready .card { transform: none !important; }
+  .cards.is-ready .card__face { grid-area: auto; visibility: visible !important; }
+  .cards.is-ready .card__face--back { padding-top: 10px; border-top: 1px dashed #999; }
   .card__btn { display: none; }
   a { color: #000; }
 }
