@@ -1031,9 +1031,19 @@
     if (!id) return;
     var t = document.getElementById(id);
     if (!t) return;
-    for (var node = t; node; node = node.parentElement) if (node.tagName === "DETAILS") node.open = true;
-    t.scrollIntoView();
+    var opened = false;
+    for (var node = t; node; node = node.parentElement) if (node.tagName === "DETAILS" && !node.open) { node.open = true; opened = true; }
+    // При загрузке страницы прокручиваем всегда; при переходе по ссылке на этой же странице браузер
+    // уже прокручивает сам (плавно) — повторяем, только если пришлось раскрыть свёрнутый блок.
+    if (initial || opened) t.scrollIntoView();
   }
+  var initial = true;
   window.addEventListener("hashchange", openTarget);
   openTarget();
+  initial = false;
+
+  // Плавная прокрутка к якорям — только после загрузки, чтобы переход с другой страницы не «ехал» с верха
+  function enableSmooth() { document.documentElement.classList.add("smooth-scroll"); }
+  if (document.readyState === "complete") setTimeout(enableSmooth, 0);
+  else window.addEventListener("load", function () { setTimeout(enableSmooth, 0); });
 })();

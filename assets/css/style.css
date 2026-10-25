@@ -366,7 +366,8 @@ details.solution > summary { color: var(--violet-ink); }
   grid-template-columns: minmax(0, 1fr);
   padding: 8px 0 40px;
 }
-@media (min-width: 960px) { .hero { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); } }
+/* Колонки выравниваются по верху: когда меняется разбор в демо, заголовок слева не сдвигается */
+@media (min-width: 960px) { .hero { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); align-items: start; } .hero__text { padding-top: 24px; } }
 .hero h1 { font-size: clamp(2rem, 4.2vw, 3.2rem); text-wrap: balance; }
 .hero h1 .h1-line { display: block; }
 .hero__text p { font-size: 1.12rem; color: var(--ink-2); max-width: 46ch; }
@@ -497,7 +498,11 @@ details.solution > summary { color: var(--violet-ink); }
 /* Без JavaScript обе стороны видны по очереди; с ним — переворот */
 .cards:not(.is-ready) .card__face--back { grid-area: auto; padding-top: 10px; border-top: 1px dashed var(--line); }
 .cards.is-ready .card__flip { transform-style: preserve-3d; transition: transform .45s ease; cursor: pointer; }
-.cards.is-ready .card__face { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.cards.is-ready .card__face { backface-visibility: hidden; -webkit-backface-visibility: hidden; transition: visibility 0s linear .22s; }
+/* Невидимую сторону прячем и явно, на середине поворота: в Firefox backface-visibility срабатывает не всегда,
+   а скрытая сторона не должна попадать в порядок Tab */
+.cards.is-ready .card:not(.is-flipped) .card__face--back,
+.cards.is-ready .card.is-flipped .card__face--front { visibility: hidden; }
 .cards.is-ready .card__face--back { transform: rotateY(180deg); }
 .cards.is-ready .card.is-flipped .card__flip { transform: rotateY(180deg); }
 .cards.is-ready .card.is-flipped { border-color: var(--signal); box-shadow: inset 0 0 0 1px var(--signal); }
@@ -560,7 +565,7 @@ details.solution > summary { color: var(--violet-ink); }
   .page { padding: 0; }
   .box, .task, details, .tool, .card { break-inside: avoid; }
   .cards.is-ready .card__flip, .cards.is-ready .card__face--back { transform: none !important; }
-  .cards.is-ready .card__face { backface-visibility: visible; grid-area: auto; }
+  .cards.is-ready .card__face { backface-visibility: visible; grid-area: auto; visibility: visible !important; }
   .card__btn { display: none; }
   a { color: #000; }
 }
@@ -601,7 +606,7 @@ details.solution > summary { color: var(--violet-ink); }
 
 /* ---------- Версия 0.2: новые элементы ---------- */
 .tool-form__wide { flex: 1 1 260px; }
-.input--block { width: 100%; }
+.input--block, .tool-form .input--block { width: 100%; }
 .tl-progress { font-size: .9rem; margin: 0 0 6px; color: var(--ink); }
 .gl-item .gl-sym .katex { font-size: 1em; }
 
@@ -774,3 +779,8 @@ details.note > summary { color: var(--ink); flex-wrap: wrap; }
   .task.is-done, .q-item.is-done { box-shadow: none; }
   .note, .note-tools, .note-foot { display: none !important; }
 }
+
+/* Плавная прокрутка к якорям (содержание модуля, ссылки на вопросы и разделы).
+   Класс ставит скрипт после загрузки, чтобы переход по ссылке с #якорем с другой страницы не «ехал» с самого верха.
+   При «уменьшении движения» в системе прокрутка мгновенная (см. правило prefers-reduced-motion). */
+html.smooth-scroll { scroll-behavior: smooth; }
