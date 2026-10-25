@@ -957,6 +957,9 @@
      13. Карточки
      ===================================================================== */
   // Каждая карточка переворачивается кнопкой или нажатием на саму карточку.
+  // Анимация: карточка сжимается до нуля по ширине (класс is-turning), в этот момент стороны меняются,
+  // затем карточка разворачивается обратно. Без 3D — одинаково во всех браузерах, текст не бывает зеркальным.
+  var reduceMotion = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
   function setFlipped(card, flipped) {
     var btn = $(".card__btn", card);
     var front = $(".card__face--front", card);
@@ -969,14 +972,57 @@
       btn.textContent = flipped ? "Показать вопрос" : "Показать ответ";
     }
   }
+  // Самая длинная анимация элемента в миллисекундах (из CSS, чтобы не дублировать длительность в скрипте)
+  function transitionMs(el) {
+    var cs = getComputedStyle(el);
+    var d = String(cs.transitionDuration || "0s").split(","), dl = String(cs.transitionDelay || "0s").split(",");
+    var max = 0;
+    d.forEach(function (v, i) {
+      var t = parseFloat(v) * (/ms/.test(v) ? 1 : 1000) + (parseFloat(dl[i] || dl[0]) || 0) * (/ms/.test(dl[i] || dl[0]) ? 1 : 1000);
+      if (t > max) max = t;
+    });
+    return max || 0;
+  }
+  function turnCard(card) {
+    // Повторные нажатия во время анимации не теряются: запоминаем, какой стороной карточка должна лечь
+    card._target = !(card._target === undefined ? card.classList.contains("is-flipped") : card._target);
+    if (reduceMotion && reduceMotion.matches) { setFlipped(card, card._target); card._target = undefined; return; }
+    if (card._turning) return;
+    card._turning = true;
+    var done = false;
+    function middle(e) {
+      if (done || (e && (e.target !== card || e.propertyName !== "transform"))) return;
+      done = true;
+      card.removeEventListener("transitionend", middle);
+      clearTimeout(fallback);
+      setFlipped(card, card._target);
+      card._target = undefined;
+      card.classList.remove("is-turning");
+      card._turning = false;
+    }
+    // Запасной вариант, если transitionend не придёт (вкладка в фоне, анимации отключены)
+    var fallback = setTimeout(middle, transitionMs(card) + 150);
+    card.addEventListener("transitionend", middle);
+    card.classList.add("is-turning");
+  }
+  function resetCard(card) {
+    card.classList.remove("is-turning");
+    card._turning = false;
+    card._target = undefined;
+    setFlipped(card, false);
+  }
   $$(".cards").forEach(function (list) {
     list.classList.add("is-ready");
     $$(".card", list).forEach(function (card) {
       if (!$(".card__flip", card)) return;
       setFlipped(card, false);
       var btn = $(".card__btn", card);
-      if (btn) btn.addEventListener("click", function () { setFlipped(card, !card.classList.contains("is-flipped")); });
-      $(".card__flip", card).addEventListener("click", function () { setFlipped(card, !card.classList.contains("is-flipped")); });
+      if (btn) btn.addEventListener("click", function () { turnCard(card); });
+      $(".card__flip", card).addEventListener("click", function () {
+        // Не переворачиваем, если человек выделял текст на карточке
+        var sel = window.getSelection ? String(window.getSelection()) : "";
+        if (!sel) turnCard(card);
+      });
     });
   });
   var shuffleBtn = $("#cards-shuffle");
@@ -987,7 +1033,7 @@
       var j = Math.floor(Math.random() * (i + 1));
       var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
     }
-    items.forEach(function (it) { list.appendChild(it); setFlipped(it, false); });
+    items.forEach(function (it) { list.appendChild(it); if ($(".card__flip", it)) resetCard(it); });
     var st = $("#cards-status");
     if (st) st.textContent = "Карточки перемешаны и повёрнуты вопросом вверх.";
   });
