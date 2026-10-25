@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Словарь терминов и обозначений — Код без ошибок</title>
+  <meta name="description" content="Краткие определения терминов и обозначений курса алгебраической теории кодирования.">
+  <meta name="theme-color" content="#5b3df5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Код без ошибок">
+  <meta property="og:title" content="Словарь терминов и обозначений — Код без ошибок">
+  <meta property="og:description" content="Краткие определения терминов и обозначений курса алгебраической теории кодирования.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script src="assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Unbounded:wght@500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- /@head -->
+</head>
+<body data-root="" data-page="glossary" data-title="Словарь терминов и обозначений — Код без ошибок" data-desc="Краткие определения терминов и обозначений курса алгебраической теории кодирования.">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html" aria-label="Код без ошибок — на главную">
+        <span class="logo__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="logo__text">Код без ошибок</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Разделы сайта">
+        <ul>
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="plan.html">План</a></li>
+          <li><a href="theory/index.html">Теория</a></li>
+          <li><a href="examples/index.html">Примеры</a></li>
+          <li><a href="practice/index.html">Практика</a></li>
+          <li><a href="oral/index.html">Устный экзамен</a></li>
+          <li><a href="glossary.html" aria-current="page">Словарь</a></li>
+          <li><a href="review/index.html">Повторение</a></li>
+          <li><a href="tools.html">Тренажёры</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
+        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Поиск по сайту">
+    <div class="search-dialog__head">
+      <label class="visually-hidden" for="search-input">Что найти</label>
+      <input class="search-input" id="search-input" type="search" placeholder="Например: обратный элемент" autocomplete="off">
+      <button class="icon-btn" id="search-close" type="button">Закрыть</button>
+    </div>
+    <ul class="search-results" id="search-results" aria-live="polite"></ul>
+  </dialog>
+  <!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <h1>Словарь терминов и обозначений</h1>
+      <p class="lead">Коротко и простыми словами. По ссылке «подробнее» — полное объяснение в теории. Словарь пополняется с каждым модулем.</p>
+    </div>
+    <div class="prose">
+      <p>
+        <label for="glossary-q"><strong>Найти термин или символ</strong></label><br>
+        <input class="glossary-search" id="glossary-q" type="search" placeholder="Например: вес, F_q, s′" autocomplete="off">
+      </p>
+      <p class="muted" id="glossary-count" role="status" aria-live="polite"></p>
+
+      <dl class="glossary">
+        <div class="gl-item"><dt id="g-mod">Остаток <span class="gl-sym">a mod n</span></dt><dd>Число r от 0 до n − 1 такое, что a = q·n + r. Пример: −7 mod 5 = 3. <a class="gl-more" href="theory/m01.html#remainder">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-cong">Сравнение по модулю <span class="gl-sym">a ≡ b (mod n)</span></dt><dd>n делит a − b; то же самое: a и b дают одинаковый остаток. <a class="gl-more" href="theory/m01.html#remainder">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-zn">Кольцо вычетов <span class="gl-sym">ℤₙ</span></dt><dd>Множество {0, 1, …, n − 1} со сложением и умножением по модулю n. Встречается также запись ℤ/nℤ. <a class="gl-more" href="theory/m01.html#remainder">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-field">Поле</dt><dd>Множество с четырьмя действиями арифметики (делить нельзя только на 0) и привычными законами. ℤₙ — поле ⇔ n простое. Строгое определение — в модуле 6. <a class="gl-more" href="theory/m01.html#inverse">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-fq">Конечное поле <span class="gl-sym">𝔽ₚ, 𝔽_q</span></dt><dd>𝔽ₚ = ℤₚ при простом p. 𝔽_q — поле из q элементов; q обязательно степень простого. 𝔽₄ ≠ ℤ₄. <a class="gl-more" href="theory/m01.html#inverse">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-neg">Противоположный элемент <span class="gl-sym">−a</span></dt><dd>Число, дающее с a в сумме 0; в ℤₙ это n − a. В ℤ₂ −1 = 1, поэтому вычитание совпадает со сложением. <a class="gl-more" href="theory/m01.html#ops">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-inv">Обратный элемент <span class="gl-sym">a⁻¹</span></dt><dd>Число, для которого a·a⁻¹ ≡ 1. Существует ⇔ НОД(a, n) = 1. Деление: b / a = b·a⁻¹. <a class="gl-more" href="theory/m01.html#inverse">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-zerodiv">Делитель нуля</dt><dd>Ненулевой a, для которого a·b = 0 при некотором ненулевом b. Пример: 2·3 = 0 в ℤ₆. В поле делителей нуля нет. <a class="gl-more" href="theory/m01.html#inverse">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-gcd">НОД, взаимно простые числа</dt><dd>Наибольший общий делитель. Числа взаимно просты, если их НОД равен 1. <a class="gl-more" href="theory/m01.html#euclid">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-euclid">Алгоритм Евклида (расширенный)</dt><dd>Находит НОД последовательными делениями с остатком и коэффициенты u, v в НОД = u·a + v·n; отсюда обратный элемент. Тот же алгоритм для многочленов декодирует коды БЧХ и Гоппы. <a class="gl-more" href="theory/m01.html#euclid">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-bezout">Соотношение Безу</dt><dd>НОД(a, n) = u·a + v·n для некоторых целых u, v. <a class="gl-more" href="theory/m01.html#euclid">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-order">Порядок элемента</dt><dd>Наименьшее k ≥ 1, при котором aᵏ = 1. В 𝔽₇ порядок 2 равен 3. Порядок делит p − 1. <a class="gl-more" href="theory/m01.html#powers">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-prim">Примитивный элемент</dt><dd>Элемент, степени которого дают все ненулевые элементы поля; его порядок q − 1. Пример: 3 в 𝔽₇. Часто обозначается α. <a class="gl-more" href="theory/m01.html#powers">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-fermat">Малая теорема Ферма</dt><dd>В 𝔽ₚ для любого a ≠ 0 верно a^(p−1) = 1. <a class="gl-more" href="theory/m01.html#powers">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-fqn">Пространство векторов <span class="gl-sym">𝔽_qⁿ</span></dt><dd>Все строки длины n из элементов 𝔽_q, всего qⁿ штук. Операции покоординатные. Запись 1021 означает (1, 0, 2, 1). <a class="gl-more" href="theory/m01.html#vectors">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-lincomb">Линейная комбинация</dt><dd>Выражение c₁v₁ + … + c_mv_m с коэффициентами из поля. <a class="gl-more" href="theory/m01.html#vectors">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-xor">Сложение по модулю 2 <span class="gl-sym">⊕</span></dt><dd>XOR: 0 ⊕ 0 = 1 ⊕ 1 = 0, 0 ⊕ 1 = 1 ⊕ 0 = 1. Для векторов — покоординатно. <a class="gl-more" href="theory/m01.html#ops">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-bsc">Двоичный симметричный канал <span class="gl-sym">ДСК(p)</span></dt><dd>Каждый бит независимо переворачивается с вероятностью p. <a class="gl-more" href="theory/m01.html#channel">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-err">Вектор ошибки <span class="gl-sym">e</span></dt><dd>Разность принятого и отправленного слов: y = x + e. Число ошибок — вес e. <a class="gl-more" href="theory/m01.html#channel">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-blockcode">Блочный код, кодовое слово</dt><dd>Код длины n — подмножество C ⊆ 𝔽_qⁿ; его элементы — кодовые слова. При кодировании информационное слово длины k переходит в кодовое длины n. <a class="gl-more" href="theory/m01.html#channel">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-nkm">Параметры <span class="gl-sym">n, k, M</span></dt><dd>n — длина кода, k — длина информационного слова (для линейных кодов — размерность), M — число кодовых слов (мощность). <a class="gl-more" href="theory/m01.html#channel">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-rate">Скорость кода <span class="gl-sym">R = k/n</span></dt><dd>Доля информационных символов среди передаваемых. <a class="gl-more" href="theory/m01.html#channel">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-syst">Систематический код</dt><dd>Кодирование, при котором первые (или последние) k разрядов кодового слова совпадают с информационным словом; остальные n − k разрядов — проверочные. <a class="gl-more" href="theory/m01.html#channel">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-ml">Декодирование максимального правдоподобия</dt><dd>Выбор кодового слова x с наибольшей P(y | x). В ДСК(p) при p &lt; 1/2 — ближайшее к y кодовое слово. <a class="gl-more" href="theory/m01.html#ml">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-hd">Расстояние Хемминга <span class="gl-sym">d(x, y)</span></dt><dd>Число разрядов, в которых x и y различаются. Равно ‖y − x‖. <a class="gl-more" href="theory/m01.html#hamming">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-lee">Расстояние Ли <span class="gl-sym">ρ(x, y)</span></dt><dd>Σ|xᵢ − yᵢ| при простом q. При q = 2 совпадает с расстоянием Хемминга, в общем случае d ≤ ρ. <a class="gl-more" href="theory/m01.html#hamming">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-weight">Вес <span class="gl-sym">‖x‖</span></dt><dd>Число ненулевых координат вектора. <a class="gl-more" href="theory/m01.html#hamming">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-metric">Метрика</dt><dd>Функция расстояния: симметрична, неотрицательна (0 только для одинаковых), удовлетворяет неравенству треугольника. <a class="gl-more" href="theory/m01.html#hamming">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-ball">Шар и сфера <span class="gl-sym">B_r(a), S_r(a)</span></dt><dd>Векторы на расстоянии ≤ r (шар) или ровно r (сфера) от a. |S_r| = C(n, r)·(q − 1)^r. <a class="gl-more" href="theory/m01.html#balls">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-cube">Булев куб, слой, грань</dt><dd>Булев куб — {0, 1}ⁿ. Слой — векторы одного веса. Грань — векторы с фиксированными n − k разрядами, запись вида ∗0∗10. <a class="gl-more" href="theory/m01.html#balls">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-dc">Кодовое расстояние <span class="gl-sym">d(C)</span></dt><dd>Наименьшее расстояние между двумя различными кодовыми словами. <a class="gl-more" href="theory/m01.html#codedist">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-t">Число исправляемых ошибок <span class="gl-sym">t</span></dt><dd>t = ⌊(d − 1)/2⌋. В программе — радиус упаковки кода. <a class="gl-more" href="theory/m01.html#codedist">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-s">Число обнаруживаемых ошибок <span class="gl-sym">s, s′</span></dt><dd>s = d − 1 в режиме обнаружения; s′ = ⌈(d − 1)/2⌉ в режиме исправления (s′ = t при нечётном d, t + 1 при чётном). <a class="gl-more" href="theory/m01.html#codedist">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-rep">Код с повторением</dt><dd>Каждый символ повторяется n раз; декодирование голосованием. d = n, R = 1/n. <a class="gl-more" href="theory/m01.html#repetition">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-entropy">Бинарная энтропия <span class="gl-sym">H(p)</span></dt><dd>H(p) = −p log₂ p − (1 − p) log₂(1 − p). <a class="gl-more" href="theory/m01.html#shannon">подробнее</a></dd></div>
+        <div class="gl-item"><dt id="g-capacity">Пропускная способность <span class="gl-sym">C(p)</span></dt><dd>Для ДСК(p): C(p) = 1 − H(p). Ниже неё можно передавать сколь угодно надёжно, выше — нельзя (теоремы Шеннона). <a class="gl-more" href="theory/m01.html#shannon">подробнее</a></dd></div>
+      </dl>
+      <p class="gl-empty" id="glossary-empty" hidden>Такого термина пока нет. Попробуйте другое слово или поиск по сайту.</p>
+    </div>
+  </main>
+  <!-- @footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
+      <p><a href="sources.html">Источники и условные обозначения</a><br><a href="plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
+      <p>Версия 0.2.0 от 25.10.2026</p>
+    </div>
+  </footer>
+  <script src="assets/js/data.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <!-- /@footer -->
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Примеры решений, модуль 1 — Код без ошибок</title>
+  <meta name="description" content="Подробные разборы: уравнения по модулю, обратный элемент алгоритмом Евклида, вектор ошибки, декодирование максимального правдоподобия, параметры кода.">
+  <meta name="theme-color" content="#5b3df5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Код без ошибок">
+  <meta property="og:title" content="Примеры решений, модуль 1 — Код без ошибок">
+  <meta property="og:description" content="Подробные разборы: уравнения по модулю, обратный элемент алгоритмом Евклида, вектор ошибки, декодирование максимального правдоподобия, параметры кода.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Unbounded:wght@500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- /@head -->
+</head>
+<body data-root="../" data-page="examples" data-title="Примеры решений, модуль 1 — Код без ошибок" data-desc="Подробные разборы: уравнения по модулю, обратный элемент алгоритмом Евклида, вектор ошибки, декодирование максимального правдоподобия, параметры кода.">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html" aria-label="Код без ошибок — на главную">
+        <span class="logo__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="logo__text">Код без ошибок</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Разделы сайта">
+        <ul>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../plan.html">План</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a href="../examples/index.html" aria-current="page">Примеры</a></li>
+          <li><a href="../practice/index.html">Практика</a></li>
+          <li><a href="../oral/index.html">Устный экзамен</a></li>
+          <li><a href="../glossary.html">Словарь</a></li>
+          <li><a href="../review/index.html">Повторение</a></li>
+          <li><a href="../tools.html">Тренажёры</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
+        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Поиск по сайту">
+    <div class="search-dialog__head">
+      <label class="visually-hidden" for="search-input">Что найти</label>
+      <input class="search-input" id="search-input" type="search" placeholder="Например: обратный элемент" autocomplete="off">
+      <button class="icon-btn" id="search-close" type="button">Закрыть</button>
+    </div>
+    <ul class="search-results" id="search-results" aria-live="polite"></ul>
+  </dialog>
+  <!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <p class="crumbs"><a href="index.html">Примеры решений</a> / Модуль 1</p>
+      <h1>Примеры решений: модуль 1</h1>
+      <p class="lead">Каждый разбор — шаг за шагом. После шага сказано, зачем он нужен: на устном экзамене спрашивают именно это.</p>
+      <ul class="section-tabs" aria-label="Материалы модуля 1">
+        <li><a href="../theory/m01.html">Теория</a></li>
+        <li><a href="m01.html" aria-current="page">Примеры</a></li>
+        <li><a href="../practice/m01.html">Практика</a></li>
+        <li><a href="../review/m01.html">Повторение</a></li>
+      </ul>
+    </div>
+
+    <div class="with-toc">
+      <nav class="toc" aria-label="Список примеров">
+        <details class="toc-details" open>
+        <summary class="toc__title">Примеры</summary>
+        <ol>
+          <li><a href="#ex-eq">Уравнение в Z₇</a></li>
+          <li><a href="#ex-inv">8⁻¹ по модулю 21</a></li>
+          <li><a href="#ex-err">Вектор ошибки над F₅</a></li>
+          <li><a href="#ex-ml">Декодирование МП</a></li>
+          <li><a href="#ex-code">Параметры кода и декодирование</a></li>
+          <li><a href="#ex-rep">Код с повторением</a></li>
+          <li><a href="#ex-ball">Объём шара</a></li>
+        </ol>
+        </details>
+      </nav>
+
+      <article class="prose">
+        <h2 id="ex-eq">Пример 1. Уравнение 5x + 6 = 2 в Z₇</h2>
+        <p><span class="origin origin--extra">Пояснение</span></p>
+        <ol>
+          <li><strong>Переносим 6.</strong> 5x = 2 − 6 = −4. <em>Зачем:</em> оставить слагаемое с x одно, как в школе.</li>
+          <li><strong>Приводим к остатку.</strong> −4 ≡ −4 + 7 = 3, то есть 5x = 3. <em>Зачем:</em> в \(\mathbb{Z}_7\) работаем только с числами 0…6.</li>
+          <li><strong>Находим 5⁻¹.</strong> Перебором: 5·3 = 15 ≡ 1, значит 5⁻¹ = 3. <em>Зачем:</em> делить по модулю — это умножать на обратный.</li>
+          <li><strong>Умножаем обе части на 3.</strong> x = 3·3 = 9 ≡ 2.</li>
+          <li><strong>Проверяем.</strong> 5·2 + 6 = 16 ≡ 2. Верно. <em>Зачем:</em> одна проверка ловит почти все арифметические ошибки.</li>
+        </ol>
+        <p><strong>Ответ: x = 2.</strong> Решение единственное, потому что 7 — простое и \(\mathbb{Z}_7\) — поле.</p>
+
+        <h2 id="ex-inv">Пример 2. Обратный к 8 по модулю 21</h2>
+        <p><span class="origin origin--extra">Пояснение</span></p>
+        <p>Перебирать 20 вариантов долго, поэтому применяем табличный алгоритм Евклида. Каждая новая строка = позапрошлая − q · прошлая, где q — частное от деления позапрошлого остатка на прошлый. В каждой строке выполняется r ≡ x·8 (mod 21).</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Алгоритм Евклида для 8 по модулю 21">
+          <table>
+            <thead><tr><th scope="col">Строка</th><th scope="col">r</th><th scope="col">q</th><th scope="col">x</th><th scope="col">Что произошло</th></tr></thead>
+            <tbody>
+              <tr><td>старт</td><td>21</td><td>—</td><td>0</td><td>21 ≡ 0·8</td></tr>
+              <tr><td>старт</td><td>8</td><td>—</td><td>1</td><td>8 ≡ 1·8</td></tr>
+              <tr><td>1</td><td>5</td><td>2</td><td>0 − 2·1 = −2</td><td>21 = 2·8 + 5</td></tr>
+              <tr><td>2</td><td>3</td><td>1</td><td>1 − 1·(−2) = 3</td><td>8 = 1·5 + 3</td></tr>
+              <tr><td>3</td><td>2</td><td>1</td><td>−2 − 1·3 = −5</td><td>5 = 1·3 + 2</td></tr>
+              <tr><td>4</td><td><strong>1</strong></td><td>1</td><td>3 − 1·(−5) = <strong>8</strong></td><td>3 = 1·2 + 1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Получили остаток 1, значит НОД(8, 21) = 1 и обратный есть: <strong>8⁻¹ ≡ 8 (mod 21)</strong>. Проверка: 8·8 = 64 = 3·21 + 1. Неожиданно, но верно: 8 обратен сам себе.</p>
+        <aside class="box box--note">
+          <p class="box__label">Почему таблица работает</p>
+          <p>Если r₁ ≡ x₁·8 и r₂ ≡ x₂·8, то r₁ − q·r₂ ≡ (x₁ − q·x₂)·8. Новый остаток выражается через 8 с коэффициентом, посчитанным тем же действием. Когда остаток стал равен 1, коэффициент x и есть обратный.</p>
+        </aside>
+
+        <h2 id="ex-err">Пример 3. Вектор ошибки над F₅</h2>
+        <p><span class="origin origin--extra">Пояснение, по образцу примера из лекции 1 «Введение»</span></p>
+        <p>Передали <span class="bits">x = 3140</span>, приняли <span class="bits">y = 0142</span>. Найти вектор ошибки и число ошибок.</p>
+        <ol>
+          <li>e = y − x покоординатно: (0 − 3, 1 − 1, 4 − 4, 2 − 0) = (−3, 0, 0, 2).</li>
+          <li>Приводим по модулю 5: −3 ≡ 2. Получаем <span class="bits">e = 2002</span>.</li>
+          <li>Число ошибок — вес вектора ошибки: ‖e‖ = 2. Это и есть расстояние Хемминга d(x, y) = 2.</li>
+          <li>Проверка: x + e = (3 + 2, 1, 4, 0 + 2) = (5, 1, 4, 2) ≡ <span class="bits">0142</span> = y.</li>
+        </ol>
+
+        <h2 id="ex-ml">Пример 4. Декодирование максимального правдоподобия</h2>
+        <p><span class="origin origin--course">Курс: пример из лекции 1 «Введение»</span></p>
+        <p>Двоичный код задан кодированием 00 → 00001, 01 → 01010, 10 → 10111, 11 → 11100. Канал — ДСК(p) с p &lt; 1/2. Принято <span class="bits">y = 10101</span>. Что передавали?</p>
+        <ol>
+          <li><strong>Считаем расстояния от y до каждого кодового слова</strong> — сравниваем разряды.
+            <div class="table-wrap" tabindex="0" role="region" aria-label="Расстояния и вероятности">
+              <table>
+                <thead><tr><th scope="col">Кодовое слово x</th><th scope="col">d(y, x)</th><th scope="col">P(y | x) = p^d (1 − p)^(5 − d)</th></tr></thead>
+                <tbody>
+                  <tr><td class="bits">00001</td><td>2</td><td>p²(1 − p)³</td></tr>
+                  <tr><td class="bits">01010</td><td>5</td><td>p⁵</td></tr>
+                  <tr><td class="bits">10111</td><td><strong>1</strong></td><td><strong>p(1 − p)⁴</strong></td></tr>
+                  <tr><td class="bits">11100</td><td>2</td><td>p²(1 − p)³</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </li>
+          <li><strong>Сравниваем вероятности.</strong> При p &lt; 1/2: p⁵ &lt; p²(1 − p)³ &lt; p(1 − p)⁴. <em>Зачем:</em> МП-декодер выбирает максимум P(y | x). Каждое лишнее несовпадение умножает вероятность на p/(1 − p) &lt; 1.</li>
+          <li><strong>Вывод.</strong> Максимум у x = <span class="bits">10111</span> — это ближайшее кодовое слово. Значит, передавали информационное слово <strong>i = 10</strong>, а ошибка была одна: e = y ⊕ x = <span class="bits">00010</span>.</li>
+        </ol>
+
+        <h2 id="ex-code">Пример 5. Параметры кода и декодирование</h2>
+        <p><span class="origin origin--extra">Пояснение</span></p>
+        <p>Код C = {<span class="bits">00000</span>, <span class="bits">11100</span>, <span class="bits">00111</span>, <span class="bits">11011</span>}. Найти d, t, s, s′, скорость и декодировать слова 10100 и 10001.</p>
+        <ol>
+          <li><strong>Все попарные расстояния</strong> (пар 4·3/2 = 6):
+            <ul>
+              <li>d(00000, 11100) = 3, d(00000, 00111) = 3, d(00000, 11011) = 4;</li>
+              <li>d(11100, 00111) = 4, d(11100, 11011) = 3, d(00111, 11011) = 3.</li>
+            </ul>
+          </li>
+          <li><strong>Минимум:</strong> d = 3. Значит t = ⌊2/2⌋ = 1, s = 2, s′ = ⌈2/2⌉ = 1.</li>
+          <li><strong>Скорость.</strong> Слов M = 4 = 2², то есть k = 2 информационных бита при n = 5: R = 2/5.</li>
+          <li><strong>Декодируем y = 10100.</strong> Расстояния до слов кода: 2, 1, 3, 4. Ближайшее единственное — <span class="bits">11100</span>, одна ошибка во 2-м разряде. Это гарантированно исправимо, ведь t = 1.</li>
+          <li><strong>Декодируем y = 10001.</strong> Расстояния: до 00000 — 2, до 11100 — 3, до 00111 — 3, до 11011 — 2. Два ближайших слова на одинаковом расстоянии 2: ошибка <strong>обнаружена, но не исправима</strong>. Это согласуется с теорией: двух ошибок больше, чем t = 1.</li>
+        </ol>
+        <aside class="box box--note">
+          <p class="box__label">Наблюдение на будущее</p>
+          <p>11100 ⊕ 00111 = 11011 — сумма двух слов кода снова в коде. Такие коды называются линейными (модуль 3), и у них d равно минимальному весу ненулевого слова: здесь минимальный вес как раз 3.</p>
+        </aside>
+
+        <h2 id="ex-rep">Пример 6. Код с повторением: во сколько раз меньше ошибок</h2>
+        <p><span class="origin origin--course">Курс: пример из лекции 1 «Введение»</span></p>
+        <ol>
+          <li>Голосование по трём битам ошибается, если испорчены ровно 2 бита (3 способа выбрать какие) или все 3: \(P_{\text{ош}} = 3p^2(1-p) + p^3 = 3p^2 - 2p^3\).</li>
+          <li>При p = 0,01: 3·0,0001 − 2·0,000001 = 0,0003 − 0,000002 = 0,000298.</li>
+          <li>Без кодирования ошибка в бите случается с вероятностью 0,01. Отношение 0,01 / 0,000298 ≈ 33,6 — ошибок стало примерно в 34 раза меньше.</li>
+          <li>Цена: на один бит информации передаём три, скорость R = 1/3.</li>
+        </ol>
+
+        <h2 id="ex-ball">Пример 7. Объём шара и сколько слов поместится</h2>
+        <p><span class="origin origin--extra">Пояснение, задел на модуль 4</span></p>
+        <ol>
+          <li>Шар радиуса 1 в \(\mathbb{F}_2^7\): центр плюс 7 соседей (меняем один из 7 разрядов): |B₁| = 1 + 7 = 8.</li>
+          <li>Если код исправляет 1 ошибку, шары радиуса 1 вокруг кодовых слов не пересекаются. Значит, слов не больше 2⁷ / 8 = 128 / 8 = 16.</li>
+          <li>Код Хемминга (7, 4) на <a href="../index.html#hamming-demo">главной</a> содержит ровно 2⁴ = 16 слов: шары вокруг них покрывают весь куб без зазоров. Такие коды называются совершенными (модуль 4).</li>
+        </ol>
+      </article>
+    </div>
+  </main>
+  <!-- @footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
+      <p><a href="../sources.html">Источники и условные обозначения</a><br><a href="../plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
+      <p>Версия 0.2.0 от 25.10.2026</p>
+    </div>
+  </footer>
+  <script src="../assets/js/data.js"></script>
+  <script defer src="../assets/vendor/katex/katex.min.js"></script>
+  <script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/main.js"></script>
+  <!-- /@footer -->
+</body>
+</html>

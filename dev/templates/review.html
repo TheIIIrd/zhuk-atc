@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head --><!-- /@head -->
+</head>
+<body data-page="review" data-title="Повторение, модуль {{NUM}} — Код без ошибок" data-desc="Модуль {{NUM}}. {{TITLE}}: конспект, формулы, карточки и мини-тест.">
+  <!-- @header --><!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <p class="crumbs"><a href="index.html">Повторение</a> / Модуль {{NUM}}</p>
+      <h1>Повторение: модуль {{NUM}}</h1>
+      <p class="lead">Конспект, формулы, карточки и мини-тест.</p>
+      <ul class="section-tabs" aria-label="Материалы модуля {{NUM}}">
+        <li><a href="../theory/{{ID}}.html">Теория</a></li>
+        <li><a href="../examples/{{ID}}.html">Примеры</a></li>
+        <li><a href="../practice/{{ID}}.html">Практика</a></li>
+        <li><a href="{{ID}}.html" aria-current="page">Повторение</a></li>
+      </ul>
+    </div>
+
+    <div class="prose">
+      <h2 id="summary">Конспект</h2>
+      <ul>
+        <li>Главная мысль.</li>
+      </ul>
+
+      <h2 id="cards">Карточки</h2>
+      <div class="btn-row no-print">
+        <button class="btn btn--small btn--ghost" type="button" id="cards-shuffle" aria-controls="cards-list">Перемешать карточки</button>
+        <span class="muted" id="cards-status" role="status" aria-live="polite"></span>
+      </div>
+      <ul class="cards" id="cards-list">
+        <li class="card"><p class="card__q">Вопрос?</p><p class="card__a">Ответ.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+      </ul>
+
+      <h2 id="quiz">Мини-тест</h2>
+      <p>Выбранные ответы, последний и лучший результат сохраняются в этом браузере.</p>
+      <form class="quiz" id="quiz-{{ID}}">
+        <p class="quiz-saved muted" aria-live="polite"></p>
+        <fieldset class="quiz-q" data-correct="a" data-explain="Почему верно.">
+          <legend>1. Вопрос?</legend>
+          <label><input type="radio" name="q1" value="a"> Вариант А</label>
+          <label><input type="radio" name="q1" value="b"> Вариант Б</label>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </fieldset>
+        <div class="btn-row">
+          <button class="btn" type="submit">Проверить</button>
+          <button class="btn btn--ghost" type="reset">Сбросить</button>
+        </div>
+        <p class="quiz-result" role="status" aria-live="polite"></p>
+      </form>
+
+      <h2 id="control">Контрольные вопросы</h2>
+      <ol>
+        <li>Вопрос для устной самопроверки.</li>
+      </ol>
+    </div>
+  </main>
+  <!-- @footer --><!-- /@footer -->
+</body>
+</html>

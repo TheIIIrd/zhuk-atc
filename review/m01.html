@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Повторение, модуль 1 — Код без ошибок</title>
+  <meta name="description" content="Конспект модуля 1 на одну страницу, ключевые формулы, карточки и мини-тест по арифметике по модулю и расстоянию Хемминга.">
+  <meta name="theme-color" content="#5b3df5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Код без ошибок">
+  <meta property="og:title" content="Повторение, модуль 1 — Код без ошибок">
+  <meta property="og:description" content="Конспект модуля 1 на одну страницу, ключевые формулы, карточки и мини-тест по арифметике по модулю и расстоянию Хемминга.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Unbounded:wght@500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- /@head -->
+</head>
+<body data-root="../" data-page="review" data-title="Повторение, модуль 1 — Код без ошибок" data-desc="Конспект модуля 1 на одну страницу, ключевые формулы, карточки и мини-тест по арифметике по модулю и расстоянию Хемминга.">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html" aria-label="Код без ошибок — на главную">
+        <span class="logo__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="logo__text">Код без ошибок</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Разделы сайта">
+        <ul>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../plan.html">План</a></li>
+          <li><a href="../theory/index.html">Теория</a></li>
+          <li><a href="../examples/index.html">Примеры</a></li>
+          <li><a href="../practice/index.html">Практика</a></li>
+          <li><a href="../oral/index.html">Устный экзамен</a></li>
+          <li><a href="../glossary.html">Словарь</a></li>
+          <li><a href="../review/index.html" aria-current="page">Повторение</a></li>
+          <li><a href="../tools.html">Тренажёры</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
+        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Поиск по сайту">
+    <div class="search-dialog__head">
+      <label class="visually-hidden" for="search-input">Что найти</label>
+      <input class="search-input" id="search-input" type="search" placeholder="Например: обратный элемент" autocomplete="off">
+      <button class="icon-btn" id="search-close" type="button">Закрыть</button>
+    </div>
+    <ul class="search-results" id="search-results" aria-live="polite"></ul>
+  </dialog>
+  <!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <p class="crumbs"><a href="index.html">Повторение</a> / Модуль 1</p>
+      <h1>Повторение: модуль 1</h1>
+      <p class="lead">Всё главное на одной странице: конспект, формулы, карточки для самопроверки и мини-тест. Страница хорошо печатается.</p>
+      <ul class="section-tabs" aria-label="Материалы модуля 1">
+        <li><a href="../theory/m01.html">Теория</a></li>
+        <li><a href="../examples/m01.html">Примеры</a></li>
+        <li><a href="../practice/m01.html">Практика</a></li>
+        <li><a href="m01.html" aria-current="page">Повторение</a></li>
+      </ul>
+    </div>
+
+    <div class="prose">
+      <h2 id="summary">Конспект</h2>
+      <h3 id="sum-11">Блок 1.1. Арифметика по модулю</h3>
+      <ul>
+        <li>a mod n — остаток от 0 до n − 1; у отрицательных чисел остаток тоже неотрицательный: −7 mod 5 = 3.</li>
+        <li>a ≡ b (mod n) ⇔ n | (a − b). Остатки можно брать на любом шаге вычислений.</li>
+        <li>−a = n − a. В ℤ₂ вычитание = сложение = XOR.</li>
+        <li>Деление — умножение на обратный. a⁻¹ существует ⇔ НОД(a, n) = 1; находится перебором или расширенным алгоритмом Евклида.</li>
+        <li>ℤₙ — поле ⇔ n простое. Тогда пишут 𝔽ₚ. В поле нет делителей нуля, линейное уравнение имеет ровно одно решение. 𝔽₄ ≠ ℤ₄.</li>
+        <li>Примитивный элемент: его степени дают все ненулевые элементы поля. Порядок элемента делит p − 1, a^(p−1) = 1.</li>
+      </ul>
+      <h3 id="sum-12">Блок 1.2. Расстояние и параметры кода</h3>
+      <ul>
+        <li>Схема: i → кодер → x → канал → y = x + e → декодер. Скорость R = k/n.</li>
+        <li>ДСК(p): P(y | x) = pᵈ(1 − p)ⁿ⁻ᵈ. При p &lt; 1/2 МП-декодирование = ближайшее кодовое слово.</li>
+        <li>Расстояние Хемминга — число различающихся разрядов, это метрика; d(x, y) = ‖y − x‖.</li>
+        <li>|S_r| = C(n, r)(q − 1)^r; |B_r| — сумма по i от 0 до r.</li>
+        <li>d(C) — минимальное расстояние между различными словами. t = ⌊(d − 1)/2⌋, s = d − 1, s′ = ⌈(d − 1)/2⌉.</li>
+        <li>Исправляет t ошибок ⇔ шары радиуса t вокруг слов не пересекаются ⇔ d ≥ 2t + 1.</li>
+        <li>Шеннон: C(p) = 1 − H(p). При R &lt; C(p) есть коды со сколь угодно малой ошибкой, при R &gt; C(p) — нет.</li>
+      </ul>
+
+      <h2 id="formulas">Ключевые формулы</h2>
+      <div class="formula">\[ a = qn + r,\; 0 \le r < n \qquad\qquad b/a = b\cdot a^{-1} \]</div>
+      <div class="formula">\[ P(y\mid x) = p^{d(x,y)}(1-p)^{\,n-d(x,y)} \]</div>
+      <div class="formula">\[ |B_r| = \sum_{i=0}^{r}\binom{n}{i}(q-1)^i \]</div>
+      <div class="formula">\[ t = \left\lfloor\tfrac{d-1}{2}\right\rfloor,\quad s = d-1,\quad s' = \left\lceil\tfrac{d-1}{2}\right\rceil \]</div>
+      <div class="formula">\[ H(p) = -p\log_2 p-(1-p)\log_2(1-p),\qquad C(p) = 1 - H(p) \]</div>
+
+      <h2 id="cards">Карточки</h2>
+      <p>Сначала ответьте вслух, потом откройте ответ.</p>
+      <div class="btn-row no-print">
+        <button class="btn btn--small btn--ghost" type="button" id="cards-shuffle" aria-controls="cards-list">Перемешать карточки</button>
+        <span class="muted" id="cards-status" role="status" aria-live="polite"></span>
+      </div>
+      <ul class="cards" id="cards-list">
+        <li class="card"><p class="card__q">Чему равно −11 mod 4?</p><p class="card__a">1, потому что −11 = (−3)·4 + 1.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">Когда у a есть обратный по модулю n?</p><p class="card__a">Ровно тогда, когда НОД(a, n) = 1.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">Найдите 3⁻¹ в ℤ₇.</p><p class="card__a">5, так как 3·5 = 15 ≡ 1.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">Почему ℤ₉ — не поле?</p><p class="card__a">3·3 = 9 ≡ 0: у 3 нет обратного (НОД(3, 9) = 3).</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">Что такое примитивный элемент поля?</p><p class="card__a">Элемент, степени которого пробегают все ненулевые элементы поля. Например, 3 в 𝔽₇.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">Почему МП-декодер в ДСК(p) при p &lt; 1/2 выбирает ближайшее слово?</p><p class="card__a">P(y | x) = (1 − p)ⁿ·(p/(1 − p))ᵈ, а p/(1 − p) &lt; 1, поэтому вероятность убывает с ростом d.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">Код имеет d = 6. Найдите t, s, s′.</p><p class="card__a">t = 2, s = 5, s′ = 3.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">Почему из «код исправляет t ошибок» следует d ≥ 2t + 1?</p><p class="card__a">Шары радиуса t вокруг кодовых слов не должны пересекаться; если бы d ≤ 2t, нашлось бы слово на расстоянии ≤ t от двух кодовых.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">Сколько векторов в шаре радиуса 1 в 𝔽₂⁷?</p><p class="card__a">1 + 7 = 8.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card"><p class="card__q">О чём говорит обратная теорема Шеннона?</p><p class="card__a">При скорости R &gt; C(p) = 1 − H(p) никакой код не даёт сколь угодно малой вероятности ошибки.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+      </ul>
+
+      <h2 id="quiz">Мини-тест</h2>
+      <p>Выберите ответы и нажмите «Проверить». Выбранные ответы, последний и лучший результат сохраняются в этом браузере. «Сбросить» очищает ответы, лучший результат остаётся.</p>
+      <form class="quiz" id="quiz-m01">
+        <p class="quiz-saved muted" aria-live="polite"></p>
+        <fieldset class="quiz-q" data-correct="b" data-explain="−13 = (−3)·5 + 2.">
+          <legend>1. Чему равно −13 mod 5?</legend>
+          <label><input type="radio" name="q1" value="a"> 3</label>
+          <label><input type="radio" name="q1" value="b"> 2</label>
+          <label><input type="radio" name="q1" value="c"> −3</label>
+          <label><input type="radio" name="q1" value="d"> 8</label>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="quiz-q" data-correct="a" data-explain="4·2 = 8 ≡ 1 (mod 7).">
+          <legend>2. Чему равен 4⁻¹ в ℤ₇?</legend>
+          <label><input type="radio" name="q2" value="a"> 2</label>
+          <label><input type="radio" name="q2" value="b"> 4</label>
+          <label><input type="radio" name="q2" value="c"> 5</label>
+          <label><input type="radio" name="q2" value="d"> обратного нет</label>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="quiz-q" data-correct="c" data-explain="ℤₙ — поле только при простом n; из 4, 9, 11, 15 простое только 11.">
+          <legend>3. Какое из колец является полем?</legend>
+          <label><input type="radio" name="q3" value="a"> ℤ₄</label>
+          <label><input type="radio" name="q3" value="b"> ℤ₉</label>
+          <label><input type="radio" name="q3" value="c"> ℤ₁₁</label>
+          <label><input type="radio" name="q3" value="d"> ℤ₁₅</label>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="quiz-q" data-correct="b" data-explain="10110 и 11100 различаются во 2-м и 4-м разрядах.">
+          <legend>4. Чему равно d(10110, 11100)?</legend>
+          <label><input type="radio" name="q4" value="a"> 1</label>
+          <label><input type="radio" name="q4" value="b"> 2</label>
+          <label><input type="radio" name="q4" value="c"> 3</label>
+          <label><input type="radio" name="q4" value="d"> 4</label>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="quiz-q" data-correct="a" data-explain="t = ⌊3/2⌋ = 1, s = 3, s′ = ⌈3/2⌉ = 2.">
+          <legend>5. Код имеет d = 4. Чему равны t, s, s′?</legend>
+          <label><input type="radio" name="q5" value="a"> t = 1, s = 3, s′ = 2</label>
+          <label><input type="radio" name="q5" value="b"> t = 2, s = 3, s′ = 2</label>
+          <label><input type="radio" name="q5" value="c"> t = 1, s = 3, s′ = 1</label>
+          <label><input type="radio" name="q5" value="d"> t = 2, s = 4, s′ = 2</label>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="quiz-q" data-correct="b" data-explain="При p &lt; 1/2 вероятность P(y | x) убывает с ростом d(x, y).">
+          <legend>6. Что выбирает МП-декодер в ДСК(p) при p &lt; 1/2?</legend>
+          <label><input type="radio" name="q6" value="a"> кодовое слово наибольшего веса</label>
+          <label><input type="radio" name="q6" value="b"> ближайшее к принятому кодовое слово</label>
+          <label><input type="radio" name="q6" value="c"> первое слово кодовой таблицы</label>
+          <label><input type="radio" name="q6" value="d"> самое дальнее кодовое слово</label>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </fieldset>
+        <fieldset class="quiz-q" data-correct="c" data-explain="|B₁| = 1 + C(4, 1)·(3 − 1) = 1 + 8 = 9.">
+          <legend>7. Сколько векторов в шаре радиуса 1 в 𝔽₃⁴?</legend>
+          <label><input type="radio" name="q7" value="a"> 5</label>
+          <label><input type="radio" name="q7" value="b"> 8</label>
+          <label><input type="radio" name="q7" value="c"> 9</label>
+          <label><input type="radio" name="q7" value="d"> 81</label>
+          <p class="quiz-feedback" aria-live="polite"></p>
+        </fieldset>
+        <div class="btn-row">
+          <button class="btn" type="submit">Проверить</button>
+          <button class="btn btn--ghost" type="reset">Сбросить</button>
+        </div>
+        <p class="quiz-result" role="status" aria-live="polite"></p>
+      </form>
+
+      <h2 id="control">Контрольные вопросы</h2>
+      <ol>
+        <li>Почему коды строят над полями, а не над ℤ₆?</li>
+        <li>Как найти обратный элемент алгоритмом Евклида? Покажите на 7 по модулю 26.</li>
+        <li>Выведите формулу P(y | x) для ДСК и объясните, при чём здесь расстояние Хемминга.</li>
+        <li>Докажите, что расстояние Хемминга — метрика.</li>
+        <li>Объясните разницу между s и s′ на примере кода с d = 4.</li>
+        <li>Сформулируйте прямую и обратную теоремы Шеннона. Что они не утверждают?</li>
+      </ol>
+      <p>Если ответы на все вопросы даются уверенно, отметьте модуль как «пройдено» в <a href="../plan.html">плане</a>.</p>
+    </div>
+  </main>
+  <!-- @footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
+      <p><a href="../sources.html">Источники и условные обозначения</a><br><a href="../plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
+      <p>Версия 0.2.0 от 25.10.2026</p>
+    </div>
+  </footer>
+  <script src="../assets/js/data.js"></script>
+  <script defer src="../assets/vendor/katex/katex.min.js"></script>
+  <script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/main.js"></script>
+  <!-- /@footer -->
+</body>
+</html>

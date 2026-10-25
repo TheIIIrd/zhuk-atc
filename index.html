@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Код без ошибок — подготовка к экзамену по АТК</title>
+  <meta name="description" content="Неофициальный сайт для подготовки к экзамену по алгебраической теории кодирования: теория с нуля, примеры, задачи, устный экзамен.">
+  <meta name="theme-color" content="#5b3df5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Код без ошибок">
+  <meta property="og:title" content="Код без ошибок — подготовка к экзамену по АТК">
+  <meta property="og:description" content="Неофициальный сайт для подготовки к экзамену по алгебраической теории кодирования: теория с нуля, примеры, задачи, устный экзамен.">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <script src="assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Unbounded:wght@500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- /@head -->
+</head>
+<body data-root="" data-page="home" data-title="Код без ошибок — подготовка к экзамену по АТК" data-desc="Неофициальный сайт для подготовки к экзамену по алгебраической теории кодирования: теория с нуля, примеры, задачи, устный экзамен." data-scripts="tools">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="index.html" aria-label="Код без ошибок — на главную">
+        <span class="logo__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="logo__text">Код без ошибок</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Разделы сайта">
+        <ul>
+          <li><a href="index.html" aria-current="page">Главная</a></li>
+          <li><a href="plan.html">План</a></li>
+          <li><a href="theory/index.html">Теория</a></li>
+          <li><a href="examples/index.html">Примеры</a></li>
+          <li><a href="practice/index.html">Практика</a></li>
+          <li><a href="oral/index.html">Устный экзамен</a></li>
+          <li><a href="glossary.html">Словарь</a></li>
+          <li><a href="review/index.html">Повторение</a></li>
+          <li><a href="tools.html">Тренажёры</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
+        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Поиск по сайту">
+    <div class="search-dialog__head">
+      <label class="visually-hidden" for="search-input">Что найти</label>
+      <input class="search-input" id="search-input" type="search" placeholder="Например: обратный элемент" autocomplete="off">
+      <button class="icon-btn" id="search-close" type="button">Закрыть</button>
+    </div>
+    <ul class="search-results" id="search-results" aria-live="polite"></ul>
+  </dialog>
+  <!-- /@header -->
+  <main id="main" class="page">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__text">
+        <h1 id="hero-title"><span class="h1-line">Шум портит биты.</span> <span class="h1-line">Код их чинит.</span></h1>
+        <p>Это сайт для подготовки к экзамену по алгебраической теории кодирования. Объясняем с нуля: от остатков при делении до кодов БЧХ, Рида — Соломона и Гоппы. А вот настоящий код Хемминга: попробуйте его сломать.</p>
+        <div class="btn-row">
+          <a class="btn" href="theory/m01.html">Начать с модуля 1</a>
+          <a class="btn btn--ghost" href="plan.html">Открыть план</a>
+        </div>
+      </div>
+
+      <div class="hamming" id="hamming-demo">
+        <h2 class="hamming__title" id="demo-title">Код Хемминга (7, 4) вживую</h2>
+        <p class="hamming__hint">Отправляем 4 бита сообщения <strong class="bits" data-msg>0000</strong>, к ним добавлено 3 проверочных. Нажмите на любой бит в строке «Принято» — это помеха в канале.</p>
+
+        <p class="hamming__rowlabel" id="row-sent">Отправлено</p>
+        <div class="hamming__row" data-row="sent" aria-labelledby="row-sent"></div>
+        <p class="hamming__rowlabel" id="row-recv">Принято (нажмите, чтобы исказить)</p>
+        <div class="hamming__row" data-row="recv" aria-labelledby="row-recv"></div>
+        <p class="hamming__rowlabel" id="row-fixed">После декодера</p>
+        <div class="hamming__row" data-row="fixed" aria-labelledby="row-fixed"></div>
+        <div class="bit-tags" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+
+        <p class="hamming__status" aria-live="polite">Загрузка…</p>
+        <div class="hamming__actions">
+          <button class="btn btn--small" type="button" data-action="new">Новое сообщение</button>
+          <button class="btn btn--small btn--ghost" type="button" data-action="clear">Убрать помехи</button>
+        </div>
+        <p class="hamming__legend">
+          <span><span class="legend-sw legend-sw--parity"></span>пунктир — проверочный бит (позиции 1, 2, 4)</span>
+          <span><span class="legend-sw legend-sw--noise"></span>штриховка — помеха</span>
+          <span><span class="legend-sw legend-sw--fixed"></span>заливка — исправлено</span>
+        </p>
+        <p class="hamming__legend">Здесь используется классический порядок разрядов, где синдром равен номеру ошибочной позиции. В лекциях код Хемминга может быть записан с другим порядком столбцов — подробно разберём в модуле 4.</p>
+      </div>
+    </section>
+
+    <section class="continue-box" aria-labelledby="continue-title">
+      <h2 id="continue-title">Где вы остановились</h2>
+      <div id="continue" aria-live="polite"><p><a class="btn" href="theory/m01.html">Начать модуль 1</a></p></div>
+    </section>
+
+    <h2 id="how">Как пользоваться</h2>
+    <div class="prose">
+      <ol>
+        <li><strong>Идите по плану.</strong> Курс разбит на 12 недельных модулей. В каждом: теория, разобранные примеры, задачи и повторение.</li>
+        <li><strong>Сначала пробуйте сами.</strong> В задачах подсказка, ответ и полное решение спрятаны отдельно — открывайте по одному.</li>
+        <li><strong>Тренируйтесь говорить.</strong> Экзамен устный, поэтому в разделе «Устный экзамен» есть короткие и развёрнутые ответы и вопросы, которые могут задать «вдогонку».</li>
+      </ol>
+      <aside class="box box--note">
+        <p class="box__label">Прогресс хранится только у вас</p>
+        <p>Статусы модулей, отметки «решено», ваши ответы к задачам и результаты тестов сохраняются в этом браузере на этом устройстве. На телефон или другой компьютер они сами не попадут. Чтобы перенести прогресс, сохраните его в файл на странице <a href="plan.html#progress-io">«План»</a>.</p>
+      </aside>
+      <aside class="box box--warn" data-storage-warning hidden>
+        <p class="box__label">Браузер не разрешает сохранять данные</p>
+        <p>Скорее всего, открыт приватный режим. Прогресс пропадёт после закрытия вкладки.</p>
+      </aside>
+    </div>
+
+    <h2 id="progress">Мой прогресс</h2>
+    <div class="stats" id="progress-summary" aria-live="polite">
+      <p class="muted">Прогресс появится здесь, когда включён JavaScript.</p>
+    </div>
+
+    <h2 id="modules">Модули</h2>
+    <p class="muted">Статус модуля меняется на странице <a href="plan.html">«План»</a>.</p>
+    <ol class="timeline" id="module-timeline">
+      <li><div class="tl-item"><div class="tl-num">1</div><div><p class="tl-title">Модуль 1. Арифметика по модулю и введение в коды</p><p class="tl-links"><a href="theory/m01.html">Теория</a><a href="examples/m01.html">Примеры</a><a href="practice/m01.html">Практика</a><a href="review/m01.html">Повторение</a></p></div></div></li>
+    </ol>
+
+    <h2 id="quick">Быстрые ссылки</h2>
+    <ul class="quick-links">
+      <li><a href="theory/m01.html#b11"><strong>Арифметика по модулю</strong><span>Остатки, обратный элемент, поле F<sub>p</sub></span></a></li>
+      <li><a href="theory/m01.html#b12"><strong>Расстояние Хемминга</strong><span>Вес, шары, кодовое расстояние, t, s, s′</span></a></li>
+      <li><a href="tools.html"><strong>Тренажёры</strong><span>Калькулятор по модулю с алгоритмом Евклида, расстояние, параметры кода</span></a></li>
+      <li><a href="oral/index.html"><strong>27 вопросов программы</strong><span>Что уже разобрано и как отвечать</span></a></li>
+      <li><a href="glossary.html"><strong>Словарь</strong><span>Термины и обозначения с короткими пояснениями</span></a></li>
+      <li><a href="sources.html"><strong>Источники</strong><span>На что опирается сайт и чего не хватает</span></a></li>
+    </ul>
+
+    <h2 id="news">Что нового</h2>
+    <div class="prose">
+      <p><strong>Версия 0.2, 25 октября 2026.</strong> Сайт готов к публикации на GitHub Pages. Сохраняются ответы к задачам, ответы и результаты тестов, отрепетированные вопросы и место, где вы остановились (кнопка «Продолжить»). Страницы грузятся быстрее, улучшены контраст и доступность.</p>
+      <p><strong>Версия 0.1.1, 24 октября 2026.</strong> Ссылки на лекции этого учебного года по номерам.</p>
+      <p><strong>Версия 0.1, 24 октября 2026.</strong> Первая версия: каркас всех разделов, модуль 1 (блоки 1.1 «Арифметика по модулю» и 1.2 «Расстояние Хемминга и параметры кода»), список всех 27 вопросов программы, словарь и тренажёры.</p>
+    </div>
+  </main>
+  <!-- @footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
+      <p><a href="sources.html">Источники и условные обозначения</a><br><a href="plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
+      <p>Версия 0.2.0 от 25.10.2026</p>
+    </div>
+  </footer>
+  <script src="assets/js/data.js"></script>
+  <script defer src="assets/js/main.js"></script>
+  <script defer src="assets/js/tools.js"></script>
+  <!-- /@footer -->
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Теория, модуль 1: арифметика по модулю и введение в коды — Код без ошибок</title>
+  <meta name="description" content="Остатки, обратный элемент, поле F_p, расстояние Хемминга, кодовое расстояние, t, s, s′, теоремы Шеннона — объяснение с нуля.">
+  <meta name="theme-color" content="#5b3df5">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="Код без ошибок">
+  <meta property="og:title" content="Теория, модуль 1: арифметика по модулю и введение в коды — Код без ошибок">
+  <meta property="og:description" content="Остатки, обратный элемент, поле F_p, расстояние Хемминга, кодовое расстояние, t, s, s′, теоремы Шеннона — объяснение с нуля.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <script src="../assets/js/theme-init.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Unbounded:wght@500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="../assets/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- /@head -->
+</head>
+<body data-root="../" data-page="theory" data-title="Теория, модуль 1: арифметика по модулю и введение в коды — Код без ошибок" data-desc="Остатки, обратный элемент, поле F_p, расстояние Хемминга, кодовое расстояние, t, s, s′, теоремы Шеннона — объяснение с нуля.">
+  <!-- @header -->
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="logo" href="../index.html" aria-label="Код без ошибок — на главную">
+        <span class="logo__mark" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+        <span class="logo__text">Код без ошибок</span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Разделы сайта">
+        <ul>
+          <li><a href="../index.html">Главная</a></li>
+          <li><a href="../plan.html">План</a></li>
+          <li><a href="../theory/index.html" aria-current="page">Теория</a></li>
+          <li><a href="../examples/index.html">Примеры</a></li>
+          <li><a href="../practice/index.html">Практика</a></li>
+          <li><a href="../oral/index.html">Устный экзамен</a></li>
+          <li><a href="../glossary.html">Словарь</a></li>
+          <li><a href="../review/index.html">Повторение</a></li>
+          <li><a href="../tools.html">Тренажёры</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="btn-label">Поиск</span></button>
+        <button class="icon-btn" id="theme-btn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg><span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="btn-label">Меню</span></button>
+      </div>
+    </div>
+  </header>
+  <dialog class="search-dialog" id="search-dialog" aria-label="Поиск по сайту">
+    <div class="search-dialog__head">
+      <label class="visually-hidden" for="search-input">Что найти</label>
+      <input class="search-input" id="search-input" type="search" placeholder="Например: обратный элемент" autocomplete="off">
+      <button class="icon-btn" id="search-close" type="button">Закрыть</button>
+    </div>
+    <ul class="search-results" id="search-results" aria-live="polite"></ul>
+  </dialog>
+  <!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <p class="crumbs"><a href="index.html">Теория</a> / Модуль 1</p>
+      <h1>Модуль 1. Арифметика по модулю и введение в коды</h1>
+      <p class="lead">Два блока: как считать «по модулю» (без этого не работает ни один код в курсе) и как измерять, насколько код устойчив к ошибкам.</p>
+      <ul class="section-tabs" aria-label="Материалы модуля 1">
+        <li><a href="m01.html" aria-current="page">Теория</a></li>
+        <li><a href="../examples/m01.html">Примеры</a></li>
+        <li><a href="../practice/m01.html">Практика</a></li>
+        <li><a href="../review/m01.html">Повторение</a></li>
+      </ul>
+    </div>
+
+    <div class="with-toc">
+      <nav class="toc" aria-label="Содержание модуля">
+        <details class="toc-details" open>
+        <summary class="toc__title">Содержание</summary>
+        <ol class="toc-plain">
+          <li><a href="#b11">1.1 Арифметика по модулю</a>
+            <ol class="toc__sub">
+              <li><a href="#why">Зачем это нужно</a></li>
+              <li><a href="#remainder">Остатки и сравнения</a></li>
+              <li><a href="#ops">Сложение и умножение</a></li>
+              <li><a href="#inverse">Деление и поле</a></li>
+              <li><a href="#euclid">Алгоритм Евклида</a></li>
+              <li><a href="#vectors">Уравнения и векторы</a></li>
+              <li><a href="#powers">Степени и примитивный элемент</a></li>
+            </ol>
+          </li>
+          <li><a href="#b12">1.2 Расстояние и параметры кода</a>
+            <ol class="toc__sub">
+              <li><a href="#channel">Система связи</a></li>
+              <li><a href="#ml">Максимальное правдоподобие</a></li>
+              <li><a href="#hamming">Расстояние Хемминга</a></li>
+              <li><a href="#balls">Шары и сферы</a></li>
+              <li><a href="#codedist">Кодовое расстояние, t, s, s′</a></li>
+              <li><a href="#repetition">Код с повторением</a></li>
+              <li><a href="#shannon">Теоремы Шеннона</a></li>
+            </ol>
+          </li>
+        </ol>
+        </details>
+      </nav>
+
+      <article class="prose">
+
+        <!-- ================= БЛОК 1.1 ================= -->
+        <h2 id="b11">1.1 Арифметика по модулю</h2>
+        <p><span class="origin origin--extra">Пояснение: база, которую курс считает известной</span></p>
+        <p>Курс напрямую этого не объясняет, но пользуется этим с первой лекции. Строго и подробно — в книге Чашкина и Жукова «Элементы конечной алгебры», глава 2 «Целые числа» (в программе экзамена это источник [16]).</p>
+
+        <h3 id="why">Зачем это нужно</h3>
+        <p>В теории кодирования символы сообщения — не обычные числа, а элементы конечного набора, например {0, 1} или {0, 1, 2}. Складывать и умножать их нужно так, чтобы результат не выходил за пределы набора. Это и делает арифметика по модулю: числа «ходят по кругу», как стрелки часов.</p>
+        <aside class="box box--ex">
+          <p class="box__label">Пример из лекции 1 «Введение»</p>
+          <p><span class="origin origin--course">Курс: лекция 1, пример с полем F₃</span></p>
+          <p>Над F₃ = {0, 1, 2} передали кодовое слово <span class="bits">x = 1021</span>, а приняли <span class="bits">y = 2011</span>. Вычтем по разрядам и возьмём остаток от деления на 3:</p>
+          <div class="table-wrap" tabindex="0" role="region" aria-label="Вычисление вектора ошибки">
+            <table class="grid-table">
+              <thead><tr><th scope="col">Разряд</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">y (принято)</th><td>2</td><td>0</td><td>1</td><td>1</td></tr>
+                <tr><th scope="row">x (передано)</th><td>1</td><td>0</td><td>2</td><td>1</td></tr>
+                <tr><th scope="row">y − x</th><td>1</td><td>0</td><td>−1</td><td>0</td></tr>
+                <tr><th scope="row">e = (y − x) mod 3</th><td>1</td><td>0</td><td><strong>2</strong></td><td>0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Вектор ошибки <span class="bits">e = 1020</span>: ошибки в 1-м и 3-м разрядах. Число −1 превратилось в 2, потому что «по модулю 3» шаг назад от 0 приводит к 2.</p>
+        </aside>
+
+        <h3 id="remainder">Остатки и сравнения</h3>
+        <aside class="box box--def">
+          <p class="box__label">Определение: деление с остатком</p>
+          <p>Для целого a и натурального n существуют единственные целые q и r такие, что</p>
+          <div class="formula">\[ a = q\cdot n + r, \qquad 0 \le r < n. \]</div>
+          <p>Число r называется остатком и обозначается <code>a mod n</code>.</p>
+        </aside>
+        <ul>
+          <li>17 mod 5 = 2, потому что 17 = 3·5 + 2.</li>
+          <li><strong>−7 mod 5 = 3</strong>, потому что −7 = (−2)·5 + 3. Не −2: остаток всегда неотрицательный.</li>
+          <li>Быстрый способ для отрицательных: прибавляйте n, пока не попадёте в отрезок от 0 до n − 1: −7 → −2 → 3.</li>
+        </ul>
+        <aside class="box box--def">
+          <p class="box__label">Определение: сравнение по модулю</p>
+          <p>\(a \equiv b \pmod n\) (читается «a сравнимо с b по модулю n»), если n делит разность a − b. Равносильно: a и b дают одинаковый остаток при делении на n.</p>
+        </aside>
+        <p>Пример: 17 ≡ 2 ≡ −3 (mod 5). Часы — это арифметика по модулю 12: через 15 часов после 10:00 будет 1:00, ведь 25 ≡ 1 (mod 12).</p>
+        <p>Множество всех остатков обозначают \(\mathbb{Z}_n = \{0, 1, \dots, n-1\}\). Если n = p — простое число, это множество обозначают \(\mathbb{F}_p\); почему буква F — чуть ниже, в разделе <a href="#inverse">«Деление и поле»</a>.</p>
+
+        <h3 id="ops">Сложение, вычитание, умножение</h3>
+        <p><strong>Главное правило:</strong> считайте как обычно, потом берите остаток. Остаток можно брать и на любом промежуточном шаге — ответ не изменится, а числа не будут расти.</p>
+        <p>Пример: 23·34 mod 5. Честно: 782 mod 5 = 2. Быстро: 23 ≡ 3, 34 ≡ 4, 3·4 = 12 ≡ 2. Ответ тот же.</p>
+        <p><strong>Вычитание.</strong> Противоположный элемент −a — это n − a: в \(\mathbb{Z}_5\) получаем −1 = 4, −2 = 3. Поэтому a − b = a + (n − b). Пример: в \(\mathbb{Z}_5\) 1 − 3 = 1 + 2 = 3; проверка: 3 + 3 = 6 ≡ 1.</p>
+        <aside class="box box--note">
+          <p class="box__label">Особый случай: двоичный алфавит</p>
+          <p>В \(\mathbb{Z}_2\) верно −1 = 1, поэтому <strong>вычитание совпадает со сложением</strong>. Сложение в \(\mathbb{Z}_2\) — это «исключающее ИЛИ» (XOR, ⊕): 1 ⊕ 1 = 0. В двоичных кодах вектор ошибки находится как e = y ⊕ x, без минусов.</p>
+        </aside>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Таблица сложения в Z5">
+          <table class="grid-table">
+            <caption>Сложение в \(\mathbb{Z}_5\)</caption>
+            <thead><tr><th scope="col">+</th><th scope="col">0</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">0</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+              <tr><th scope="row">1</th><td>1</td><td>2</td><td>3</td><td>4</td><td>0</td></tr>
+              <tr><th scope="row">2</th><td>2</td><td>3</td><td>4</td><td>0</td><td>1</td></tr>
+              <tr><th scope="row">3</th><td>3</td><td>4</td><td>0</td><td>1</td><td>2</td></tr>
+              <tr><th scope="row">4</th><td>4</td><td>0</td><td>1</td><td>2</td><td>3</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Таблица умножения в Z5">
+          <table class="grid-table">
+            <caption>Умножение в \(\mathbb{Z}_5\) (строку и столбец с нулём не пишем: умножение на 0 даёт 0)</caption>
+            <thead><tr><th scope="col">·</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">1</th><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+              <tr><th scope="row">2</th><td>2</td><td>4</td><td>1</td><td>3</td></tr>
+              <tr><th scope="row">3</th><td>3</td><td>1</td><td>4</td><td>2</td></tr>
+              <tr><th scope="row">4</th><td>4</td><td>3</td><td>2</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Посмотрите на таблицу умножения: в каждой строке встречаются <strong>все</strong> ненулевые числа, и в каждой есть 1. Это не случайность — об этом следующий раздел.</p>
+
+        <h3 id="inverse">Деление и обратный элемент</h3>
+        <p>Деление по модулю — это <strong>умножение на обратный элемент</strong>. Обычные дроби не работают: в \(\mathbb{Z}_5\) нет числа «0,75».</p>
+        <aside class="box box--def">
+          <p class="box__label">Определение: обратный элемент</p>
+          <p>Обратный к a — такое число \(a^{-1}\), что \(a\cdot a^{-1} \equiv 1 \pmod n\). Тогда \(b / a = b\cdot a^{-1}\).</p>
+        </aside>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Обратные элементы в Z5">
+          <table class="grid-table">
+            <thead><tr><th scope="col">a</th><td>1</td><td>2</td><td>3</td><td>4</td></tr></thead>
+            <tbody><tr><th scope="row">a⁻¹ в \(\mathbb{Z}_5\)</th><td>1</td><td>3</td><td>2</td><td>4</td></tr></tbody>
+          </table>
+        </div>
+        <p>Пример: 3 / 4 в \(\mathbb{Z}_5\) = 3·4⁻¹ = 3·4 = 12 ≡ 2. Проверка: 2·4 = 8 ≡ 3. Верно.</p>
+        <aside class="box box--warn">
+          <p class="box__label">Типичная ошибка</p>
+          <p>Делить «дробью» вместо умножения на обратный. И не проверять результат: деление всегда проверяйте умножением — это самая дешёвая защита от ошибок.</p>
+        </aside>
+        <p><strong>Обратный есть не всегда.</strong> В \(\mathbb{Z}_6\): 2·1 = 2, 2·2 = 4, 2·3 = 6 ≡ <strong>0</strong>, 2·4 ≡ 2, 2·5 ≡ 4 — единица не получается никогда. Ещё и 2·3 = 0, хотя ни 2, ни 3 не ноль. Такие числа называются <strong>делителями нуля</strong>.</p>
+        <aside class="box box--thm">
+          <p class="box__label">Теорема</p>
+          <p>У a есть обратный в \(\mathbb{Z}_n\) тогда и только тогда, когда НОД(a, n) = 1 (a и n взаимно просты).</p>
+        </aside>
+        <p><em>Почему без НОД = 1 не выйдет.</em> Пусть d = НОД(a, n) &gt; 1 и a·k ≡ 1. Тогда a·k = 1 + m·n для некоторого целого m. Число d делит a·k и делит m·n, значит, делит и их разность, то есть 1. Противоречие.</p>
+        <p><em>Почему при НОД = 1 обратный есть</em> — покажет <a href="#euclid">алгоритм Евклида</a>: он явно строит обратный.</p>
+        <aside class="box box--thm">
+          <p class="box__label">Следствие: \(\mathbb{Z}_p\) — поле</p>
+          <p>Если p простое, любое a от 1 до p − 1 взаимно просто с p, и на него можно делить. <strong>Поле</strong> — это множество, где есть все четыре действия арифметики (делить нельзя только на 0) и выполняются привычные законы: переместительный, сочетательный, раскрытие скобок. Обозначение \(\mathbb{F}_p\) — от английского <i>field</i>.</p>
+        </aside>
+        <p>Строгое определение поля через аксиомы будет в модуле 6 (лекция 7, раздел «Группы, кольца, поля: определения»).</p>
+        <p><strong>Зачем кодам поле.</strong> Теория линейных кодов — это линейная алгебра, а метод Гаусса постоянно делит на ведущий элемент. Поэтому коды строят над \(\mathbb{F}_2, \mathbb{F}_3, \mathbb{F}_5, \dots\), а не над \(\mathbb{Z}_4\) или \(\mathbb{Z}_6\).</p>
+        <aside class="box box--warn">
+          <p class="box__label">Ловушка: F₄ ≠ Z₄</p>
+          <p>\(\mathbb{Z}_4\) — не поле: 2·2 = 4 ≡ 0. Но поле из 4 элементов существует: его строят из многочленов (модуль 7). В программе экзамена \(\mathbb{F}_4\) встречается в задачах 18 и 54, а \(\mathbb{F}_9, \mathbb{F}_{16}, \mathbb{F}_{25}\) — почти во всех задачах про коды БЧХ и Рида — Соломона.</p>
+        </aside>
+
+        <h3 id="euclid">Алгоритм Евклида: как найти обратный</h3>
+        <p>Для маленьких n (2, 3, 5, 7) обратный проще найти перебором. Для больших нужен <strong>расширенный алгоритм Евклида</strong>. Это важная тема, а не проходная: тот же алгоритм, только для многочленов, декодирует коды БЧХ, Рида — Соломона и Гоппы (вопросы программы 20 и 23).</p>
+        <p><strong>Идея.</strong> НОД(a, b) = НОД(b, a mod b): общие делители у этих пар одинаковые. Делим с остатком, пока остаток не станет нулём; последний ненулевой остаток — НОД.</p>
+        <aside class="box box--ex">
+          <p class="box__label">Пример: 5⁻¹ по модулю 17</p>
+          <p>Прямой ход:</p>
+          <ol>
+            <li>17 = 3·5 + 2</li>
+            <li>5 = 2·2 + 1</li>
+            <li>2 = 2·1 + 0 → НОД = 1, значит обратный существует.</li>
+          </ol>
+          <p>Обратный ход: выражаем 1 через 17 и 5, подставляя остатки снизу вверх.</p>
+          <ol>
+            <li>Из строки 2: 1 = 5 − 2·2.</li>
+            <li>Из строки 1: 2 = 17 − 3·5. Подставляем: 1 = 5 − 2·(17 − 3·5) = 7·5 − 2·17.</li>
+            <li>По модулю 17 слагаемое 2·17 исчезает: 7·5 ≡ 1. <strong>Ответ: 5⁻¹ = 7.</strong> Проверка: 35 = 2·17 + 1.</li>
+          </ol>
+        </aside>
+        <aside class="box box--def">
+          <p class="box__label">Соотношение Безу</p>
+          <p>НОД(a, n) всегда можно записать как u·a + v·n с целыми u, v. Если НОД = 1, то u·a ≡ 1 (mod n), и u — обратный к a. Это и есть вторая половина теоремы выше.</p>
+        </aside>
+        <p><strong>То же самое таблицей, без обратного хода.</strong> Рядом с каждым остатком r ведём число x такое, что r ≡ x·5 (mod 17). Новая строка = позапрошлая − q·прошлая, и для r, и для x. Именно так алгоритм записан в программе экзамена (задача 85), только там вместо чисел многочлены.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Табличный алгоритм Евклида для 5 по модулю 17">
+          <table>
+            <thead><tr><th scope="col">Строка</th><th scope="col">Остаток r</th><th scope="col">Частное q</th><th scope="col">x, где r ≡ x·5 (mod 17)</th></tr></thead>
+            <tbody>
+              <tr><td>старт</td><td>17</td><td>—</td><td>0</td></tr>
+              <tr><td>старт</td><td>5</td><td>—</td><td>1</td></tr>
+              <tr><td>1</td><td>2</td><td>3</td><td>0 − 3·1 = −3</td></tr>
+              <tr><td>2</td><td><strong>1</strong></td><td>2</td><td>1 − 2·(−3) = <strong>7</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Дошли до r = 1 — в той же строке стоит ответ x = 7. Если x получился отрицательным, прибавьте n. Проверить себя можно в <a href="../tools.html#mod-tool">калькуляторе по модулю</a>: он показывает такую же таблицу.</p>
+
+        <h3 id="vectors">Уравнения и векторы</h3>
+        <p><strong>Линейное уравнение</strong> a·x + b = c в поле \(\mathbb{F}_p\) решается как в школе: x = (c − b)·a⁻¹, и при a ≠ 0 решение ровно одно. Пример в \(\mathbb{Z}_5\): 3x + 4 = 1 ⇒ 3x = −3 ≡ 2 ⇒ x = 2·3⁻¹ = 2·2 = 4. Проверка: 3·4 + 4 = 16 ≡ 1.</p>
+        <p>В \(\mathbb{Z}_n\) с составным n уравнения ведут себя странно: решений может не быть или быть несколько (задача 5 в практике). Ещё одна причина работать только над полями.</p>
+        <aside class="box box--def">
+          <p class="box__label">Векторы над полем</p>
+          <p>\(\mathbb{F}_q^n\) — множество всех строк длины n из элементов поля; в нём \(q^n\) векторов. В лекциях векторы часто пишут без скобок и запятых: <span class="bits">1021</span> означает (1, 0, 2, 1). Все действия — <strong>покоординатно</strong>, каждая координата по модулю.</p>
+        </aside>
+        <p>Над \(\mathbb{F}_3\): a = <span class="bits">102</span>, b = <span class="bits">221</span>.</p>
+        <ul>
+          <li>a + b = (3, 2, 3) ≡ <span class="bits">020</span></li>
+          <li>2a = (2, 0, 4) ≡ <span class="bits">201</span></li>
+          <li>a − b = (−1, −2, 1) ≡ <span class="bits">211</span> — то же, что a + 2b, ведь −1 ≡ 2.</li>
+        </ul>
+        <p>Выражение c₁v₁ + c₂v₂ + … (числа cᵢ из поля, vᵢ — векторы) называется <strong>линейной комбинацией</strong>. Линейный код — это множество всех линейных комбинаций нескольких векторов (модуль 3).</p>
+
+        <h3 id="powers">Заглядываем вперёд: степени и примитивный элемент</h3>
+        <p><span class="origin origin--extra">Пояснение: задел на модуль 7 (вопрос 1 программы)</span></p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Степени 3 и 2 по модулю 7">
+          <table class="grid-table">
+            <thead><tr><th scope="col">k</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">3ᵏ mod 7</th><td>3</td><td>2</td><td>6</td><td>4</td><td>5</td><td>1</td></tr>
+              <tr><th scope="row">2ᵏ mod 7</th><td>2</td><td>4</td><td>1</td><td>2</td><td>4</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Степени тройки пробегают <strong>все</strong> ненулевые элементы \(\mathbb{F}_7\) — такой элемент называется <strong>примитивным</strong>. Степени двойки зацикливаются уже после трёх шагов: число 3 — <strong>порядок</strong> элемента 2.</p>
+        <p>Два факта, которые докажем позже: в \(\mathbb{F}_p\) для любого a ≠ 0 верно \(a^{p-1} = 1\) (малая теорема Ферма), и порядок любого элемента делит p − 1; примитивный элемент есть в любом конечном поле.</p>
+        <p><strong>Зачем это нужно.</strong> Если записать ненулевые элементы как степени примитивного, умножение превращается в сложение показателей по модулю p − 1, как с логарифмами: в \(\mathbb{F}_7\) 5·6 = 3⁵·3³ = 3⁸ = 3² = 2. Именно так считают в \(\mathbb{F}_{16}\) в задачах про коды БЧХ и Рида — Соломона: там пишут «α⁷» вместо элемента 1011.</p>
+        <p class="no-print"><label class="done-check done-check--inline"><input type="checkbox" data-block="m01-b11"> Я прочитал блок 1.1</label></p>
+
+        <!-- ================= БЛОК 1.2 ================= -->
+        <h2 id="b12">1.2 Расстояние Хемминга и параметры кода</h2>
+        <p><span class="origin origin--course">Курс: лекция 1 «Введение. Основные понятия помехоустойчивого кодирования»; программа, вопрос 2</span></p>
+
+        <h3 id="channel">Система связи с помехами</h3>
+        <p>По Шеннону система связи устроена так: источник выдаёт сообщение, кодер добавляет к нему избыточность, канал вносит помехи, декодер по искажённому слову восстанавливает сообщение, приёмник его получает.</p>
+        <div class="formula">\[ \text{сообщение } i \;\xrightarrow{\text{кодер}}\; x \;\xrightarrow{\text{канал: } +e}\; y = x + e \;\xrightarrow{\text{декодер}}\; \hat{x} \to \hat{i} \]</div>
+        <aside class="box box--def">
+          <p class="box__label">Определения: блочный код, скорость</p>
+          <ul>
+            <li><strong>Кодирование</strong> Ψ сопоставляет каждому информационному слову i длины k кодовое слово x = Ψ(i) длины n &gt; k.</li>
+            <li><strong>Блочный код</strong> длины n — множество всех кодовых слов C = {Ψ(i)}. Кодовая таблица — список всех кодовых слов.</li>
+            <li><strong>Скорость</strong> кода R = k/n — какая доля передаваемых символов несёт информацию.</li>
+            <li>Кодирование <strong>систематическое</strong>, если первые (или последние) k разрядов x совпадают с i. Эти разряды называются информационными, остальные n − k — проверочными.</li>
+          </ul>
+        </aside>
+        <aside class="box box--def">
+          <p class="box__label">Двоичный симметричный канал ДСК(p)</p>
+          <p>Каждый бит независимо от других переворачивается с вероятностью p и доходит верно с вероятностью 1 − p (схема Бернулли). В лекции рассматриваются и другие каналы: несимметричный, со стиранием, с выбрасыванием символов.</p>
+        </aside>
+        <p><strong>Зачем вообще кодировать.</strong> Пример из лекции: при p = 10⁻³ вероятность передать n бит без ошибок равна 0,999ⁿ. Уже при n = 1000 это меньше 0,37, а при n = 10 000 — меньше 5·10⁻⁵. Без исправления ошибок длинные сообщения почти всегда приходят испорченными.</p>
+
+        <h3 id="ml">Декодирование максимального правдоподобия</h3>
+        <p>Получили y. Какое кодовое слово отправляли? Метод максимального правдоподобия (МП) выбирает x ∈ C, для которого вероятность P(y | x) получить именно y наибольшая.</p>
+        <aside class="box box--thm">
+          <p class="box__label">Утверждение: в ДСК(p) при p &lt; 1/2 МП = «ближайшее кодовое слово»</p>
+          <p>Если x и y различаются в d разрядах, то</p>
+          <div class="formula">\[ P(y \mid x) = p^{d}\,(1-p)^{\,n-d} = (1-p)^n \left(\frac{p}{1-p}\right)^{d}. \]</div>
+          <p>При p &lt; 1/2 дробь p/(1 − p) меньше 1, поэтому вероятность тем больше, чем меньше d. Значит, МП-декодер выбирает кодовое слово, ближайшее к y.</p>
+        </aside>
+        <p>Если ближайшее слово единственное, ошибка исправима: e = y − x. Если ближайших несколько, говорят, что ошибка <strong>обнаружена</strong>, но исправить её нельзя. Разбор числового примера из лекции — на странице <a href="../examples/m01.html#ex-ml">«Примеры»</a>.</p>
+
+        <h3 id="hamming">Расстояние Хемминга, вес, метрика</h3>
+        <aside class="box box--def">
+          <p class="box__label">Определения</p>
+          <ul>
+            <li><strong>Расстояние Хемминга</strong> d(α, β) между векторами α, β ∈ \(\mathbb{F}_q^n\) — число разрядов, в которых они различаются.</li>
+            <li><strong>Вес</strong> ‖α‖ — число ненулевых координат вектора α.</li>
+            <li>Наборы, различающиеся в одном разряде, называются <strong>соседними</strong>, во всех разрядах — <strong>противоположными</strong>.</li>
+          </ul>
+        </aside>
+        <p>Пример: d(<span class="bits">10<mark>1</mark>1<mark>0</mark></span>, <span class="bits">10<mark>0</mark>1<mark>1</mark></span>) = 2. Веса: ‖1001‖ = 2; над \(\mathbb{F}_3\) ‖102‖ = 2.</p>
+        <p>Полезная связь: <strong>d(x, y) = ‖y − x‖</strong> — разряды, где векторы различаются, — это ровно ненулевые разряды разности. В двоичном случае d(x, y) = ‖x ⊕ y‖ (задача 18 в практике). Отсюда расстояние от отправленного слова до принятого равно весу вектора ошибки, то есть числу ошибок.</p>
+        <aside class="box box--def">
+          <p class="box__label">Метрика</p>
+          <p>Функция ρ на множестве X — <strong>метрика</strong>, если для любых a, b, c:</p>
+          <ol>
+            <li>симметричность: ρ(a, b) = ρ(b, a);</li>
+            <li>неотрицательность: ρ(a, b) ≥ 0, причём ρ(a, b) = 0 ⇔ a = b;</li>
+            <li>неравенство треугольника: ρ(a, b) + ρ(b, c) ≥ ρ(a, c).</li>
+          </ol>
+          <p>Расстояние Хемминга — метрика на \(\mathbb{F}_q^n\) (упражнение из лекции).</p>
+        </aside>
+        <details>
+          <summary>Почему выполняется неравенство треугольника</summary>
+          <div class="details-body">
+            <p><span class="origin origin--extra">Пояснение</span> Посмотрим на один разряд. Если a и c в нём различаются, то b не может совпадать с обоими: либо a ≠ b, либо b ≠ c. Значит, каждый разряд, который даёт 1 в d(a, c), даёт хотя бы 1 в сумму d(a, b) + d(b, c). Складывая по разрядам, получаем неравенство.</p>
+          </div>
+        </details>
+        <p>В лекции определено и <strong>расстояние Ли</strong> при простом q: ρ(α, β) = Σ|αᵢ − βᵢ| (разности считаются как у обычных целых чисел 0…q − 1). При q = 2 оно совпадает с расстоянием Хемминга, а в общем случае d ≤ ρ. Пример из лекции: над \(\mathbb{F}_3\) d(101, 221) = 2, ρ(101, 221) = 3. Дальше в курсе «расстояние» — всегда расстояние Хемминга.</p>
+
+        <h3 id="balls">Шары, сферы, булев куб</h3>
+        <aside class="box box--def">
+          <p class="box__label">Шар и сфера</p>
+          <p>\(B_r(a) = \{ b : d(a, b) \le r \}\) — шар радиуса r с центром a. \(S_r(a) = \{ b : d(a, b) = r \}\) — сфера радиуса r.</p>
+        </aside>
+        <p>Сколько векторов на сфере радиуса r? Выбираем, какие r разрядов изменить (\(\binom{n}{r}\) способов), и в каждом — на какой из q − 1 других символов:</p>
+        <div class="formula">\[ |S_r(a)| = \binom{n}{r}(q-1)^r, \qquad |B_r(a)| = \sum_{i=0}^{r} \binom{n}{i}(q-1)^i. \]</div>
+        <p>Пример: в \(\mathbb{F}_2^7\) шар радиуса 1 содержит 1 + 7 = 8 векторов. Эти формулы — основа границ для кодов в модуле 4.</p>
+        <p>Двоичное пространство \(\mathbb{F}_2^n = \{0,1\}^n\) называют <strong>булевым кубом</strong>. Множество векторов веса k — его k-й <strong>слой</strong>. <strong>Грань</strong> размерности k — все наборы, у которых фиксированы какие-то n − k разрядов, а остальные k произвольны; например, ∗0∗10 — грань размерности 2 из четырёх векторов 00010, 00110, 10010, 10110.</p>
+
+        <h3 id="codedist">Кодовое расстояние и числа t, s, s′</h3>
+        <aside class="box box--def">
+          <p class="box__label">Определение: кодовое расстояние</p>
+          <p>Любое подмножество C ⊆ \(\mathbb{F}_q^n\) называется кодом длины n. Его кодовое (минимальное) расстояние</p>
+          <div class="formula">\[ d(C) = \min_{a,\,b\,\in\, C,\; a \ne b} d(a, b). \]</div>
+        </aside>
+        <aside class="box box--def">
+          <p class="box__label">Определения: исправление и обнаружение</p>
+          <ul>
+            <li>Код <strong>обнаруживает s ошибок</strong>, если при искажении любого кодового слова не более чем в s разрядах можно однозначно сказать, что ошибки были.</li>
+            <li>Код <strong>исправляет t ошибок</strong>, если при искажении любого кодового слова не более чем в t разрядах по y = x + e можно однозначно восстановить x и e.</li>
+            <li>Если код исправляет t ошибок и одновременно обнаруживает s′ ошибок, говорят, что он обнаруживает s′ ошибок <strong>в режиме исправления</strong>.</li>
+          </ul>
+          <p>Дальше t, s, s′ — наибольшие такие числа для данного кода.</p>
+        </aside>
+        <aside class="box box--thm">
+          <p class="box__label">Утверждение: t, s, s′ определяются по d</p>
+          <div class="formula">\[ t = \left\lfloor \frac{d-1}{2} \right\rfloor, \qquad s = d - 1, \qquad s' = s - t = \left\lceil \frac{d-1}{2} \right\rceil. \]</div>
+          <p>В программе экзамена то же записано так: s′ = t при нечётном d и s′ = t + 1 при чётном d.</p>
+        </aside>
+        <p><strong>Геометрическая интерпретация.</strong> Если код исправляет t ошибок, шары радиуса t вокруг кодовых слов не пересекаются: иначе слово из пересечения нельзя было бы однозначно декодировать. Отсюда d(xᵢ, xⱼ) &gt; 2t, то есть d ≥ 2t + 1.</p>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Значения t, s, s' для малых d">
+          <table class="grid-table">
+            <caption>Примеры из лекции</caption>
+            <thead><tr><th scope="col">d</th><th scope="col">t</th><th scope="col">s</th><th scope="col">s′</th></tr></thead>
+            <tbody>
+              <tr><td>5</td><td>2</td><td>4</td><td>2</td></tr>
+              <tr><td>6</td><td>2</td><td>5</td><td>3</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <aside class="box box--warn">
+          <p class="box__label">Типичная ошибка</p>
+          <p>Путать s и s′. s = d − 1 — когда мы только проверяем, есть ли ошибки, и ничего не исправляем. Если же декодер исправляет всё, что попало в шар радиуса t, то часть «обнаружимых» искажений он примет за исправимые и исправит неправильно — поэтому в режиме исправления обнаруживается меньше: s′.</p>
+        </aside>
+        <p>Посчитать d, t, s, s′ для своего кода можно в <a href="../tools.html#code-tool">тренажёре</a>.</p>
+
+        <h3 id="repetition">Пример: код с повторением</h3>
+        <p><span class="origin origin--course">Курс: пример из лекции 1 «Введение»</span></p>
+        <p>Кодируем 0 → 000, 1 → 111 и декодируем «голосованием»: принимается тот символ, которого в слове больше (100 → 0, 101 → 1). Код ошибается, если испорчены 2 или 3 бита из трёх:</p>
+        <div class="formula">\[ P_{\text{ош}} = \binom{3}{2}p^2(1-p) + p^3 = 3p^2 - 2p^3. \]</div>
+        <p>При p = 1/100 получаем \(P_{\text{ош}} < 3\cdot 10^{-4}\): вероятность ошибки уменьшилась более чем в 30 раз, но скорость упала втрое (R = 1/3). Вопрос из лекции: какой максимальной скорости можно достичь при заданной надёжности? Ответ даёт Шеннон.</p>
+
+        <h3 id="shannon">Теоремы Шеннона (без доказательства)</h3>
+        <aside class="box box--def">
+          <p class="box__label">Энтропия и пропускная способность ДСК(p)</p>
+          <div class="formula">\[ H(p) = -p\log_2 p - (1-p)\log_2(1-p), \qquad C(p) = 1 - H(p). \]</div>
+          <p>H(p) определена на [0, 1] (в концах — по непрерывности), симметрична относительно 1/2 и выпукла вверх; H(1/2) = 1.</p>
+        </aside>
+        <aside class="box box--thm">
+          <p class="box__label">Прямая теорема Шеннона (1948)</p>
+          <p>Для любых p ≠ 1/2, R &lt; C(p) и ε &gt; 0 существует блочный код скорости R с длиной n = n(ε) → ∞, с помощью которого информацию можно передать по ДСК(p) с вероятностью ошибки декодирования меньше ε.</p>
+        </aside>
+        <aside class="box box--thm">
+          <p class="box__label">Обратная теорема</p>
+          <p>При R &gt; C(p) не существует метода кодирования, позволяющего вести передачу по ДСК(p) со скоростью R и со сколь угодно малой вероятностью ошибки.</p>
+        </aside>
+        <p>Простыми словами: у канала есть «потолок скорости» C(p). Ниже потолка можно передавать почти без ошибок, если брать достаточно длинные хорошие коды; выше — нельзя никак. Теорема говорит, что хорошие коды <em>существуют</em>, но не говорит, как их построить и быстро декодировать. Этим и занимается весь остальной курс.</p>
+        <aside class="box box--gap">
+          <p class="box__label">Пробел в материалах</p>
+          <p><span class="origin origin--gap">Программа, вопрос 2</span></p>
+          <p>Вопрос 2 программы требует ещё энтропийную оценку объёма шара \(|B_t| \le 2^{nH(t/n)}\) и следствие \(\log_2 |B_t| \sim nH(t/n)\). В презентации лекции 1 этой оценки нет. Она есть в книге Чашкина «Дискретная математика» (источник [15] программы; файл DM10.pdf), раздел 2.4 «Суммы биномиальных коэффициентов». Разберём её в модуле 4 вместе с границей Варшамова — Гильберта, где она нужна.</p>
+        </aside>
+        <p class="no-print"><label class="done-check done-check--inline"><input type="checkbox" data-block="m01-b12"> Я прочитал блок 1.2</label></p>
+
+        <hr>
+        <p><strong>Дальше:</strong> <a href="../examples/m01.html">примеры решений</a>, затем <a href="../practice/m01.html">задачи</a>.</p>
+      </article>
+    </div>
+  </main>
+  <!-- @footer -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
+      <p><a href="../sources.html">Источники и условные обозначения</a><br><a href="../plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
+      <p>Версия 0.2.0 от 25.10.2026</p>
+    </div>
+  </footer>
+  <script src="../assets/js/data.js"></script>
+  <script defer src="../assets/vendor/katex/katex.min.js"></script>
+  <script defer src="../assets/vendor/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/main.js"></script>
+  <!-- /@footer -->
+</body>
+</html>
