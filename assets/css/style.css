@@ -37,31 +37,7 @@
   color-scheme: light;
 }
 
-/* ---------- Токены: тёмная тема ---------- */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #121129;
-    --grid: #1d1b3c;
-    --surface: #1a1836;
-    --surface-2: #221f44;
-    --ink: #edebff;
-    --ink-2: #b9b5de;
-    --line: #322e5c;
-    --violet: #a797ff;
-    --violet-ink: #c2b7ff;
-    --violet-soft: #2a2552;
-    --noise: #ff7aae;
-    --noise-soft: #3a1730;
-    --signal: #4fd9bf;
-    --signal-soft: #10322e;
-    --amber: #ffc266;
-    --amber-soft: #3a2a0e;
-    --focus: #c2b7ff;
-    --on-accent: #121129;
-    --control-line: #8a86b8;
-    color-scheme: dark;
-  }
-}
+/* ---------- Токены: тёмная тема (включается кнопкой в шапке) ---------- */
 :root[data-theme="dark"] {
   --paper: #121129;
   --grid: #1d1b3c;
@@ -153,21 +129,21 @@ small, .muted { color: var(--ink-2); }
 .logo__mark span:nth-child(5) { background: var(--noise); }
 .logo__mark span:nth-child(2), .logo__mark span:nth-child(7) { background: transparent; box-shadow: inset 0 0 0 1.5px var(--violet); }
 
-.main-nav { margin-left: auto; }
+.main-nav { margin-left: auto; min-width: 0; }
 .main-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2px; }
 .main-nav li + li { margin: 0; }
 .main-nav a {
-  display: block; padding: 7px 10px; border-radius: 8px;
+  display: block; padding: 7px 10px; border-radius: 8px; white-space: nowrap;
   color: var(--ink); text-decoration: none; font-size: .95rem;
 }
 .main-nav a:hover { background: var(--surface-2); }
 .main-nav a[aria-current="page"] { background: var(--ink); color: var(--paper); }
 
-.header-actions { display: flex; gap: 6px; align-items: center; }
+.header-actions { display: flex; gap: 6px; align-items: center; flex: none; }
 .icon-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  min-height: 40px; padding: 0 12px;
-  border: 1px solid var(--control-line); border-radius: 10px;
+  display: inline-flex; align-items: center; gap: 6px; flex: none;
+  min-height: 40px; padding: 0 12px; white-space: nowrap;
+  border: 1px solid var(--line); border-radius: 10px;
   background: var(--surface); color: var(--ink);
   font: inherit; font-size: .9rem; cursor: pointer;
 }
@@ -175,12 +151,23 @@ small, .muted { color: var(--ink-2); }
 .icon-btn svg { width: 18px; height: 18px; flex: none; }
 .menu-btn { display: none; }
 
-@media (max-width: 1200px) {
+/* Компактная шапка: меню прячется под кнопку.
+   Класс is-compact ставит main.js, когда пункты меню не помещаются в строку;
+   медиа-запрос — запасной вариант для узких экранов и браузеров без JavaScript. */
+.site-header.is-compact .menu-btn { display: inline-flex; }
+.site-header.is-compact .main-nav {
+  position: absolute; top: 100%; left: 0; right: 0; margin: 0;
+  background: var(--surface); border-bottom: 1px solid var(--line); display: none;
+}
+.site-header.is-compact .main-nav.is-open { display: block; }
+.site-header.is-compact .main-nav ul { flex-direction: column; padding: 8px 16px 16px; }
+.site-header.is-compact .main-nav a { padding: 12px; font-size: 1rem; }
+.site-header.is-compact .header-actions { margin-left: auto; }
+@media (max-width: 760px) {
   .menu-btn { display: inline-flex; }
   .main-nav {
-    position: absolute; top: 100%; left: 0; right: 0;
-    background: var(--surface); border-bottom: 1px solid var(--line);
-    display: none; margin: 0;
+    position: absolute; top: 100%; left: 0; right: 0; margin: 0;
+    background: var(--surface); border-bottom: 1px solid var(--line); display: none;
   }
   .main-nav.is-open { display: block; }
   .main-nav ul { flex-direction: column; padding: 8px 16px 16px; }
@@ -541,7 +528,8 @@ details.solution > summary { color: var(--violet-ink); }
 .q-item { border: 1px solid var(--line); border-radius: var(--radius-m); background: var(--surface); margin: 0 0 12px; }
 .q-item > summary { align-items: flex-start; }
 .q-item .q-num { font-family: var(--font-display); font-weight: 700; min-width: 2.2em; }
-.q-item .q-state { margin-left: auto; font-size: .8rem; font-weight: 600; padding: 1px 9px; border-radius: 999px; border: 1.5px solid currentColor; white-space: nowrap; }
+.q-state { display: inline-block; font-size: .8rem; font-weight: 600; padding: 1px 9px; border-radius: 999px; border: 1.5px solid currentColor; white-space: nowrap; line-height: 1.5; }
+.q-item .q-state { margin-left: auto; }
 .q-state[data-state="ready"] { color: var(--signal); }
 .q-state[data-state="partial"] { color: var(--amber); }
 .q-state[data-state="later"] { color: var(--ink-2); border-style: dashed; }
@@ -576,15 +564,9 @@ details.solution > summary { color: var(--violet-ink); }
 .q-item > summary > span:nth-child(2) { flex: 1 1 12em; min-width: 0; }
 .q-program, .prose li, .prose p { overflow-wrap: break-word; }
 .q-program { overflow-x: auto; }
-.prose .katex { white-space: nowrap; }
 .q-program .katex, .formula .katex { max-width: 100%; }
 
-/* Шапка: пункты меню и кнопки не переносятся */
-.main-nav a, .icon-btn { white-space: nowrap; }
-@media (max-width: 1440px) and (min-width: 1201px) {
-  #theme-btn .btn-label { display: none; }
-  .main-nav a { padding: 7px 8px; font-size: .92rem; }
-}
+
 
 /* Оглавление модуля: сворачивается на телефоне */
 .toc-details { border: 0; background: transparent; margin: 0; }
@@ -601,6 +583,7 @@ details.solution > summary { color: var(--violet-ink); }
 .tool-form__wide { flex: 1 1 260px; }
 .input--block { width: 100%; }
 .tl-progress { font-size: .9rem; margin: 0 0 6px; color: var(--ink); }
+.gl-item .gl-sym .katex { font-size: 1em; }
 
 .continue-box { margin: 0 0 8px; padding: 18px 20px; border: 1.5px solid var(--ink); border-radius: var(--radius-l); background: var(--surface); }
 .continue-box h2 { margin-top: 0; font-size: 1.2rem; }
@@ -620,3 +603,64 @@ details.note > summary { color: var(--ink); }
 .rehearse { margin: 1em 0 .4em; }
 .q-item.is-done > summary .q-num::after { content: " ✓"; color: var(--signal); }
 .task__head .task__num { margin: 0; }
+
+/* ---------- Кнопка темы: показываем иконку той темы, которую включит нажатие ---------- */
+#theme-btn .icon-sun { display: none; }
+#theme-btn[data-next="light"] .icon-sun { display: block; }
+#theme-btn[data-next="light"] .icon-moon { display: none; }
+
+/* ---------- Страница «Модули» ---------- */
+.mod-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+.mod-list > li + li { margin: 0; }
+.mod-card {
+  background: var(--surface); border: 1.5px solid var(--ink); border-radius: var(--radius-l);
+  padding: 20px 22px; min-width: 0;
+}
+.mod-card--later { border: 1px dashed var(--line); background: transparent; }
+.mod-card__title { display: flex; align-items: center; gap: 14px; margin: 0 0 6px; font-size: clamp(1.1rem, 2vw, 1.35rem); }
+.mod-card__num {
+  flex: none; width: 44px; height: 44px; display: grid; place-items: center;
+  border-radius: 10px; border: 2px solid var(--ink); font-size: 1rem;
+}
+.mod-card--later .mod-card__num { border-style: dashed; color: var(--ink-2); border-color: var(--ink-2); }
+.mod-card--later .mod-card__title { color: var(--ink-2); }
+.mod-card__meta { color: var(--ink-2); font-size: .92rem; margin: 0 0 8px; }
+.mod-card__progress { font-size: .92rem; margin: 0 0 8px; }
+.mod-card__progress:empty { display: none; }
+.mod-card__blocks { margin: 0 0 14px; padding-left: 1.2em; color: var(--ink); }
+.mod-card__later { margin: 0; color: var(--ink-2); font-size: .92rem; }
+.mod-parts { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); }
+.mod-parts li + li { margin: 0; }
+.mod-part {
+  display: flex; flex-direction: column; gap: 2px; height: 100%;
+  padding: 12px 14px; border-radius: var(--radius-m); border: 1.5px solid var(--control-line);
+  color: var(--ink); text-decoration: none; background: var(--paper);
+}
+.mod-part:hover { border-color: var(--ink); background: var(--violet-soft); }
+.mod-part strong { font-family: var(--font-display); font-size: .98rem; }
+.mod-part span { font-size: .88rem; color: var(--ink-2); }
+
+/* ---------- Формулы: переносы и узкие экраны ---------- */
+/* Короткие формулы в строке не разрываем; на узком экране разрешаем перенос по знакам операций */
+.katex { white-space: nowrap; }
+@media (max-width: 600px) { .prose .katex, .q-program .katex, .gl-item .katex { white-space: normal; } }
+.formula .katex-display > .katex { white-space: nowrap; }
+@media (max-width: 600px) {
+  .formula { padding: 10px 8px; }
+  .formula .katex { font-size: .98em; }
+}
+
+/* ---------- Схема системы связи ---------- */
+.flow { list-style: none; margin: 1.2em 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; counter-reset: none; }
+.flow li + li { margin: 0; }
+.flow__node { padding: 8px 12px; border: 1.5px solid var(--ink); border-radius: 10px; background: var(--surface); font-weight: 600; }
+.flow__step { font-size: .9rem; color: var(--ink-2); display: inline-flex; align-items: center; gap: 6px; }
+.flow__step::before { content: "→"; font-size: 1.35em; line-height: 1; color: var(--ink); }
+.flow__step--noise { color: var(--noise); font-weight: 600; }
+
+/* Выпадающие списки в тренажёрах — по ширине текста */
+.tool-form select.input { width: auto; min-width: 7em; max-width: 100%; }
+
+/* Устный экзамен: комфортная длина строки внутри вопроса */
+.q-item > .details-body > * { max-width: 78ch; }
+.q-item > .details-body > .q-program { max-width: none; }

@@ -36,9 +36,7 @@ MODULE_PAGES = ("theory", "examples", "practice", "review")
 NAV = [
     ("home", "index.html", "Главная"),
     ("plan", "plan.html", "План"),
-    ("theory", "theory/index.html", "Теория"),
-    ("examples", "examples/index.html", "Примеры"),
-    ("practice", "practice/index.html", "Практика"),
+    ("modules", "modules.html", "Модули"),
     ("oral", "oral/index.html", "Устный экзамен"),
     ("glossary", "glossary.html", "Словарь"),
     ("review", "review/index.html", "Повторение"),
@@ -46,14 +44,12 @@ NAV = [
 ]
 
 SECTIONS = {
-    "theory": ("Теория", "Объяснения с нуля: сначала интуиция и простой пример, потом строгая формулировка."),
-    "examples": ("Примеры решений", "Подробные разборы с промежуточными шагами и объяснением, зачем нужен каждый шаг."),
-    "practice": ("Практика", "Задачи трёх уровней. Подсказки, ответы и решения спрятаны — сначала попробуйте сами."),
     "review": ("Повторение", "Конспект на одну страницу, ключевые формулы, карточки и мини-тест по каждому модулю."),
 }
 
 ICON_SEARCH = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
-ICON_THEME = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 0 0 16z" fill="currentColor"/></svg>'
+ICON_THEME = ('<svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>'
+              '<svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>')
 ICON_MENU = '<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'
 
 MATH_RE = re.compile(r"\\\(|\\\[")
@@ -108,7 +104,7 @@ def header_block(root, page):
       </nav>
       <div class="header-actions">
         <button class="icon-btn" id="search-btn" type="button" aria-haspopup="dialog" aria-controls="search-dialog">{ICON_SEARCH}<span class="btn-label">Поиск</span></button>
-        <button class="icon-btn" id="theme-btn" type="button">{ICON_THEME}<span class="btn-label">Тема: авто</span></button>
+        <button class="icon-btn" id="theme-btn" type="button" data-next="dark" aria-label="Включить тёмную тему">{ICON_THEME}<span class="btn-label">Тёмная тема</span></button>
         <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="main-nav">{ICON_MENU}<span class="btn-label">Меню</span></button>
       </div>
     </div>
@@ -241,6 +237,62 @@ def section_index(key, data):
 """
 
 
+PARTS = [
+    ("theory", "Теория", "объяснения с нуля"),
+    ("examples", "Примеры", "разборы по шагам"),
+    ("practice", "Практика", "задачи с подсказками"),
+    ("review", "Повторение", "конспект, карточки, тест"),
+]
+
+
+def modules_page(data):
+    cards = []
+    for m in data["modules"]:
+        q = ("вопросы программы: " + ", ".join(str(x) for x in m["questions"])) if m["questions"] else "база для следующих тем"
+        blocks = "".join(f"<li>{html.escape(b)}</li>" for b in m["blocks"])
+        head = (f'<h2 class="mod-card__title" id="{m["id"]}"><span class="mod-card__num" aria-hidden="true">{m["num"]}</span>'
+                f'<span>Модуль {m["num"]}. {html.escape(m["title"])}</span></h2>')
+        meta = f'<p class="mod-card__meta">{m["dates"]}, {q}</p>'
+        if m["ready"]:
+            parts = "".join(f'<li><a class="mod-part" href="{d}/{m["id"]}.html"><strong>{t}</strong><span>{sub}</span></a></li>'
+                            for d, t, sub in PARTS)
+            cards.append(f"""      <li class="mod-card">
+        {head}
+        {meta}
+        <p class="mod-card__progress" data-module-progress="{m["id"]}"></p>
+        <ul class="mod-card__blocks" aria-label="Блоки модуля {m["num"]}">{blocks}</ul>
+        <ul class="mod-parts" aria-label="Части модуля {m["num"]}">{parts}</ul>
+      </li>""")
+        else:
+            cards.append(f"""      <li class="mod-card mod-card--later">
+        {head}
+        {meta}
+        <ul class="mod-card__blocks" aria-label="Блоки модуля {m["num"]}">{blocks}</ul>
+        <p class="mod-card__later">Материалы появятся, когда дойдём до этого модуля.</p>
+      </li>""")
+    body = "\n".join(cards)
+    return f"""<!doctype html>
+<html lang="ru">
+<head>
+  <!-- @head --><!-- /@head -->
+</head>
+<body data-page="modules" data-title="Модули — Код без ошибок" data-desc="Все модули курса: теория, примеры, практика и повторение в одном месте.">
+  <!-- @header --><!-- /@header -->
+  <main id="main" class="page">
+    <div class="page-head">
+      <h1>Модули</h1>
+      <p class="lead">Каждый модуль состоит из четырёх частей: теория, разобранные примеры, задачи и повторение. Выберите, что нужно сейчас: изучить новое, потренироваться или повторить.</p>
+    </div>
+    <ol class="mod-list">
+{body}
+    </ol>
+  </main>
+  <!-- @footer --><!-- /@footer -->
+</body>
+</html>
+"""
+
+
 def oral_states(text, data):
     """Пометки у вопросов программы берутся из dev/modules.json (questionCoverage и модули)."""
     cov = {str(k): v for k, v in data.get("questionCoverage", {}).items()}
@@ -338,12 +390,12 @@ def render_all():
     cfg = load_config()
     data = module_stats(json.loads(json.dumps(cfg)))
     base_url = (cfg.get("site") or {}).get("baseUrl", "").strip()
-    out = {"assets/js/data.js": data_js(data)}
+    out = {"assets/js/data.js": data_js(data), "modules.html": modules_page(data)}
     for key in SECTIONS:
         out[f"{key}/index.html"] = section_index(key, data)
 
     not_ready = {f"{d}/{m['id']}.html" for m in data["modules"] if not m["ready"] for d in MODULE_PAGES}
-    pages = sorted(set(page_files()) | {f"{k}/index.html" for k in SECTIONS})
+    pages = sorted(set(page_files()) | {f"{k}/index.html" for k in SECTIONS} | {"modules.html"})
     for rel in pages:
         text = out.get(rel) or read(rel)
         m = re.search(r"<body([^>]*)>", text)
