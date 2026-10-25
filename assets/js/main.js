@@ -1,5 +1,5 @@
 /* «Код без ошибок» — общий скрипт сайта.
-   Хранилище прогресса, тема, меню, формулы, поиск, план и сводка, отметки, ответы к задачам,
+   Хранилище прогресса, тема, меню, формулы, поиск, план и сводка, отметки, заметки к задачам,
    тесты, карточки, устный экзамен, «продолжить с места остановки», словарь, фильтры. */
 (function () {
   "use strict";
@@ -383,24 +383,179 @@
   onChange(syncChecks);
 
   /* =====================================================================
-     7. Мои ответы к задачам
+     7. Заметки к задачам: символы, автовысота, «Очистить», пометка «есть запись»
      ===================================================================== */
+  // [текст на кнопке, что вставить, подпись]; если есть 4-й элемент — это пара: выделение оборачивается.
+  var SYMBOLS = [
+    ["≡", "≡", "сравнимо по модулю"],
+    ["≢", "≢", "не сравнимо по модулю"],
+    ["x⁻¹", "⁻¹", "обратный элемент, степень минус один"],
+    ["·", "·", "умножение"],
+    ["⊕", "⊕", "сложение по модулю 2"],
+    ["≠", "≠", "не равно"],
+    ["≤", "≤", "меньше или равно"],
+    ["≥", "≥", "больше или равно"],
+    ["∈", "∈", "принадлежит"],
+    ["ℤ", "ℤ", "целые числа или кольцо вычетов"],
+    ["𝔽", "𝔽", "конечное поле"],
+    ["x²", "²", "в квадрате"],
+    ["xⁿ", "ⁿ", "в степени n"],
+    ["x₂", "₂", "нижний индекс 2"],
+    ["‖x‖", "‖", "вес вектора, двойные черты", "‖"],
+    ["⌊x⌋", "⌊", "целая часть, округление вниз", "⌋"],
+    ["→", "→", "стрелка"]
+  ];
+  function noteIds() { return Object.keys(load().notes); }
+  function announceNotes() {
+    var ev;
+    try { ev = new CustomEvent("atk:notes"); } catch (e) { ev = document.createEvent("Event"); ev.initEvent("atk:notes", false, false); }
+    document.dispatchEvent(ev);
+  }
+
+  // Вставка в позицию курсора. execCommand сохраняет отмену (Ctrl+Z); если он не сработал — setRangeText.
+  function insertAt(ta, open, close) {
+    var s = ta.selectionStart, e = ta.selectionEnd;
+    var sel = ta.value.slice(s, e);
+    var text = open + sel + (close || "");
+    var before = ta.value;
+    ta.focus();
+    var ok = false;
+    try { ok = document.execCommand("insertText", false, text) && ta.value !== before; } catch (err) { ok = false; }
+    if (!ok) {
+      if (ta.setRangeText) ta.setRangeText(text, s, e, "end");
+      else { ta.value = before.slice(0, s) + text + before.slice(e); }
+      var ev;
+      try { ev = new Event("input", { bubbles: true }); } catch (err) { ev = document.createEvent("Event"); ev.initEvent("input", true, false); }
+      ta.dispatchEvent(ev);
+    }
+    // Пустая пара: курсор между символами. Обёрнутое выделение: курсор после закрывающего.
+    var end = s + text.length;
+    var pos = close && !sel ? end - close.length : end;
+    ta.setSelectionRange(pos, pos);
+  }
+
+  // Высота поля по содержимому, не выше 60% экрана
+  function growNote(ta) {
+    if (!ta.offsetParent) return; // поле в свёрнутом блоке — посчитаем при раскрытии
+    ta.style.height = "auto";
+    var max = Math.max(160, Math.round(window.innerHeight * 0.6));
+    var h = ta.scrollHeight + (ta.offsetHeight - ta.clientHeight);
+    ta.style.height = Math.min(h, max) + "px";
+    ta.classList.toggle("is-tall", h > max);
+  }
+
   $$("textarea[data-note]").forEach(function (ta) {
     var id = ta.getAttribute("data-note");
     var status = document.getElementById(ta.id + "-status");
+    var details = ta.closest("details");
+    var flag = details ? $(".note-flag", details) : null;
     var timer = null;
-    function fill() { if (document.activeElement !== ta) ta.value = load().notes[id] || ""; }
+    var undoValue = null;
+
+    // Панель символов перед полем
+    var tools = document.createElement("div");
+    tools.className = "note-tools";
+    tools.setAttribute("role", "group");
+    tools.setAttribute("aria-label", "Вставить символ");
+    SYMBOLS.forEach(function (sym) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "sym-btn";
+      b.textContent = sym[0];
+      b.title = sym[2];
+      b.setAttribute("aria-label", "Вставить: " + sym[2]);
+      // Не забираем фокус у поля: курсор и выделение остаются на месте
+      b.addEventListener("mousedown", function (e) { e.preventDefault(); });
+      b.addEventListener("click", function () { insertAt(ta, sym[1], sym[3]); });
+      tools.appendChild(b);
+    });
+    ta.parentNode.insertBefore(tools, ta);
+
+    // Строка под полем: статус и «Очистить» / «Вернуть»
+    var foot = document.createElement("div");
+    foot.className = "note-foot";
+    if (status) foot.appendChild(status);
+    var clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.className = "btn btn--ghost btn--small";
+    clearBtn.textContent = "Очистить";
+    var undoBtn = document.createElement("button");
+    undoBtn.type = "button";
+    undoBtn.className = "btn btn--ghost btn--small";
+    undoBtn.textContent = "Вернуть";
+    undoBtn.hidden = true;
+    foot.appendChild(clearBtn);
+    foot.appendChild(undoBtn);
+    ta.parentNode.insertBefore(foot, ta.nextSibling);
+
+    ta.classList.add("is-auto");
+    function grow() { growNote(ta); }
+    function sync() {
+      var has = !!ta.value.trim();
+      clearBtn.disabled = !has;
+      if (flag) flag.hidden = !load().notes[id];
+    }
+    function save() {
+      clearTimeout(timer);
+      timer = null;
+      update(function (p) { if (ta.value.trim()) p.notes[id] = ta.value; else delete p.notes[id]; }, true);
+      sync();
+      announceNotes();
+    }
+    function savedText() {
+      return persistent ? "Сохранено в этом браузере." : "Сохранено до закрытия вкладки: браузер не разрешает хранить данные.";
+    }
+    function fill() {
+      if (document.activeElement !== ta && timer === null) ta.value = load().notes[id] || "";
+      sync();
+      grow();
+    }
     fill();
     onChange(fill);
+    if (details) details.addEventListener("toggle", function () { if (details.open) grow(); });
+
     ta.addEventListener("input", function () {
+      grow();
+      clearBtn.disabled = !ta.value.trim();
+      if (undoValue !== null && ta.value) { undoValue = null; undoBtn.hidden = true; }
       if (status) status.textContent = "Сохраняю…";
       clearTimeout(timer);
-      timer = setTimeout(function () {
-        update(function (p) { if (ta.value.trim()) p.notes[id] = ta.value; else delete p.notes[id]; }, true);
-        if (status) status.textContent = persistent ? "Сохранено в этом браузере." : "Сохранено до закрытия вкладки: браузер не разрешает хранить данные.";
-      }, 400);
+      timer = setTimeout(function () { save(); if (status) status.textContent = savedText(); }, 400);
+    });
+    ta.addEventListener("blur", function () { if (timer !== null) { save(); if (status) status.textContent = savedText(); } });
+
+    clearBtn.addEventListener("click", function () {
+      if (!ta.value.trim()) return;
+      undoValue = ta.value;
+      ta.value = "";
+      save();
+      grow();
+      undoBtn.hidden = false;
+      if (status) status.textContent = "Заметка удалена.";
+      undoBtn.focus();
+    });
+    undoBtn.addEventListener("click", function () {
+      if (undoValue === null) return;
+      ta.value = undoValue;
+      undoValue = null;
+      save();
+      grow();
+      undoBtn.hidden = true;
+      if (status) status.textContent = "Заметка возвращена. " + savedText();
+      ta.focus();
     });
   });
+
+  // Ширина поля меняется при повороте телефона — пересчитываем высоту раскрытых полей
+  (function () {
+    var rt = null;
+    window.addEventListener("resize", function () {
+      clearTimeout(rt);
+      rt = setTimeout(function () {
+        $$("textarea.note-input.is-auto").forEach(growNote);
+      }, 150);
+    });
+  })();
 
   /* =====================================================================
      8. Мини-тесты: ответы, последний и лучший результат сохраняются
@@ -673,7 +828,7 @@
   function describe(p) {
     return "модулей с отметкой: " + Object.keys(p.modules).length +
       ", решённых задач: " + Object.keys(p.tasks).length +
-      ", ответов к задачам: " + Object.keys(p.notes).length +
+      ", заметок к задачам: " + Object.keys(p.notes).length +
       ", тестов: " + Object.keys(p.quizzes).length +
       ", отрепетированных вопросов: " + Object.keys(p.oral).length;
   }
@@ -732,42 +887,96 @@
   }
 
   /* =====================================================================
-     12. Фильтр задач по уровню
+     12. Фильтр задач: по уровню и «С заметками»
      ===================================================================== */
   $$("[data-filter-group]").forEach(function (bar) {
     var target = document.getElementById(bar.getAttribute("data-filter-group"));
     var status = $("[data-filter-status]", bar);
     if (!target) return;
+    var tasks = $$(".task", target);
+    var notesBtn = $("button[data-filter-notes]", bar);
+    var countEl = notesBtn ? $("[data-notes-count]", notesBtn) : null;
+    var lvl = "all";
+    var notesOnly = false;
+    var empty = null;
+
+    function taskHasNote(t) {
+      var ta = $("textarea[data-note]", t);
+      return !!(ta && load().notes[ta.getAttribute("data-note")]);
+    }
+    function countNotes() {
+      var n = tasks.filter(taskHasNote).length;
+      if (countEl) countEl.textContent = "· " + n;
+      if (notesBtn) notesBtn.setAttribute("aria-label", "С заметками, задач: " + n);
+      return n;
+    }
+    function apply() {
+      var shown = 0;
+      tasks.forEach(function (t) {
+        var ok = (lvl === "all" || t.getAttribute("data-level") === lvl) && (!notesOnly || taskHasNote(t));
+        t.hidden = !ok;
+        if (ok) shown++;
+      });
+      if (status) status.textContent = (lvl === "all" && !notesOnly) ? "" : "Показано задач: " + shown;
+      if (!empty) {
+        empty = document.createElement("p");
+        empty.className = "filter-empty muted";
+        empty.hidden = true;
+        target.insertBefore(empty, target.firstChild);
+      }
+      empty.hidden = shown > 0;
+      empty.textContent = notesOnly
+        ? "Задач с заметками" + (lvl === "all" ? "" : " этого уровня") + " пока нет. Откройте «Заметки» у любой задачи и запишите ответ."
+        : "Задач этого уровня нет.";
+    }
     $$("button[data-level]", bar).forEach(function (btn) {
       btn.addEventListener("click", function () {
         $$("button[data-level]", bar).forEach(function (b) { b.setAttribute("aria-pressed", "false"); });
         btn.setAttribute("aria-pressed", "true");
-        var lvl = btn.getAttribute("data-level");
-        var shown = 0;
-        $$(".task", target).forEach(function (t) {
-          var ok = lvl === "all" || t.getAttribute("data-level") === lvl;
-          t.hidden = !ok;
-          if (ok) shown++;
-        });
-        if (status) status.textContent = "Показано задач: " + shown;
+        lvl = btn.getAttribute("data-level");
+        apply();
       });
     });
+    if (notesBtn) {
+      notesBtn.hidden = false;
+      $$(".filter-sep", bar).forEach(function (el) { el.hidden = false; });
+      notesBtn.addEventListener("click", function () {
+        notesOnly = !notesOnly;
+        notesBtn.setAttribute("aria-pressed", notesOnly ? "true" : "false");
+        apply();
+      });
+      countNotes();
+      // Счётчик обновляется сразу; список задач — только по нажатию фильтра,
+      // чтобы задача не исчезала, пока вы в ней печатаете.
+      document.addEventListener("atk:notes", countNotes);
+      onChange(countNotes);
+    }
   });
 
   /* =====================================================================
      13. Карточки
      ===================================================================== */
-  $$(".card").forEach(function (card) {
+  // Каждая карточка переворачивается кнопкой или нажатием на саму карточку.
+  function setFlipped(card, flipped) {
     var btn = $(".card__btn", card);
-    var ans = $(".card__a", card);
-    if (!btn || !ans) return;
-    ans.hidden = true;
-    btn.setAttribute("aria-expanded", "false");
-    btn.addEventListener("click", function () {
-      var show = ans.hidden;
-      ans.hidden = !show;
-      btn.setAttribute("aria-expanded", show ? "true" : "false");
-      btn.textContent = show ? "Скрыть ответ" : "Показать ответ";
+    var front = $(".card__face--front", card);
+    var back = $(".card__face--back", card);
+    card.classList.toggle("is-flipped", flipped);
+    if (front) front.setAttribute("aria-hidden", flipped ? "true" : "false");
+    if (back) back.setAttribute("aria-hidden", flipped ? "false" : "true");
+    if (btn) {
+      btn.setAttribute("aria-pressed", flipped ? "true" : "false");
+      btn.textContent = flipped ? "Показать вопрос" : "Показать ответ";
+    }
+  }
+  $$(".cards").forEach(function (list) {
+    list.classList.add("is-ready");
+    $$(".card", list).forEach(function (card) {
+      if (!$(".card__flip", card)) return;
+      setFlipped(card, false);
+      var btn = $(".card__btn", card);
+      if (btn) btn.addEventListener("click", function () { setFlipped(card, !card.classList.contains("is-flipped")); });
+      $(".card__flip", card).addEventListener("click", function () { setFlipped(card, !card.classList.contains("is-flipped")); });
     });
   });
   var shuffleBtn = $("#cards-shuffle");
@@ -778,13 +987,9 @@
       var j = Math.floor(Math.random() * (i + 1));
       var tmp = items[i]; items[i] = items[j]; items[j] = tmp;
     }
-    items.forEach(function (it) {
-      list.appendChild(it);
-      var a = $(".card__a", it), b = $(".card__btn", it);
-      if (a && b) { a.hidden = true; b.textContent = "Показать ответ"; b.setAttribute("aria-expanded", "false"); }
-    });
+    items.forEach(function (it) { list.appendChild(it); setFlipped(it, false); });
     var st = $("#cards-status");
-    if (st) st.textContent = "Карточки перемешаны, ответы скрыты.";
+    if (st) st.textContent = "Карточки перемешаны и повёрнуты вопросом вверх.";
   });
 
   /* =====================================================================

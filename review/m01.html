@@ -101,22 +101,82 @@
       <div class="formula">\[ \begin{aligned} H(p) &= -p\log_2 p-(1-p)\log_2(1-p), \\ C(p) &= 1 - H(p) \end{aligned} \]</div>
 
       <h2 id="cards">Карточки</h2>
-      <p>Сначала ответьте вслух, потом откройте ответ.</p>
+      <p>Сначала ответьте вслух, потом переверните карточку: нажмите на неё или на кнопку «Показать ответ». Нажмите ещё раз, чтобы вернуться к вопросу.</p>
       <div class="btn-row no-print">
         <button class="btn btn--small btn--ghost" type="button" id="cards-shuffle" aria-controls="cards-list">Перемешать карточки</button>
         <span class="muted" id="cards-status" role="status" aria-live="polite"></span>
       </div>
       <ul class="cards" id="cards-list">
-        <li class="card"><p class="card__q">Чему равно −11 mod 4?</p><p class="card__a">1, потому что −11 = (−3)·4 + 1.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">Когда у a есть обратный по модулю n?</p><p class="card__a">Ровно тогда, когда НОД(a, n) = 1.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">Найдите 3⁻¹ в ℤ₇.</p><p class="card__a">5, так как 3·5 = 15 ≡ 1.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">Почему ℤ₉ — не поле?</p><p class="card__a">3·3 = 9 ≡ 0: у 3 нет обратного (НОД(3, 9) = 3).</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">Что такое примитивный элемент поля?</p><p class="card__a">Элемент, степени которого пробегают все ненулевые элементы поля. Например, 3 в 𝔽₇.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">Почему МП-декодер в ДСК(p) при p &lt; 1/2 выбирает ближайшее слово?</p><p class="card__a">P(y | x) = (1 − p)ⁿ·(p/(1 − p))ᵈ, а p/(1 − p) &lt; 1, поэтому вероятность убывает с ростом d.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">Код имеет d = 6. Найдите t, s, s′.</p><p class="card__a">t = 2, s = 5, s′ = 3.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">Почему из «код исправляет t ошибок» следует d ≥ 2t + 1?</p><p class="card__a">Шары радиуса t вокруг кодовых слов не должны пересекаться; если бы d ≤ 2t, нашлось бы слово на расстоянии ≤ t от двух кодовых.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">Сколько векторов в шаре радиуса 1 в 𝔽₂⁷?</p><p class="card__a">1 + 7 = 8.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
-        <li class="card"><p class="card__q">О чём говорит обратная теорема Шеннона?</p><p class="card__a">При скорости R &gt; C(p) = 1 − H(p) никакой код не даёт сколь угодно малой вероятности ошибки.</p><button class="btn btn--small btn--ghost card__btn" type="button">Показать ответ</button></li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Чему равно −11 mod 4?</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">1, потому что −11 = (−3)·4 + 1.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Когда у a есть обратный по модулю n?</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">Ровно тогда, когда НОД(a, n) = 1.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Найдите 3⁻¹ в ℤ₇.</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">5, так как 3·5 = 15 ≡ 1.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Почему ℤ₉ — не поле?</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">3·3 = 9 ≡ 0: у 3 нет обратного (НОД(3, 9) = 3).</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Что такое примитивный элемент поля?</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">Элемент, степени которого пробегают все ненулевые элементы поля. Например, 3 в 𝔽₇.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Почему МП-декодер в ДСК(p) при p &lt; 1/2 выбирает ближайшее слово?</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">P(y | x) = (1 − p)ⁿ·(p/(1 − p))ᵈ, а p/(1 − p) &lt; 1, поэтому вероятность убывает с ростом d.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Код имеет d = 6. Найдите t, s, s′.</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">t = 2, s = 5, s′ = 3.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Почему из «код исправляет t ошибок» следует d ≥ 2t + 1?</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">Шары радиуса t вокруг кодовых слов не должны пересекаться; если бы d ≤ 2t, нашлось бы слово на расстоянии ≤ t от двух кодовых.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">Сколько векторов в шаре радиуса 1 в 𝔽₂⁷?</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">1 + 7 = 8.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
+        <li class="card">
+          <div class="card__flip">
+            <div class="card__face card__face--front"><p class="card__side">Вопрос</p><p class="card__q">О чём говорит обратная теорема Шеннона?</p></div>
+            <div class="card__face card__face--back"><p class="card__side">Ответ</p><p class="card__a">При скорости R &gt; C(p) = 1 − H(p) никакой код не даёт сколь угодно малой вероятности ошибки.</p></div>
+          </div>
+          <button class="btn btn--small btn--ghost card__btn" type="button" aria-pressed="false">Показать ответ</button>
+        </li>
       </ul>
 
       <h2 id="quiz">Мини-тест</h2>
@@ -203,7 +263,7 @@
     <div class="site-footer__inner">
       <p>Неофициальный сайт студентов для подготовки к экзамену по курсу «Алгебраическая теория кодирования». Это не материалы преподавателя: опирайтесь на лекции и программу экзамена.</p>
       <p><a href="../sources.html">Источники и условные обозначения</a><br><a href="../plan.html#progress-io">Как перенести прогресс на другое устройство</a></p>
-      <p>Версия 0.2.1 от 25.10.2026</p>
+      <p>Версия 0.2.3 от 25.10.2026</p>
     </div>
   </footer>
   <script src="../assets/js/data.js"></script>

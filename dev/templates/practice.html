@@ -18,11 +18,13 @@
       </ul>
     </div>
 
-    <div class="filter-bar no-print" data-filter-group="tasks" role="group" aria-label="Фильтр по уровню">
+    <div class="filter-bar no-print" data-filter-group="tasks" role="group" aria-label="Фильтр задач">
       <button class="chip-btn" type="button" data-level="all" aria-pressed="true">Все</button>
       <button class="chip-btn" type="button" data-level="1" aria-pressed="false">★ Разминка</button>
       <button class="chip-btn" type="button" data-level="2" aria-pressed="false">★★ Основные</button>
       <button class="chip-btn" type="button" data-level="3" aria-pressed="false">★★★ Сложные</button>
+      <span class="filter-sep" aria-hidden="true" hidden></span>
+      <button class="chip-btn" type="button" data-filter-notes aria-pressed="false" hidden>С заметками <span class="chip-count" data-notes-count></span></button>
       <span class="muted" data-filter-status role="status" aria-live="polite"></span>
     </div>
 
@@ -30,20 +32,22 @@
       <h2 id="p1">Блок {{NUM}}.1</h2>
 
       <section class="task" data-level="1" id="t1" aria-labelledby="t1-h">
-        <div class="task__head"><h3 class="task__num" id="t1-h" data-nosearch>Задача 1</h3><span class="level" data-level="1">★ разминка</span>
-          <label class="done-check"><input type="checkbox" data-task="{{ID}}-t1"> Решено</label></div>
+        <span class="stamp" aria-hidden="true">Решено</span>
+        <div class="task__head"><h3 class="task__num" id="t1-h" data-nosearch>Задача 1</h3><span class="level" data-level="1">★ разминка</span></div>
         <p>Условие задачи.</p>
         <details class="note">
-          <summary>Мой ответ</summary>
+          <summary>Заметки <span class="note-flag" hidden>есть запись</span></summary>
           <div class="details-body">
-            <label class="visually-hidden" for="note-{{ID}}-t1">Мой ответ к задаче 1</label>
-            <textarea class="input note-input" id="note-{{ID}}-t1" data-note="{{ID}}-t1" rows="4" placeholder="Запишите ход решения или ответ. Он сохранится в этом браузере."></textarea>
+            <p class="note-hint">Решайте в тетради, а сюда запишите итоговый ответ или место, где застряли. Заметка хранится в этом браузере.</p>
+            <label class="visually-hidden" for="note-{{ID}}-t1">Заметки к задаче 1</label>
+            <textarea class="input note-input" id="note-{{ID}}-t1" data-note="{{ID}}-t1" rows="4" placeholder="Например: ответ 7, проверка 5·7 = 35 ≡ 1"></textarea>
             <p class="note-status muted" id="note-{{ID}}-t1-status" aria-live="polite"></p>
           </div>
         </details>
         <details class="hint"><summary>Подсказка</summary><div class="details-body"><p>Подсказка.</p></div></details>
         <details class="answer"><summary>Ответ</summary><div class="details-body"><p>Ответ.</p></div></details>
         <details class="solution"><summary>Решение</summary><div class="details-body"><p>Решение по шагам.</p></div></details>
+        <label class="mark no-print"><input class="mark__input" type="checkbox" data-task="{{ID}}-t1"><span class="mark__box" aria-hidden="true"></span><span class="mark__text"><span class="mark__off">Я решил эту задачу</span><span class="mark__on">Задача решена</span></span></label>
       </section>
     </div>
   </main>
